@@ -62,10 +62,7 @@ export default function MainContentSection(){
                     },
                 })               
                 const res = await api.get(`landlord/house-photo/${pid}/`);
-                // const Agentres=await api.get("landlord/agent/");
-                // setAgname(Agentres.data.data.name)
-                // setAgnum(Agentres.data.data.phone)
-                // setAgimg(Agentres.data.data.profile_photo)
+
              
                 const allImages = [];
                 res.data.forEach(item => {
@@ -133,6 +130,20 @@ export default function MainContentSection(){
         fetchData();
     }, []);
 
+     useEffect(()=>{
+         const fetchData=async()=>{
+            try{ 
+
+                const Agentres=await api.get("landlord/agent/");
+                setAgname(Agentres.data.data.name);
+                setAgnum(Agentres.data.data.phone);
+                setAgimg(Agentres.data.data.profile_photo)
+            }catch(err){
+                console.log(err);
+            }
+         }
+         fetchData();
+     },[])
 
     return(
         <>
@@ -327,50 +338,53 @@ export default function MainContentSection(){
                         </div>
                     </div>
         </Link>
-             
-                     {/* <Floormap img1={img1} img2={img2} img3={img3} img4={img4}/> */}
-                              
+                       
                     <div className="CardsContainerbottom">
                         <div className="row">
-                        <Link  to="/dashboard/tenantsprofile" onClick={()=>{
-                                dispatch({
-                                    type:"path",
-                                    payload:{
-                                        path:"Tenants Profile",
-                                        sidebar:false
-                                    }
-                                }); 
-                            }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
-                            <CardItm>
-                                <h1 className="HeadingText">Tenants Profile</h1>
-                                <div className="containerwrapper d-flex flex-column gy-4">
-                                    <p className="text1 m-0">{data.Tname}</p>
-                                    <p className="text2 m-0">{data.Tnumber}</p>
-                                </div>
-                            </CardItm>
-                        </Link>
-                        <Link  to="/dashboard/agentsprofile" onClick={()=>{
-                                dispatch({
-                                    type:"path",
-                                    payload:{
-                                        path:"Agents Profile",
-                                        sidebar:false
-                                    }
-                                }); 
-                            }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
-                            <CardItm>
-                                <h1 className="HeadingText">Agent Profile</h1>
-                                <div className="containerwrapper">
-                                    <div className="imgele">
-                                        <img src={Agimg} style={{width:"100%" , height:"100%",borderRadius:'50%'}} />
-                                    </div>
-                                    <div className="sidebox">
-                                        <p className="text1">{Agname}</p>
-                                        <p className="text2">{Agnum}</p>
-                                    </div>
-                                </div>
-                            </CardItm>
-                        </Link>
+                            {Tname && Tnumber && (
+                                       <Link  to="/dashboard/tenantsprofile" onClick={()=>{
+                                        dispatch({
+                                            type:"path",
+                                            payload:{
+                                                path:"Tenants Profile",
+                                                sidebar:false
+                                            }
+                                        }); 
+                                    }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
+                                    <CardItm>
+                                        <h1 className="HeadingText">Tenants Profile</h1>
+                                        <div className="containerwrapper d-flex flex-column gy-4">
+                                            <p className="text1 m-0">{data.Tname}</p>
+                                            <p className="text2 m-0">{data.Tnumber}</p>
+                                        </div>
+                                    </CardItm>
+                                </Link>
+                            )}
+                    {Agname && Agnum &&(
+                    <Link  to="/dashboard/agentsprofile" onClick={()=>{
+                        dispatch({
+                            type:"path",
+                            payload:{
+                                path:"Agents Profile",
+                                sidebar:false
+                            }
+                        }); 
+                    }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
+                    <CardItm>
+                        <h1 className="HeadingText">Agent Profile</h1>
+                        <div className="containerwrapper">
+                            <div className="imgele">
+                                <img src={Agimg} style={{width:"100%" , height:"100%",borderRadius:'50%'}} />
+                            </div>
+                            <div className="sidebox">
+                                <p className="text1">{Agname}</p>
+                                <p className="text2">{Agnum}</p>
+                            </div>
+                        </div>
+                    </CardItm>
+                </Link>
+                )}   
+                        
                         </div>
                     </div>
                 </div>

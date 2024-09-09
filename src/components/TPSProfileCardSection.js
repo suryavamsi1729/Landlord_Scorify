@@ -19,9 +19,8 @@ export default function TPSProfileCardSection() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await axios.get("http://127.0.0.1:8000/landlord/87c3fd8f-9ddb-4509-9dfc-f9fc962d8705/tenants/");
                 const response=await api.get('landlord/tenants/');
-                
+             
                 const fetchdata = response.data.map((item) => ({
                     PFImg: item.profile_photo,
                     name: item.name,
