@@ -107,8 +107,10 @@ export default function UploadScreen() {
           },
         }
       );
-      console.log("testing");
-      console.log(response.data);
+
+     
+      // console.log("testing");
+      // console.log(response.data);
       //   alert("Files uploaded successfully!");
       setUploadProgress(0);
       setUploadComplete((pre) => ({
@@ -123,13 +125,13 @@ export default function UploadScreen() {
         epcReport: null,
         inspectionReport: null,
       }));
-      setMessage("Uploaded Successfully");
-      navigate("/dashboard");
+      window.alert("Uploaded Successfully");
       setLoading(false);
+      navigate("/dashboard"); 
     } catch (error) {
       console.log("Error uploading files:", error);
       //   alert("Failed to upload files.");
-      setMessage("Upload Faliled");
+      setMessage("Upload Failed");
       setUploadProgress(0);
       setUploadComplete((pre) => ({
         ...pre,
@@ -149,15 +151,10 @@ export default function UploadScreen() {
   const handleBrowseClick = (ref) => {
     ref.current.click();
   };
-  if (loading) {
-    return (
-      <>
-        <Spinner />
-      </>
-    );
-  }
+ 
   return (
     <>
+      {loading && <Spinner/>}
       <div className="UploadContainer d-flex flex-column justify-content-between align-items-center p-5">
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />

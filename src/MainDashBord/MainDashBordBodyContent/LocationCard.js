@@ -3,26 +3,8 @@ import './MDBContentCompStyle.css';
 import Img from "./Svg/Image.jpg";
 // import axios from "axios";
 import api from "../../api";
-export default function LocationCard(props){
-    useEffect(()=>{
-        const fetchData=async()=>{
-        const response = await api.get('landlord/dashboard/');
-        //    console.log(response.data.properties[0]);
-           let address=response.data.properties[0].property[0].address.split("\n");
-        //    console.log(address);
-           updatedata({
-            imgsrc:Img,
-            Location:address[0],
-            LocationSteet:address[1],
-            ZipCode:response.data.properties[0].property[0].zip_code,
-            bedroomno:response.data.properties[0].property[0].bedroom_count,
-            bathroomno:response.data.properties[0].property[0].bathroom_count,
-            halls:response.data.properties[0].property[0].living_room_count,
-            con:'Good'
-            });
-        }
-        fetchData();
-    },[])
+export default function LocationCard({data}){
+   
     const color = (col)=>{
         switch(col){
             case "Good":
@@ -33,10 +15,7 @@ export default function LocationCard(props){
                 }
         }
     }
-    const [data,updatedata] = useState({
-                                            imgsrc:Img,
-                                           
-                                        });
+
     return(
         <>
             <div className="LocationCardConatainer">

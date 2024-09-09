@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../Context/MainContext';
 import './Login.css';
 import axios from "axios";
+import Spinner from '../../components/Spinner/Spinner';
 export default function OtpScreen() {
     const {email} = useContext(MainContext);
     const navigate = useNavigate();
     const [otp, setOtp] = useState(new Array(6).fill(''));
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (element, index) => {
         if (isNaN(element.value)) return;
@@ -38,10 +40,9 @@ export default function OtpScreen() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        setLoading(true);
         const otpValue = otp.join('');
         try {
-            console.log(otpValue);
-            console.log(email);
             const response = await api.post('accounts/landlord/verifyotp', { 
                 email:email,
                 otp:otpValue 
@@ -51,7 +52,7 @@ export default function OtpScreen() {
                 const { refresh, access } = response.data;
                 localStorage.setItem('access_token', access);
                 localStorage.setItem('refresh_token', refresh);
-            
+                setLoading(false);
                 navigate('/upload');
             } else {
                 throw new Error('Failed to verify OTP');
@@ -59,10 +60,11 @@ export default function OtpScreen() {
         } catch (error) {
             let errorMessage = 'An error occurred while verifying OTP. Please try again.';
             if (error.response && error.response.data) {
-
                 errorMessage = 'The OTP you entered is incorrect. Please try again.';
             }
             setError(errorMessage);
+        }finally{
+            setLoading(false);
         }
     };
 
@@ -87,7 +89,7 @@ export default function OtpScreen() {
                                 <div className="Heading h-auto d-flex flex-column gap-2">
                                     <h1 className="HeadingTextOTP m-0">2-step verification</h1>
                                     <p className="loginHeadingTextOTP m-0">
-                                        A mail message with a 6-digit verification code was just sent to your email@example.com.
+                                        A mail message with a 6-digit verification code was just sent to your {email}.
                                     </p>
                                 </div>
 
@@ -121,10 +123,20 @@ export default function OtpScreen() {
                                 </div>
 
                                 {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+
                                 <div className='OtpSubmitContainer d-flex flex-column align-items-center gap-2'>
-                                    <p className='w-100 text-center OtpDRCodeText'>Didn't receive the code yet? <a className='Linkresend' href="#">Resend Code</a></p>
-                                    <button className='OtpSubmitBtn' onClick={handleSubmit}>Verify & Signup</button>
+                                    {loading ? (
+                                        <Spinner/> 
+                                    ):(
+                                        <>
+                                            <p className='w-100 text-center OtpDRCodeText'>
+                                                Didn't receive the code yet? <a className='Linkresend' href="#">Resend Code</a>
+                                            </p>
+                                            <button className='OtpSubmitBtn' onClick={handleSubmit}>Verify & Signup</button>
+                                        </>
+                                    )}
                                 </div>
+
                             </div>
                             <div className="w-100 d-flex flex-row justify-content-between">
                                 <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>

@@ -3,37 +3,26 @@ import './MDBContentCompStyle.css';
 import api from "../../api";
 
 
-export default function CurrentScoreCard(){
-    const [date,setDate]= useState('30th Aug');
+export default function CurrentScoreCard({score,date}){
+
     const [rangle,setRAngle]= useState(0);
-    const [score,SetScore]=useState();
-    useEffect(()=>{
-        const fetchData=async()=>{
-         
-        const response = await api.get('landlord/dashboard/');
-        const dateStr = response.data.properties[0].property[0].next_inspection_date;
-        const dateObj = new Date(dateStr);
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const suffixes = ["th", "st", "nd", "rd"];
-        const day = dateObj.getDate();
-        const daySuffix = (day % 10 <= 3 && ![11, 12, 13].includes(day)) ? suffixes[day % 10] : suffixes[0];
-        const month = months[dateObj.getMonth()];
-        const formattedDate = `${day}${daySuffix} ${month}`;
-        setDate(formattedDate);
-        SetScore(Math.round(response.data.properties[0].property[0].score));
-    //  setDetails({
-    //     date:formattedDate,
-    //     score:"800"
-    //     // score:response.data.properties[0].property[0].score,
-    //  })
-        }
-        fetchData();      
-     },[])
      useEffect(()=>{
         const per = (score/1000)*100;
         const angel= (per/100)*180;
         setRAngle(angel);
      });
+     function formatDate(dateStr) {
+        const dateObj = new Date(dateStr);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const suffixes = ["th", "st", "nd", "rd"];
+        
+        const day = dateObj.getDate();
+        const daySuffix = (day % 10 <= 3 && ![11, 12, 13].includes(day)) ? suffixes[day % 10] : suffixes[0];
+        const month = months[dateObj.getMonth()];
+        const formattedDate = `${day}${daySuffix} ${month}`;
+        
+        return formattedDate;
+    }
     return(
         <>
             <div className="CurrentScoreCardContainer">
@@ -66,7 +55,7 @@ export default function CurrentScoreCard(){
                         </div>
                     </div>
                 </div>
-                <div className="NextInspectiondate">Next Inspection due on {date}</div>
+                <div className="NextInspectiondate">Next Inspection due on {formatDate(date)}</div>
             </div>
         </>
     );

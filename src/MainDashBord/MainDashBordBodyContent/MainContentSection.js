@@ -4,10 +4,7 @@ import CardItm from './CardItm'
 import './MDBContentCompStyle.css';
 import { Link } from "react-router-dom";
 import img from './Svg/ImageAI.png';
-// import img1 from './Svg/Image (1).jpg';
-// import img2 from './Svg/Image (2).jpg';
-// import img3 from './Svg/Image (3).jpg';
-// import img4 from './Svg/Image (4).jpg';
+import Img from "./Svg/Image.jpg";
 import Floormap from "./Floormap";
 import imgavt from './Svg/Avatar2.jpg';
 import SectionPropertyScoreDetails from "./SectionPropertyScoreDetails";
@@ -31,6 +28,12 @@ export default function MainContentSection(){
     const [img2, setImg2] = useState("");
     const [img3, setImg3] = useState("");
     const [img4, setImg4] = useState("");
+    const [location,setlocation]=useState("");
+    const [property, setProperty] = useState("");
+    const [age, setAge] = useState("");
+    const [date,SetDate]=useState('');
+    const [score,Setscore]=useState('');
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -44,33 +47,60 @@ export default function MainContentSection(){
                 const daySuffix = (day % 10 <= 3 && ![11, 12, 13].includes(day)) ? suffixes[day % 10] : suffixes[0];
                 const month = months[dateObj.getMonth()];
                 const formattedDate = `${day}${daySuffix} ${month}`;
-
+                
 
                 const pid=response.data.properties[0].property[0].id;
-                console.log(pid);
                 const res = await api.get(`landlord/house-photo/${pid}/`);
+                // const Agentres=await api.get("landlord/agent/");
+                // setAgname(Agentres.data.data.name)
+                // setAgnum(Agentres.data.data.phone)
+                // setAgimg(Agentres.data.data.profile_photo)
+                console.log(res);
                 const allImages = [];
                 res.data.forEach(item => {
                   item.house_item.forEach(houseItem => {
                     allImages.push(houseItem.image);
                   });
                 });
+                
                
                 const shuffledImages = allImages.sort(() => 0.5 - Math.random());
                 const selectedImages = shuffledImages.slice(0, 4);
-
+                
 
                 //For the Agent data
-                const Agentres=await api.get("landlord/agent/");
-                setAgname(Agentres.data.data.name)
-                setAgnum(Agentres.data.data.phone)
-                setAgimg(Agentres.data.data.profile_photo)
+               
                 if (selectedImages.length >= 4) {
                     setImg1(selectedImages[0]);
                     setImg2(selectedImages[1]);
                     setImg3(selectedImages[2]);
                     setImg4(selectedImages[3]);
-                  }
+                }
+
+                //locationcard
+
+                let address=response.data.properties[0].property[0].address.split("\n");
+
+                setlocation({
+                 imgsrc:Img,
+                 Location:address[0],
+                 LocationSteet:address[1],
+                 ZipCode:response.data.properties[0].property[0].zip_code,
+                 bedroomno:response.data.properties[0].property[0].bedroom_count,
+                 bathroomno:response.data.properties[0].property[0].bathroom_count,
+                 halls:response.data.properties[0].property[0].living_room_count,
+                 con:'Good'
+                 });
+                
+                //CardComp
+                setProperty(response.data.properties[0].property[0].property_type);
+                setAge(response.data.properties[0].property[0].house_age);
+
+
+                //Scorecard
+                SetDate(response.data.properties[0].property[0].next_inspection_date);
+                Setscore(Math.round(response.data.properties[0].property[0].score));
+
                 setData({
                     Inspec:response.data.properties[0].property[0].inspection_repair_count,
                     Repair:response.data.properties[0].property[0].open_repair_count,
@@ -96,7 +126,7 @@ export default function MainContentSection(){
         <>
             <div className="MainContentContainerSection">
                 <div className="ContentContainer">
-                    <SectionPropertyScoreDetails></SectionPropertyScoreDetails>
+                    <SectionPropertyScoreDetails locationcard={location} Property={property} Age={age} Score={score} Date={date}></SectionPropertyScoreDetails>
                     <div className="CardsContainerbottom">
                         <div className="row d-flex flex-row">
                             <Link  to="/dashboard/inspections&inventory" onClick={()=>{
@@ -259,9 +289,40 @@ export default function MainContentSection(){
                             </div>
                         </Link>
                         </div>
-                    
+                        <Link 
+            to="/dashboard/floarmapandphotos"
+            onClick={() => {
+               
+                dispatch({
+                    type: "path",
+                    payload: {
+                        path: "Dashboard Floor Map And Photo",
+                        sidebar: false
+                    }
+                });
+            }} 
+            style={{ textDecoration: 'none', padding: '0px', width: 'calc(100%)', font: 'none' }}>
+            
+            <div className="GalaryContainer">
+                        <h1 className="heading">Floor Map & Photos</h1>
+                        <div className="imgitmcontainer">
+                            {/* <img className="img1" src={img1} style={{ borderRadius:"8px"}} />
+                            <img className="img2" src={img2} style={{ borderRadius:"8px"}}/>
+                            <img className="img3" src={img3}  style={{ borderRadius:"8px"}}/>
+                            <img className="img4" src={img4} /> */}
+                            <div className="imgcol"><img className="img1" src={img1} style={{ borderRadius:"8px"}} /></div>
+                            <div className="imgco2">
+                                <div className="imgrow1"><img className="img2" src={img2} style={{ borderRadius:"8px"}}/></div>
+                                <div className="imgrow2">
+                                    <div className="imgcol"><img className="img3" src={img3} style={{ borderRadius:"8px"}} /></div>
+                                    <div className="imgcol"><img className="img4" src={img4} style={{ borderRadius:"8px"}}/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </Link>
              
-                     <Floormap img1={img1} img2={img2} img3={img3} img4={img4}/>
+                     {/* <Floormap img1={img1} img2={img2} img3={img3} img4={img4}/> */}
                               
                     <div className="CardsContainerbottom">
                         <div className="row">

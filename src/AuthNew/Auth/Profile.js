@@ -41,7 +41,7 @@ export default function ProfileScreen() {
     const handleSubmit = async (event) => {
         setLoading(true);
         event.preventDefault();
-        console.log(address.formatted_address_1);
+
         dispatch({
             type:"emailset",
             payload:{
@@ -52,38 +52,56 @@ export default function ProfileScreen() {
 
         if (!firstName || !lastName || !emailAddress || !password || !confirmPassword || !phoneNumber) {
             setError('Please fill all the fields');
+            setLoading(false);
             return;
         }
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            setLoading(false);
             return;
         }
-        // if (!passwordRegex.test(password)) {
-        //     setError("Password must be at least 8 characters long, contain at least one uppercase letter, and one number");
-        //     return;
-        // }
-
+        if (!passwordRegex.test(password)) {
+            setError("Password must be at least 8 characters long, contain at least one uppercase letter, and one number");
+            setLoading(false);
+            return;
+        }
+       
+     const phoneRegex = /^[0-9]{10}$/;
+    if(!phoneRegex.test(phoneNumber)){
+    setError('Please enter a valid 10-digit phone number');
+    setLoading(false);
+    return;
+ }
         try {
-            const response = await api.post('accounts/landlord/signup/', {
-                // profile_photo:profileImage,
-                email: emailAddress,
-                password: password,
-                password2: confirmPassword,
-                user_type:"landlord",
-                name: `${firstName} ${lastName}`,
-                phone: phoneNumber,
-                address:address.formatted_address_1+address.formatted_address_2,
-                zipcode:address.postcode,
-                city:address.formatted_address_3+address.formatted_address_4,
-                house_name:zip
-            });
+            const formData = new FormData();
+        // formData.append('profile_photo', profileImage); 
+        formData.append('email', emailAddress);
+        formData.append('password', password);
+        formData.append('password2', confirmPassword);
+        formData.append('user_type', "landlord");
+        formData.append('name', `${firstName} ${lastName}`);
+        formData.append('phone', phoneNumber);
+        formData.append('address', `${address.formatted_address_1} ${address.formatted_address_2}`);
+        formData.append('zipcode', address.postcode);
+        formData.append('city', `${address.formatted_address_3} ${address.formatted_address_4}`);
+        formData.append('house_name', zip);  
 
+        const response = await api.post('accounts/landlord/signup/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+            setLoading(false);
             if (response.status === 200){
-                // setSessionData(response.data);
-                setLoading(false);
-                 navigate('/verifyotp');
+                navigate('/verifyotp');
             }
-        } catch (error) {
+            else if(response.status==400){
+                setLoading(false);
+                window.alert("Please signup again");
+                navigate('/signup');
+            }
+        } catch (error){
+            setLoading(false);
             if (error.response && error.response.data) {
                 setError(error.response.data.message);
                 console.log(error.response);
@@ -168,16 +186,9 @@ export default function ProfileScreen() {
       }, []);
 
 
-      if (loading) {
-        return (
-          <>
-            <Spinner />
-          </>
-        );
-      }
-
     return (
         <>
+            {loading && <Spinner />}
             <div className="ProfileScreenContainer d-flex flex-column justify-content-between align-items-center p-5">
                 <div className="Logo">
                     <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
@@ -259,7 +270,7 @@ export default function ProfileScreen() {
                                 <label className="userName">Zip Code</label>
                                 <div className="InputContainer">
                                     {/* <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Code' id="textbox_id" type="text" /> */}
-                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Zip Code' id="textbox_id" type="text" />
+                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Zip Code' id="textbox_id" type="text" required/>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +285,7 @@ export default function ProfileScreen() {
                             <div className="InputCol w-50 d-flex flex-column">
                                 <label className="userName">Third Address Line</label>
                                 <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setTrdAdd(ev.target.value)} id="formatted_address_2" type="text" />
+                                    <input className="pswEle" onChange={(ev) => setTrdAdd(ev.target.value)} id="formatted_address_2" type="text" required/>
                                 </div>
                             </div>
                         </div>
@@ -282,14 +293,14 @@ export default function ProfileScreen() {
                             <div className="InputCol w-50 d-flex flex-column">
                                 <label className="userName">Town</label>
                                 <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setTown(ev.target.value)} id="formatted_address_3" type="text" />
+                                    <input className="pswEle" onChange={(ev) => setTown(ev.target.value)} id="formatted_address_3" type="text" required/>
                                 </div>
                             </div>
 
                             <div className="InputCol w-50 d-flex flex-column">
                                 <label className="userName">Country</label>
                                 <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setCountry(ev.target.value)} id="formatted_address_4" type="text" />
+                                    <input className="pswEle" onChange={(ev) => setCountry(ev.target.value)} id="formatted_address_4" type="text" required/>
                                 </div>
                             </div>
                         </div>
@@ -297,21 +308,21 @@ export default function ProfileScreen() {
                             <div className="InputCol w-100 d-flex flex-column">
                                 <label className="userName">PostCode</label>
                                 <div className="InputContainer">
-                                    <input className="pswEle" onSelect={(ev) => setPostCode(ev.target.value)} id="postcode" type="text" />
+                                    <input className="pswEle" onSelect={(ev) => setPostCode(ev.target.value)} id="postcode" type="text" required/>
                                 </div>
                             </div>
                         </div>
                             
 
                         <div className="InputRows d-flex flex-column justify-content-center align-items-center gap-1">
-                        <div style={{cursor:'pointer'}} className="InputContainer d-flex flex-row justify-content-center align-items-center gap-1">
+                        {/* <div style={{cursor:'pointer'}} className="InputContainer d-flex flex-row justify-content-center align-items-center gap-1">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.1579 6.48661H4.3804C2.68457 6.48661 1.30957 7.86161 1.30957 9.55744L1.30957 13.6199C1.30957 15.3149 2.68457 16.6899 4.3804 16.6899H13.6554C15.3512 16.6899 16.7262 15.3149 16.7262 13.6199V9.54911C16.7262 7.85827 15.3554 6.48661 13.6646 6.48661H12.8787" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M9.01786 0.825452V10.8596" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M6.58862 3.26562L9.01779 0.825625L11.4478 3.26563" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             Upload Document
-                        </div>
+                        </div> */}
                     </div>
                     </div>
                     {error && <p className="ErrorMessage" style={{ color:'red' }}>{error}</p>}
