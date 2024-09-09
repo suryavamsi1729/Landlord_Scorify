@@ -33,6 +33,7 @@ export default function MainContentSection(){
     const [age, setAge] = useState("");
     const [date,SetDate]=useState('');
     const [score,Setscore]=useState('');
+    const {dispatch} = useContext(MainContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,6 +42,9 @@ export default function MainContentSection(){
                 const property_id=response.data.properties[0].property[0].id;
                 const dateStr = response.data.due_date
                 const dateObj = new Date(dateStr);
+                // if (!dateStr || isNaN(dateObj.getTime())) {
+                //     return ""; 
+                // } 
                 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 const suffixes = ["th", "st", "nd", "rd"];
                 const day = dateObj.getDate();
@@ -50,12 +54,19 @@ export default function MainContentSection(){
                 
 
                 const pid=response.data.properties[0].property[0].id;
+                
+                dispatch({
+                    type:"propertyid",
+                    payload:{
+                        Pid:pid
+                    },
+                })               
                 const res = await api.get(`landlord/house-photo/${pid}/`);
                 // const Agentres=await api.get("landlord/agent/");
                 // setAgname(Agentres.data.data.name)
                 // setAgnum(Agentres.data.data.phone)
                 // setAgimg(Agentres.data.data.profile_photo)
-                console.log(res);
+             
                 const allImages = [];
                 res.data.forEach(item => {
                   item.house_item.forEach(houseItem => {
@@ -99,6 +110,7 @@ export default function MainContentSection(){
 
                 //Scorecard
                 SetDate(response.data.properties[0].property[0].next_inspection_date);
+                console.log(response.data.properties[0].property[0].next_inspection_date);
                 Setscore(Math.round(response.data.properties[0].property[0].score));
 
                 setData({
@@ -121,7 +133,7 @@ export default function MainContentSection(){
         fetchData();
     }, []);
 
-    const {dispatch} = useContext(MainContext);
+
     return(
         <>
             <div className="MainContentContainerSection">
@@ -292,7 +304,6 @@ export default function MainContentSection(){
                         <Link 
             to="/dashboard/floarmapandphotos"
             onClick={() => {
-               
                 dispatch({
                     type: "path",
                     payload: {
@@ -301,15 +312,10 @@ export default function MainContentSection(){
                     }
                 });
             }} 
-            style={{ textDecoration: 'none', padding: '0px', width: 'calc(100%)', font: 'none' }}>
-            
+            style={{ textDecoration: 'none', padding: '0px', width: 'calc(100%)', font: 'none' }}> 
             <div className="GalaryContainer">
                         <h1 className="heading">Floor Map & Photos</h1>
                         <div className="imgitmcontainer">
-                            {/* <img className="img1" src={img1} style={{ borderRadius:"8px"}} />
-                            <img className="img2" src={img2} style={{ borderRadius:"8px"}}/>
-                            <img className="img3" src={img3}  style={{ borderRadius:"8px"}}/>
-                            <img className="img4" src={img4} /> */}
                             <div className="imgcol"><img className="img1" src={img1} style={{ borderRadius:"8px"}} /></div>
                             <div className="imgco2">
                                 <div className="imgrow1"><img className="img2" src={img2} style={{ borderRadius:"8px"}}/></div>

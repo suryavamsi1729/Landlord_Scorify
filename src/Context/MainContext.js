@@ -15,6 +15,8 @@ function MainReducer(state,action){
                     return{...state};
         case 'emailset':state.profilemail = action.payload.email;
                     return{...state};
+        case 'propertyid':state. propertyId=action.payload.Pid;
+                    return{...state};
         default:
             return {...state}
     }
@@ -29,7 +31,8 @@ const data ={
     popupData:'',
     popupStae:false,
     currentDate: new Date(),
-    profilemail:""
+    profilemail:"",
+    propertyId:""
 }
 export const MainContext = createContext();
 export function  MianProvider(props){
@@ -44,6 +47,7 @@ export function  MianProvider(props){
                 popupData:state.popupData,
                 popupStae: state.popupStae,
                 email: state.profilemail,
+                Pid:state.propertyId,
                 dispatch,
             }
         }>

@@ -1,6 +1,25 @@
-import React from "react";
+import React,{useContext,useEffect,useState} from "react";
 import PTCDateContent from "./PTCDateContent";
+import { MainContext } from "../Context/MainContext";
+import api from "../api";
 export default function PropertytimeLineBodyContent(props){
+    // const {pid} = useContext(MainContext);
+    useEffect(()=>{
+    //    console.log(pid);
+        const fetchData=async()=>{
+            try{
+                const res=await api.get('landlord/dashboard/');
+                const pid=res.data.properties[0].property[0].id;
+                console.log(pid);
+                const response=await api.get(`landlord/property-timeline/${pid}/`);
+                console.log(response.data);
+            }catch(err){
+                console.log("Error while fetching the data",err);
+            }
+        }
+        fetchData();
+       
+    },[])
     return(
         <>
             <div className="container-fluid p-0">

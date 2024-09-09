@@ -4,7 +4,7 @@ import api from "../../api";
 
 
 export default function CurrentScoreCard({score,date}){
-
+ 
     const [rangle,setRAngle]= useState(0);
      useEffect(()=>{
         const per = (score/1000)*100;
@@ -13,6 +13,10 @@ export default function CurrentScoreCard({score,date}){
      });
      function formatDate(dateStr) {
         const dateObj = new Date(dateStr);
+        if (!dateStr || isNaN(dateObj.getTime())) {
+            return ""; 
+        } 
+
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const suffixes = ["th", "st", "nd", "rd"];
         
