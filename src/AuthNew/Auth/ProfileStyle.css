@@ -1,0 +1,106 @@
+.ProfileScreenContainer{
+    width: 100vw;
+    height: auto;
+    gap: 48px;
+
+}
+.ProfileScreenContainer .Logo{
+    width: auto;
+    height: auto;
+}
+.ProfileScreenContainer .Logo .BrandLogoImg{
+    width: 160px;
+    height: 48px;
+}
+.ProfileScreenContainer .HeadingProfile{
+    width: 640px;
+    height: 48px;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 600;
+    color: #09090B;
+}
+.ProfileScreenContainer .DetailesContainer{
+    width: 640px;
+    height: auto;
+    gap: 48px;
+}
+.ProfileImgContainer{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.ProfileImg{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.EditSection{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #21296D;
+    border-radius: 50%;
+    bottom: 7.5px;
+    right: 7.5px;
+    cursor: pointer;
+}
+.DetailesSection{
+    width: 100%;
+    height: auto;
+}
+.DetailesSection .InputRows{
+    width: 100%;
+    height: auto;
+}
+.InputCol{
+    width: calc(50% - 8px);
+    height: auto;
+}
+.userName{
+    text-align: start;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #18181B;
+}
+.InputContainer{
+    width: 100%;
+    height: auto;
+    padding: 14px 16px 14px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--GreyScaleColors-Grey200, #E5E5E5);
+    background: var(--WhiteColors-White100, #FFFFFF);
+}
+.pswEle{
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #71717A;
+}
+.Submitbtn{
+    width: 640px;
+    height: auto;
+    background-color: #21296D;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+.Text-ele{
+    width: 50%;
+    height: auto;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    font-weight: 500;
+    color: #71717A;
+}
+.footerSection{
+    width: 640px;
+    height: auto;
+}

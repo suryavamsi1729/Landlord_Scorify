@@ -1,0 +1,706 @@
+.InspectioInventorySectionContainer{
+    position: relative;
+    width: 100%;
+    height: 832px;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    overflow: scroll;
+}
+/* TabsSection-- start */
+.TabsSectionContainer{
+    width: 100%;
+    height: auto;
+    /* //styleName: Button Text/BU1/Medium 16px; */
+    font-family: Urbanist;
+    font-size: 1vw;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+
+}
+.TabsSectionContainer .button{
+    max-width: auto;
+    height: auto;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    padding: 6px 19px 6px 19px;
+    font: inherit;
+}
+.TabsSectionContainer .button.lybtn{
+    background-color: #21296D;
+    color: #FFFFFF;
+}
+.TabsSectionContainer .button.custbtn{
+    background-color: #FAFAFA;
+    border: 1px solid #E5E5E5;
+    color: #18181B;
+}
+/* InspectionTable--start */
+.InspectionTableContainer{
+    width: 100%;
+    height: 684px;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.InspectionTableContainer .InspectionTable{
+    width: 100%;
+    height: auto;
+}
+.InspectionTableContainer .InspectionTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(1){
+    width: 14.5%;
+    /* height: 40px; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(2){
+    width: 10%;
+    /* height: 40px; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(3){
+    width: 13%;
+    /* height: 40px;
+    font-size: 0.25vw; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(4){
+    width: 28%;
+    /* height: 40px; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(5){
+    width: 14.5%;
+    /* height: 40px; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(6){
+    width: 10%;
+    /* height: 40px; */
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm:nth-child(7){
+    width: 10%;
+    /* height: 40px; */
+    border-right: none;
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm.DocumentTileRiskItmCol{
+    width: calc(28% + 14.5%);
+}
+.InspectionTableContainer .InspectionTable thead tr .HeaderItm.ExpiryDateRiskItmCol{
+    width: 10%;
+    /* height: 40px; */
+}
+.RowItm{
+    height: auto;
+    overflow: hidden;
+    padding: 8px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    background-color: #FFFFFF;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.DocumentItm{
+    width: 14.5%;
+    height: auto;
+}
+.DocumentChip{
+    width: auto;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background-color: #FAFAFA;
+    padding: 6px 8px 6px 8px;
+}
+.DocumentId{
+    font: inherit;
+    color: #52525B;
+}
+.DateItm{
+    width: 10%;
+    /* height: 63px; */
+}
+.DateText{
+    width: auto;
+    /* height: 20px; */
+    font: inherit;
+    color: #18181B;
+}
+.DateType{
+    width: 13%;
+    /* height: 63px; */
+}
+.DocumentTypeText{
+    font: inherit;
+    font-size: 0.75vw;
+    color: inherit;
+}
+.DateTitle{
+    width: 28%;
+    /* height: 63px; */
+}
+.LRSKDocumenteTitle{
+    width: 42.5%;
+}
+.DocumentTitleText{
+    font: inherit;
+    color: #18181B;
+}
+.creator{
+    width: 14.5%;
+    /* height: 63px; */
+}
+.creator .profileimg{
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+.creator .creatorText{
+    font: inherit;
+    color: #18181B;
+}
+.Action{
+    width: 10%;
+    /* height: 63px; */
+    gap:12px;
+}
+.Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.SvgIcon{
+    position: absolute;
+    width: 13.89px;
+    height: 15.34px;
+    top: 2.29px;
+    left: 3.13px;
+    border: 1.5px 0px 0px 0px;
+
+}
+/* Table--end */
+.InspectioInventorySectionContainer .ButtonGroupContainer{
+    width: 100%;
+    height: auto;
+}
+.ButtonGroupContainer .BtnPrevious{
+    width: auto;
+    height: 48px;
+    border-radius: 16px;
+    padding: 12px 20px 12px 12px;
+    border: 1px solid #E5E5E5;
+    background-color: #FFFFFF;
+    gap: 4px;
+}
+.ButtonGroupContainer .BtnNext{
+    width: auto;
+    height: 48px;
+    border-radius: 16px;
+    padding: 12px 20px 12px 12px;
+    border: 1px solid #E5E5E5;
+    background-color: #FFFFFF;
+    gap: 4px;
+}
+.ButtonGroupContainer .BtnPrevious .btnText{
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color:#18181B;
+}
+.ButtonGroupContainer .BtnNext  .nxtIconSvg{
+    width: 20px;
+    height: 20px;
+    transform: rotate(180deg);
+}
+/*Section Property Table Css*/
+.PropertyTableContainer{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.PropertyTableContainer .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.PropertyTableContainer .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.PropertiesAdderesscol{
+    width: 20% ;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.TenancyCol{
+    width: 12% ;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.TimeinPropertyCol{
+    width: 12.5%;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.PropScoreCol{
+    width: 15%;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.complianceLevelCol{
+    width: 13.5%;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.OpenRepairsCol{
+    width: 13.5%;
+}
+.PropertyTableContainer .PropertyTable thead tr .HeaderItm.InspectionsDueCol{
+    width: 13.5%;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm .ChipTenancy{
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background: #FAFAFA;
+
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 20% ;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 12% ;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 12.5%;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 15%;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(5){
+    width: 13.5%;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(6){
+    width: 13.5%;
+}
+.PropertyTableContainer .PropertyTable tbody tr .RowItm:nth-child(7){
+    width: 13.5%;
+}
+/*RegularMaintence Table*/
+.RegularMaintenanceTableContainer{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.RegularMaintenanceTableContainer .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm.PropertiesAdderesscol{
+    width: 35% ;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm.FloorPlanCol{
+    width: 10% ;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm.NotesCol{
+    width: 25%;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm.PropScoreCol{
+    width: 15%;
+}
+.RegularMaintenanceTableContainer .PropertyTable thead tr .HeaderItm.OccupancyCol{
+    width: 15%;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 35% ;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 10% ;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 25%;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 15%;
+}
+.RegularMaintenanceTableContainer .PropertyTable tbody tr .RowItm:nth-child(5){
+    width: 15%;
+}
+/*OpenRepair Table*/
+.MROpenRepairTableContainer{
+    width: 100%;
+    height: 684px;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.MROpenRepairTableContainer .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.MROpenRepairTableContainer .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.MROpenRepairTableContainer .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.MROpenRepairTableContainer .PropertyTable thead tr .HeaderItm.PropertiesAdderesscol{
+    width: 50% ;
+}
+.MROpenRepairTableContainer .PropertyTable thead tr .HeaderItm.FloorPlanCol{
+    width: 10% ;
+}
+.MROpenRepairTableContainer .PropertyTable thead tr .HeaderItm.DescriptionCol{
+    width: 30%;
+}
+.MROpenRepairTableContainer .PropertyTable thead tr .HeaderItm.RepairStatusCol{
+    width: 20%;
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm .ChipTenancy{
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background: #FAFAFA;
+
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 50% ;
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 10% ;
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 30%;
+}
+.MROpenRepairTableContainer .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 20%;
+}
+/*Report Tables*/
+/*R EPC Table*/
+.ReportEPCTableContainerAgent{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.ReportEPCTableContainerAgent .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm.RPropertiesAddressCol{
+    width: 35% ;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm.RCurrentRatingCol{
+    width: 20% ;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm.RDocumentCol{
+    width: 15%;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm.RDateCol{
+    width: 15%;
+}
+.ReportEPCTableContainerAgent .PropertyTable thead tr .HeaderItm.RActionCol{
+    width: 15%;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm .ChipTenancy{
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background: #FAFAFA;
+
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 35% ;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 15% ;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 20%;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 15%;
+}
+.ReportEPCTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(5){
+    width: 15%;
+}
+/*Self Inspectoion table*/
+.AgentSelfInspectionTableContainer{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.AgentSelfInspectionTableContainer .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASIPropertiesAddressCol{
+    width: 30% ;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASIDocumentCol{
+    width: 20% ;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASIResultCol{
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASICreateByCol{
+    width: 20%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASIDateCol{
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable thead tr .HeaderItm.ASIActionCol{
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm .ChipTenancy{
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background: #FAFAFA;
+
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 30% ;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 20% ;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 20%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(5){
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm:nth-child(6){
+    width: 10%;
+}
+.AgentSelfInspectionTableContainer .PropertyTable tbody tr .RowItm.creator .profileimg{
+    border-radius: 50%;
+}
+/*Inspection Table*/
+.InspectionTableContainerAgent{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+.InspectionTableContainerAgent .PropertyTable{
+    width: 100%;
+    height: auto;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr{
+    width: 100%;
+    height: auto;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm{
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    /* //styleName: Button Text/BU2/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #21296D;
+}
+
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INAPropertiesAdderesscol{
+    width: 22.5% ;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INAFloorPlanCol{
+    width: 10% ;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INAInspectionScoreCol{
+    width: 15%;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INACommentsCol{
+    width: 22.5%;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INANextInspectionDateCol{
+    width: 15%;
+}
+.InspectionTableContainerAgent .PropertyTable thead tr .HeaderItm.INAOccupancyCol{
+    width: 15%;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm .ChipTenancy{
+    width: auto;
+    height: auto;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid #52525B;
+    background: #FAFAFA;
+
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(1){
+    width: 22.5% ;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(2){
+    width: 10% ;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(3){
+    width: 15%;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(4){
+    width: 22.5%;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(5){
+    width: 15%;
+}
+.InspectionTableContainerAgent .PropertyTable tbody tr .RowItm:nth-child(6){
+    width: 15%;
+}

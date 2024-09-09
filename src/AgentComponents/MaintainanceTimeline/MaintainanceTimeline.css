@@ -1,0 +1,530 @@
+/* Property Details */
+.modalPopup{
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 640px;
+  height: 100%;
+  background-color: #FFFFFF;
+  border-radius: 20px 0px 0px 20px;
+  padding-top: 5px;
+  z-index: 1000;
+}
+.topSectionModal{
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+.PopupContainer{
+  width: 100%;
+  height: 100%;
+  
+  padding: 16px;
+}
+
+.LocationCardConatainer{
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+
+}
+.RepairStatus{
+  width: 100%;
+  height: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.RepairStatus .RSIndicator{
+  width: 100%;
+  height: auto;
+}
+.RepairStatus .RSIndicator .RSIndicatorArrowContainer{
+  position: relative;
+  width: 100%;
+  height: 10px;
+}
+.RepairStatus .RSIndicator .RSIndicatorArrowContainer .Arrow{
+  position: absolute;
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 10px solid #27272A;
+}
+.RepairStatus .RSIndicator .RSIndicatorText{
+  width: 100%;
+  height: auto;
+}
+.RepairStatus .RSIndicator .RSIndicatorText .RSITextContainer .Text{
+  font-size: 0.8vw;
+  line-height: 1.25vw;
+  font-weight: 400;
+  color: #52525B;
+}
+.RepairStatus .RSIndicator .RSIndicatorScale{
+  width: 100%;
+  height: 16px;
+  border-radius: 8px;
+  background-image: linear-gradient(90deg, #EF4444 0%, #FCD34D 50%, #22C55E 100%);
+}
+.DocumentChip{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    padding:  6px 8px;
+    font-size: 1vw;
+    line-height: 1.25vw;
+    border-width: 1px;
+    border-style: solid;
+}
+.LocationCardConatainer .ImageContainer{
+    width: 90px;
+    height: 90px;
+}
+.LocationCardConatainer .LocationCardInfo{
+    width: calc(100% - 90px - 16px );
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.LocationCardConatainer .LocationCardInfo .TextWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.LocationCardConatainer .LocationCardInfo .TextWrapper .Heading{
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    height: auto;
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    color: #18181B;
+
+}
+
+.LocationCardConatainer .LocationCardInfo .TextWrapper .subHeading{
+    /* //styleName: Body Text/B2/Regular 16px; */
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper{
+    width: calc(100% - 110px - 4px);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper .ZipCodeInfo{
+    width: auto;
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Input Text/Input Heading Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #52525B;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper .ZipcodeVal{
+    width: calc(100% - 52px - 4px);
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Input Text/Input Heading Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #52525B;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer{
+    width: 110px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .IconWrapper{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .Icon .SVGIcon{
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 20px;
+    height: 16px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .IconVal{
+    width: 10px;
+    height: 20px;
+    margin: 0px;
+    /* //styleName: Button Text/BU1/Medium 16px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+}
+
+.Footer{
+  width: 100%;
+  height: auto;
+}
+.FooterTextContainer{
+  width: calc(50% - 4px);
+  height: auto;
+}
+.footerText{
+  font-size: 1vw;
+  line-height: 1.5vw;
+  font-weight: 600;
+  color: #18181B;
+}
+.AddBtn{
+  width: 20px;
+  height: 20px;
+}
+/* Common Styles */
+.container {
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .communication {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.person-card {
+    flex: 0 0 49%; /* Ensure each person takes up 48% of the container width */
+    padding: 8px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.col-3 {
+    flex: 0 0 25%; /* 3 out of 12 columns */
+    max-width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-9 {
+    flex: 0 0 75%; /* 9 out of 12 columns */
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.col-6 {
+    flex: 0 0 50%; /* 6 out of 12 columns */
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.person-image {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.person-info {
+  width: calc(100% - 30px - 8px);
+  height: auto;
+}
+
+.person-name {
+    font-size: 1vw;
+    line-height: 1.25vw;
+    font-weight: 500;
+    color: #18181B;
+}
+
+.person-role {
+   width: fit-content;
+   height: auto;
+    font-size: 0.8vw;
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.person-role.landlord {
+    background-color: #EDF4FF;
+    color: #5A74FA;
+    border: 1px solid var(--PrimaryColors-Green500, #5A74FA)
+}
+
+.person-role.tenant {
+    background-color: #F0FDF4;
+    color:#16A34A;
+    border: 1px solid var(--SuccessColors-Green600, #16A34A)
+}
+.bottomSecton{
+  width: 100%;
+  height: auto;
+}
+.icon{
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    background-color: #EDF4FF;
+    padding: 12px 14px;
+}
+.message-button {
+    width: auto;
+    height: auto;
+    background-color: #1a237e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.15vw;
+    line-height: 1.45vw;
+    font-weight: 500;
+}
+
+.message-button:hover {
+    background-color: #283593;
+}
+
+.ImageGallery{
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 32px 0px #72729F29;
+  padding: 12px;
+}
+.GalleryPhoto{
+  width: calc(33% - 4px);
+  height: 100px;
+  border-radius: 12px;
+}
+
+ /* Property Timeline Section */
+.timeline-container{
+    width: 100%;
+    height: 330px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+ .MTSechular{
+    width: 100%;
+    height: 520px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+  
+  /* .timeline-item::after {
+    content: url('Line.png');
+    position: absolute;
+    top: 70px; 
+    left: 45px;
+    width: 2px;
+    height: 100%;
+    z-index: 1;
+  } */
+  
+  .timeline-date {
+
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: bolder;
+    text-align: center;
+    min-width: 60px;
+    z-index: 2;
+  }
+  
+  .timeline-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Space between date and text/person */
+    z-index: 2;
+  }
+  
+  .mark-icon {
+    width: 24px; /* Adjust the size of the mark icon */
+    height: 24px;
+    margin: 10px 10px; /* Space between date and mark icon */
+  }
+  
+  .timeline-text {
+    font-weight: bold;
+    margin-right: auto;
+  }
+  
+  .timeline-person {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    z-index: 2;
+  }
+  
+  .timeline-person img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .timeline-role {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  
+  .timeline-role.landlord {
+    background-color:#d3dafd;
+    color:#0d6efd;
+  }
+  
+  .timeline-role.tenant {
+
+    margin:8px;
+    background-color: #9bffbf;
+    color: #128d54;
+  }
+  
+  .timeline-role.agent {
+    background-color: #b7b7b7;
+    color:#594949;
+    margin:12px;
+  }
+  
+  /* Remove line after the last item */
+  /* .timeline-item:last-child::after {
+    display: none;
+  } */
+  
+  /* Property Button */
+  .property-button {
+    display: block;
+    margin: 0 auto;
+    background-color: #1a237e;
+    color: white;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .property-button:hover {
+    background-color: #283593;
+  }
+  
+
+
+  .heading-text{
+    font-size: 1.25vw;
+    font-weight: 600;
+    color:#18181B;
+    margin-top:10px;
+  }
+
+  .prop-btn{
+    padding:10px;
+  }
+  
+  .ImgContainer{
+      width: 24px;
+      height: 24px;
+      background-color: #FAFAFA;
+      border: 1px solid var(--GreyScaleColors-Grey300, #D4D4D8);
+      border-radius: 50%;
+      z-index: 100;
+  }
+  .TimeLine{
+    width: 0px;
+    height: calc(72px + 20px);
+    border: 0px;
+    border-right: 1.5px ;
+    border-style: dashed;
+    border-color: #D4D4D8;
+    position: absolute;
+    left: calc(50% - 0.5px);
+    top: -94px;
+    z-index: 10;
+  }
+  .timeline-container .timeline-item:first-child .ImgContainer .TimeLine{
+    display: none;
+  }
+  .MTSechular .timeline-item:first-child .ImgContainer .TimeLine{
+    display: none;
+  }

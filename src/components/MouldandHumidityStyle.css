@@ -1,0 +1,249 @@
+/*Module and Humidity*/
+*{
+    font-family: Urbanist;
+    text-align: left;
+    font-size: 100%;
+}
+:root{
+    --GreyScaleColors-Grey100: #EFEFF0;
+    --PrimaryColors-Green500 : #5A74FA;
+    --PrimaryColors-Green900-F: #21296D;
+    --GreyScaleColors-Grey900: #18181B;
+    --SuccessColors-Green500: #22C55E;
+    --WarningColors-Yellow300: #FCD34D;
+    --ErrorColors-Red500: #EF4444;
+    --graphcolor-1: #FF8AED;
+    --graphcolor-2: #50E0FF;
+    --GreyScaleColors-Grey600: #52525B;
+    --backgroundCol: #FFFFFF;
+}
+.CardsContainer{
+    width: 100%;
+    height: 94px;
+}
+.SMHTCardsContainer{
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.SMHTCardsContainer .SMHTCardsIcon{
+    width: 80px;
+    height: 80px;
+    background-color: #EFEFF0;
+    border-radius: 12px;
+}
+.SMHTCardsContainer .SMHTCardsIcon .Icon{
+    width: 70%;
+    height: 70%;
+}
+.SMHTCardsContainer .SMHTTextContainer{
+    width: calc(100% - 80px - 16px);
+    height: auto;
+}
+.SMHTCardsContainer .SMHTTextContainer .Heading{
+    width: 100%;
+    height: auto;
+    font: inherit;
+    font-size: 0.75em;
+    font-weight: 400px;
+    color: var(--GreyScaleColors-Grey600);
+}
+.SMHTCardsContainer .SMHTTextContainer .HumidityVal{
+    width: 100%;
+    height: auto;
+    font: inherit;
+    font-size: 2em;
+    font-weight: 500;
+    color: var(--GreyScaleColors-Grey900);
+}
+.VentilationScoreCard{
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    background-color: var(--backgroundCol);
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    gap: 20px
+}
+.VentilationScoreCard .heading{
+    width: 100%;
+    height: auto;
+    font: inherit;
+    font-weight: 600;
+    font-size: 1.25em;
+    color: var(--GreyScaleColors-Grey900);
+}
+.PieChartVentilation{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-image: conic-gradient(var(--ErrorColors-Red500) 0deg, var(--ErrorColors-Red500) 120deg,var(--WarningColors-Yellow300) 120deg, var(--WarningColors-Yellow300) 240deg , var(--SuccessColors-Green500) 240deg, var(--SuccessColors-Green500) 360deg);
+}
+.PieChartVentilation::after{
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border-radius: 50%;
+    background-color: var(--backgroundCol);
+}
+.PieChartVentilation .PieChartVentilationText{
+    width: auto;
+    height: auto;
+    z-index: 102;
+}
+.PieChartVentilation .PieChartVentilationText .score{
+    width: auto;
+    height: 3vw;
+    text-align: center;
+    font: inherit;
+    font-weight: 600;
+    font-size: 3vw;
+    line-height: 3vw;
+    color: var(--GreyScaleColors-Grey900);
+}
+ .PieChartVentilation .PieChartVentilationText .Nametext{
+    font: inherit;
+    font-weight: 400;
+    font-size: 1em;
+    color: var(--GreyScaleColors-Grey600);
+}
+.PieChartVentilation .Indicator{
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 5%);
+    width: 10%;
+    height: 100%;
+    background-color: transparent;
+    transform-origin: center;
+    transition: all 2s ease-out;
+    z-index: 101;
+}
+.PieChartVentilation .Indicator .arrow{
+    position: absolute;
+    top: 30px;
+    width: 0;
+	height: 0;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 12px solid var(--GreyScaleColors-Grey900);
+}
+.Wethercard,.Humiditycard{
+    width: 100%;
+    height: 230px;
+    border-radius: 18px;
+    background-image: linear-gradient(0deg, var(--WhiteColors-White100, #FFFFFF), var(--WhiteColors-White100, #FFFFFF)),linear-gradient(0deg, rgba(0, 209, 255, 0.08), rgba(0, 209, 255, 0.08)),linear-gradient(180deg, rgba(160, 208, 242, 0) 62.68%, rgba(109, 200, 253, 0.5) 100%);
+    background-size: cover;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.Humiditycard .top{
+    width: 100%;
+    height: auto;
+}
+.Humiditycard .top .Icon{
+    width: 24px;
+    height: 24px;
+}
+.Humiditycard .top .Humidity-Heading{
+    width: auto;
+    height: auto;
+    font: inherit;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--PrimaryColors-Green900-F)
+}
+.Humiditycard .Humidity-percent{
+    width: auto;
+    height: auto;
+    font: inherit;
+    font-size: 3em;
+    font-weight: 500;
+    text-align: left;
+    color: var(--PrimaryColors-Green900-F)
+}
+.Humiditycard .HumiditybottomText{
+    width: auto;
+    height: auto;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--PrimaryColors-Green900-F);
+    line-height: 1em;
+}
+.Wethercard .WetherCard-Heading{
+    width: auto;
+    height: auto;
+    font: inherit;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: var(--PrimaryColors-Green900-F)
+}
+.Wethercard  .WetherCard-temp{
+    width: auto;
+    height: auto;
+    font: inherit;
+    font-size: 3em;
+    font-weight: 600;
+    color: var(--PrimaryColors-Green900-F);
+}
+.Wethercard .bottom .Temp-type{
+    width: auto;
+    height: auto;
+    font: inherit;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--PrimaryColors-Green900-F);
+}
+.Wethercard .bottom .high{
+    width: 100%;
+    height: auto;
+    font: inherit;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--PrimaryColors-Green900-F);
+}
+/*SMHGraphContainer*/
+.SMHGraphContainer{
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background-color: var(--backgroundCol);
+}
+.SMHGraphContainer .Heading{
+    width: 100%;
+    height: auto;
+    font-size: 1.15vw;
+    font-weight: 600;
+    color: var(--GreyScaleColors-Grey900)
+}
+.legendContiner{
+    width: 100%;
+    height: 20px;
+}
+.legendContiner .lablecontainer {
+    width: auto;
+    height: 20px;
+}
+.legendContiner .lablecontainer .Ylable{
+    width: 16px;
+    height: 16px;
+    background-color: #EFEFF0;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+    color: #18181B
+}
+.legendContiner .lablecontainer .YlableText{
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 500;
+    color: #52525B
+}
+.legendContiner .lablecontainer .Ylable.lable-color-1{
+    background-color: #5A74FA;
+}
+.legendContiner .lablecontainer .Ylable.lable-color-2{
+    background-color: #FF8AED;
+}
+.legendContiner .lablecontainer .Ylable.lable-color-3{
+    background-color: #50E0FF;
+}

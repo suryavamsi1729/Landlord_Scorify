@@ -1,0 +1,1086 @@
+.MDBContentContainer{
+    width: calc(100% - 16px - 240px);
+    height: auto;
+}
+.MDBContentContainerSmall{
+    width: calc(100% - 16px - 92px);
+    height: auto;
+}
+/* HeaderComp */
+.SectionMainHeader{
+    width: 100%;
+    height: auto;
+    padding: 8px 0px 8px 0px;
+}
+.SectionMainHeader .InputField{
+    position: relative;
+    width: 320px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.SectionMainHeader .InputField .Heading{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+}
+.SectionMainHeader .InputField .InputBox{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    padding: 14px 16px  14px 14px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.SectionMainHeader .InputField .InputBox .Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.SectionMainHeader .InputField .InputBox .Icon .IconSvgSearch{
+    position: absolute;
+    width: 15.64px;
+    height: 16.02px;
+    top: 2.31px;
+    left: 2.32px;
+
+}
+.SectionMainHeader .InputField .InputBox .InputSearch{
+    position: relative;
+    width: 262px;
+    height: 20px;
+}
+.SectionMainHeader .InputField .InputBox .InputSearch .InputSearchTag{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    width: 262px;
+    height: 20px;
+    border: none;
+    outline: none;
+    padding: 0px;
+    background: transparent;
+     /* //styleName: Input Text/Input Body Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    color: #71717A;
+}
+.SectionMainHeader .InputField .HelpingErrorMessageCounter{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 320px;
+    height: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.SectionMainHeader .InputField .InputBox .HelpingErrorMessage{
+    width: 280px;
+    height: 16px;
+    /* //styleName: Caption Text/C1/Regular 12px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+}
+.SectionMainHeader .InputField .InputBox .Counter{
+    width: 36px;
+    height: 16px;
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+}
+.SectionMainHeader .ButtonGroup{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+.SectionMainHeader .ButtonGroup .Button{
+    width: auto;
+    height: auto;
+    padding: 14px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.SectionMainHeader .ButtonGroup .Button .Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.SectionMainHeader .ButtonGroup .Button .Icon .Iconsvg{
+    position: absolute;
+    width: 16.67px;
+    height: 16.67px;
+    top: 1.67px;
+    left: 1.67px;
+}
+.SectionMainHeader .ButtonGroup .Button.backgroundAvatar{
+    width: 48px;
+    height: 48px;
+    background-image: url('./Svg/Avatar.png');
+    background-size: cover;
+}
+/* SectioSubnMainHeader */
+.SectionSubMainHeader{
+    width: 100%;
+    height: auto;
+    padding: 16px 0px 16px 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+.SectionPathContainer{
+    width: auto;
+    height: auto;
+}
+.SectionPathContainer .PathwrapperSection{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.SectionPathContainer .PathwrapperSection .PathText{
+    width: auto;
+    height: 40px;
+    margin: 0px;
+    /* //styleName: Heading Text/H5/Bold 20px; */
+    font-family: Urbanist;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.SectionPathContainer .PathwrapperSection .PathTextInactive{
+    width: auto;
+    height: 40px;
+    margin: 0px;
+    /* //styleName: Heading Text/H5/Bold 20px; */
+    font-family: Urbanist;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #71717A;
+}
+.SectionPathContainer .PathwrapperSection .PathTextSpecial{
+    display: block;
+    width: 20px;
+    height: 40px;
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:#09090B;
+}
+.SectionPathContainer .PathwrapperSection .PathTextSpecialInactive{
+    display: none;
+}
+.UploadbtnContainer{
+    display: inline-block;
+    position: relative;
+    /* width: auto;
+    height: 40px; */
+    
+    /* outline: none; */
+    border-radius: 12px;
+    border: none;
+    background-color: #21296D;
+    color: #FFFFFF;
+}
+.file-upload-label{
+    width: 100%;
+    height: 100%;
+    padding: 10px 12px 10px 12px;
+} 
+.UploadbtnContainer.uploaditm {
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    color: #18181B;
+}
+.UploadbtnContainer.downloaditm{
+    width: auto;
+    height: 100%;
+    padding: 10px 12px 10px 12px;
+}
+.UploadbtnContainer .Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.UploadbtnContainer .Icon .SvgIcon{
+    color: inherit;
+}
+.UploadbtnContainer .TextHolder{
+    width: calc(100% - 20px - 8px);
+    height: 20px;
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+}
+
+/* MainContentContainerSection */
+.MainContentContainerSection{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.MainContentContainerSection .ContentContainer{
+    width: calc(51% - 6px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.MainContentContainerSection .ContentContainerCards{
+    width: calc(100% - 51%  - 6px);
+    height: auto;
+}
+
+/* SectionPropertyScoreDetails*/
+.SectionPropertyScoreDetailsContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.SectionPropertyScoreDetailsContainer .ContentSection{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.LocationCardConatainer{
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+}
+.DocumentChip{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    padding:  6px 8px;
+    font-size: 1vw;
+    line-height: 1.25vw;
+    border-width: 1px;
+    border-style: solid;
+}
+.LocationCardConatainer .ImageContainer{
+    width: 90px;
+    height: 90px;
+}
+.LocationCardConatainer .LocationCardInfo{
+    width: calc(100% - 90px - 16px );
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.LocationCardConatainer .LocationCardInfo .TextWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.LocationCardConatainer .LocationCardInfo .TextWrapper .Heading{
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    color: #18181B;
+
+}
+
+.LocationCardConatainer .LocationCardInfo .TextWrapper .subHeading{
+    /* //styleName: Body Text/B2/Regular 16px; */
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper{
+    width: calc(100% - 110px - 4px);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper .ZipCodeInfo{
+    width: auto;
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Input Text/Input Heading Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #52525B;
+}
+.LocationCardConatainer .LocationCardInfo .HousInfoWrapper .TextInfoWrapper .ZipcodeVal{
+    width: calc(100% - 52px - 4px);
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Input Text/Input Heading Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #52525B;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer{
+    width: 110px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .IconWrapper{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .Icon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .Icon .SVGIcon{
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 20px;
+    height: 16px;
+}
+.LocationCardConatainer .LocationCardInfo .RoomInfoContainer .IconVal{
+    width: 10px;
+    height: 20px;
+    margin: 0px;
+    /* //styleName: Button Text/BU1/Medium 16px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+}
+.CardsContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.CardsContainer .HouseInfoCardContainer{
+    height: 96px;
+    flex: 1 1 0;
+    padding: 12px 14px 12px 14px;
+    text-align: center;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.CardsContainer .HouseInfoCardContainer .FlatText{
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    color: #18181B;
+}
+.CardsContainer .HouseInfoCardContainer .Prototype{
+    margin: 0px;
+    /* //styleName: Button Text/BU1/Regular 16px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #52525B;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer{
+    width: auto;
+    height: auto;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HeadingCurrentScore{
+    margin: 0px;
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    color: #18181B;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer{
+    position: relative;
+    width: 100%;
+    height: 15.5vw;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .ScaleContainer{
+    position: absolute;
+    top: calc(2vw - 7px);
+    left: calc(50% - 13.5vw);
+    width: 27vw;
+    height: calc(13.5vw + 7px);
+    /* border: 2px solid #21296D; */
+    z-index: 98;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText{
+    position: absolute;
+    width: auto;
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Input Text/Input Heading Text/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 1vw;
+    font-weight: 400;
+    line-height: 0.75vw;
+    text-align: center;
+    color: #52525B;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText.id-1{
+    left: -16.5%;
+    top: 85%;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText.id-5{
+    left: calc(100% + 2%);
+    top: 85%;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText.id-2{
+    left:  7%;
+    top: 13%;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText.id-4{
+    left:  calc(100% - 16%);
+    top: 13%;
+}
+.HalfPieChartContainer .ScaleContainer .ScaleText.id-3{
+    left: calc(50% - 4%);
+    top: -10%;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .LastScoreBtn{
+    position: absolute;
+    top: 51%;
+    left: 67%;
+    width: 110px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 10px;
+    background-color:  #FFFFFF99;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    /* //styleName: Button Text/BU2/Semibold 14px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    color: #18181B;
+    z-index: 100;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .CurrentScoreInfoContainer{
+    position: absolute;
+    top: 63%;
+    left: calc(50% - 43px);
+    width: 86px;
+    height: 76px;
+    z-index: 99;
+}
+.CurrentScoreCardContainer .HalfPieChartContainer .CurrentScoreInfoContainer .CurrentScoreVal{
+    width: 100%;
+    height: 40px;
+    margin: 0px;
+    /* //styleName: Heading Text/H1/Medium 48px; */
+    font-family: Urbanist;
+    font-size: 3vw;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+    color: #18181B;
+}
+.CurrentScoreCardContainer .HalfPieChartContainer .CurrentScoreInfoContainer .MaxScoreVal{
+    width: 100%;
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Heading Text/H1/Medium 48px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    color: #52525B;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .GraphContainer{
+    position: absolute;
+    top: calc(2vw - 7px);
+    left: calc(50% - 13.5vw);
+    width: 27vw;
+    height: 13.5vw;
+    overflow: hidden;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .GraphContainer .vectorsContainer{
+    position: relative;
+    width: 27vw;
+    height: 27vw;
+    border-radius: 50%;
+    background-image: repeating-conic-gradient(#EF4444 90deg 126deg, #F59E0B 126deg 162deg, #FCD34D 162deg 198deg, #22C55E 198deg 234deg, #15803D 234deg 270deg)
+}
+.rod{
+    position: absolute;
+    left: calc(50% - 0.2vw);
+    width: 0.4vw;
+    height: 27vw;
+    background-color: #FFFFFF;
+    transform-origin: center;
+}
+.rod:nth-child(1){
+    transform: rotate(18deg);
+}
+.rod:nth-child(2){
+    transform: rotate(54deg);
+}
+.rod:nth-child(3){
+    transform: rotate(126deg);
+}
+.rod:nth-child(4){
+    transform: rotate(162deg);
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .IndicatorContainer{
+    position: absolute;
+    top: calc(100% - 10vw - 7px);
+    left: calc(50% - 10vw);
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.SectionPropertyScoreDetailsContainer .CurrentScoreCardContainer .HalfPieChartContainer .IndicatorContainer .IndicatorPointerContainer{
+    width: 19vw;
+    height: 19vw;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    transform-origin: center;
+    transition:  all 2s ease-in-out ;
+    /* transform: rotate(180deg); */
+}
+.IndicatorPointer{
+    width: 0;
+	height: 0;
+	border-top: 6px solid transparent;
+	border-right: 12px solid #000000;
+	border-bottom: 6px solid transparent;
+}
+.SectionPropertyScoreDetailsContainer .NextInspectiondate{
+    align-self: center;
+    width: 55%;
+    height: 40px;
+    border-radius: 12px;
+    background-color: #21296D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* //styleName: Button Text/BU1/Medium 16px; */
+    font-family: Urbanist;
+    font-size: 1vw;
+    font-weight: 500;
+    text-align: left;
+    color: #FFFFFF;
+}
+.MainContentContainerSection .ContentContainer .CardsContainer{
+    width: 100%;
+    height: auto;
+}
+ .CardsContainerbottom{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+ .CardsContainerbottom .row{
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.ItmCardContainer{
+    position: relative;
+    /* width: calc(50% - 8px); */
+    flex: 1 1 0;
+    height: 160px;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    overflow: hidden;
+}
+.ItmCardContainer .HeadingText{
+    width: 100%;
+    height: 24px;
+    margin: 0px;
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    font-family: Urbanist;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: #18181B;
+}
+.ItmCardContainer .Text{
+    width: 100%;
+    height: 33px;
+    margin: 0px;
+    /* //styleName: Heading Text/H2/Medium 40px; */
+    font-family: Urbanist;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 33px;
+    text-align: left;
+    color: #18181B;
+}
+.ItmCardContainer .AIImg{
+    width: 10vw;
+    height: 10vw;
+}
+.CardsContainerbottom .row:nth-child(2) .ItmCardContainer:nth-child(2) .Text{
+    /* //styleName: Button Text/BU2/Regular 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color:#71717A;
+}
+.CardsContainerbottom .row:nth-child(2) .ItmCardContainer:nth-child(2) .Text span{
+    display: block;
+    /* //styleName: Heading Text/H4/Medium 24px; */
+    font-family: Urbanist;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+    color:#18181B;
+}
+
+.ContentContainerCards{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.ContentContainerCards .cardsContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .Heading{
+    width: 100%;
+    height: 24px;
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    font-family: Urbanist;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: #18181B;
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .CECardsContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .CECardsContainer .Card{
+    width: calc(50% - 5px);
+    height: 88px;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .CECardsContainer .Card.cardC{
+    background-color: #22C55E;
+    color: #FFFFFF;
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .CECardsContainer .Card.cardE{
+    background-color: #FCD34D;
+    color: #18181B;
+}
+.Card .MainText{
+    width: 12px;
+    height: 24px;
+    margin: 0px;
+    /* //styleName: Heading Text/H6/Bold 16px; */
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: inherit;
+}
+.Card .SubText{
+    width: 54px;
+    height: 20px;
+    margin: 0px;
+    /* //styleName: Body Text/B3/Medium 14px; */
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: inherit; 
+}
+.ContentContainerCards .cardsContainer .ItmCardContainer .SubHeading{
+    width: 100%;
+    height: 48px;
+    margin: 0px;
+    /* //styleName: Heading Text/H2/Medium 40px; */
+    font-family: Urbanist;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: left;
+    color: #18181B;
+}
+.ContentContainerCards .CategoryCardSection{
+    width: 100%;
+    height: 140px;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+
+}
+.ContentContainerCards .CategoryCardSection .Heading{
+    width: 100%;
+    height: 24px;
+    margin: 0px;
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    font-family: Urbanist;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: #18181B;
+}
+.ContentContainerCards .CategoryCardSection  .SubHeading{
+    width: 100%;
+    height: 48px;
+    margin: 0px;
+    /* //styleName: Heading Text/H2/Medium 40px; */
+    font-family: Urbanist;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: left;
+    color: #18181B;
+}
+.GasSafeandHeatingSystemCard{
+    width: 100%;
+    height: 140px;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.GasSafeandHeatingSystemCard .Heading{
+    width: 100%;
+    height: 24px;
+    margin: 0px;
+    /* //styleName: Body Text/B1/Semibold 18px; */
+    font-family: Urbanist;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: #18181B;
+}
+.GasSafeandHeatingSystemCard .container-1{
+    width: 100%;
+    height: 68px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+.SubCard{
+    width: calc(50% - 4px);
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.SubCard .iconitm{
+    width: 100px;
+    height: 88px;
+    border-radius: 10px;
+    background-color: #F4F4F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.SubCard .textItm{
+    width: calc(100% - 52px - 4px);
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.SubCard .textItm .Subheading{
+    width: 100%;
+    height: 18;
+    margin: 0px;
+    /* //styleName: Heading Text/H6/Bold 16px; */
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: left;
+    color: #18181B;
+}
+.SubCard .textItm .Subheading2{
+    width: 100%;
+    height: 16px;
+    margin: 0px;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    color: #52525B;
+}
+.GalaryContainer{
+    width: 100%;
+    height: 296px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+.GalaryContainer .heading{
+    width: 100%;
+    height: 24px;
+    margin: 0px;
+    /* //styleName: Heading Text/H6/Bold 16px; */
+    font-family: Urbanist;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: #18181B;
+}
+.GalaryContainer .imgitmcontainer{
+    width: 100%;
+    height: calc(100% - 24px - 12px);
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.GalaryContainer .imgitmcontainer .imgcol{
+    width: calc(50% - 6px);
+    height: 100%;
+}
+.GalaryContainer .imgitmcontainer .imgco2{
+    width: calc(50% - 6px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.GalaryContainer .imgitmcontainer .imgco2 .imgrow1{
+    width: 100%;
+    height: calc(50% - 6px);
+}
+.GalaryContainer .imgitmcontainer .imgco2 .imgrow2{
+    width: 100%;
+    height: calc(50% - 6px);
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.GalaryContainer .imgitmcontainer .imgco2 .imgrow2 .imgcol{
+    width: calc(50% - 6px);
+    height: 100%;
+}
+.img1 , .img2 , .img3 , .img4{
+    width: 100%;
+    height: 100%;
+}
+.ItmCardContainer .containerwrapper{
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px
+}
+.ItmCardContainer .containerwrapper .imgele{
+    width: 48px;
+    height: 48px;
+    background-color: #152640;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ItmCardContainer .containerwrapper .sidebox{
+    width: calc(100% - 8px - 48px);
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.ItmCardContainer .containerwrapper .sidebox .text1 , .ItmCardContainer .containerwrapper .text1{
+    width: 100%;
+    height: 28px;
+    margin: 0px;
+    /* //styleName: Heading Text/H5/Medium 20px; */
+    font-family: Urbanist;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+}
+.ItmCardContainer .containerwrapper .sidebox .text2 , .ItmCardContainer .containerwrapper .text2{
+    width: 100%;
+    height: 16px;
+    margin: 0px;
+    /* //styleName: Caption Text/C1/Regular 12px; */
+    font-family: Urbanist;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+}
+.ApllienceContainer{
+    width: calc(100%);
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}
+.HeatingSystem{
+    width: calc(100%);
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}

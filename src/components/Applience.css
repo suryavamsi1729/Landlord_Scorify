@@ -1,0 +1,128 @@
+.ApplienceSection{
+    width: 100%;
+    height: 832px;
+}
+.ApplinceItmSection{
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    border-radius: 18px;
+    gap: 24px;
+}
+.ApplinceItmSection .textContainer{
+    width: 35%;
+    height: auto;
+}
+.ApplinceItmSection .textContainer .heading{
+    width: 100%;
+    height: fit-content;
+    line-height: 2vw;
+    font-size: 1.75vw;
+    font-weight: 600;
+    color: #18181B;
+}
+.ApplinceItmSection .textContainer .text{
+    width: 100%;
+    height: 1.25vw;
+    line-height: 1.25vw;
+    font-size: 1vw;
+    font-weight: 500;
+    color: #18181B;
+}
+.ApplinceItmSection  .ImgContainer{
+    width: calc(100% - 35% -24px);
+    height: auto;
+}
+.AplicationImg{
+    width: 100%;
+    height: 208px;
+}
+.ImgContainerApplience{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.SectionImages .ImgItms{
+    width: calc(50% - 8px);
+    height: auto;
+}
+.AppItmcontentSection{
+    width: 100%;
+    height: auto;
+}
+.AppItmcontentSection{
+    width: 100%;
+    height: auto;
+    gap: 24px;
+}
+.AppItmcontentSection .content-text{
+    width: 100%;
+    height: auto;
+    gap: 12px;
+}
+.bottomText{
+    width: 100%;
+    height: auto;
+}
+.textitm{
+    font-size: 1vw;
+    line-height: 1.5vw;
+    color:#18181B;
+    font-weight: 500;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.boldText{
+    font-weight: 600;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+}
+.textitm:not(:last-child){
+    border-right: 1px solid #E5E5E5;
+}
+.Content-tables{
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    padding: 16px;
+}
+.Content-tables .heading{
+    width: 100%;
+    height: 1.5vw;
+    line-height: 1.5vw;
+    font-size: 1.25vw;
+    font-weight: 600;
+    color: #18181B;
+}
+.Content-tables .TableTanent .header{
+    color:#21296D;
+}
+.AppItmcontentSection .Content-tables .TableTanent tr .header:nth-child(1){
+     width: 20%;
+ }
+.AppItmcontentSection .Content-tables .TableTanent tr .header:nth-child(2){
+     width: 40%;
+ }
+.AppItmcontentSection .Content-tables .TableTanent tr .header:nth-child(3){
+     width: 40%;
+ }
+
+.AppItmcontentSection .Content-tables .table-2 tr .header:nth-child(1){
+    width: 20%;
+}
+.AppItmcontentSection .Content-tables .table-2 tr .header:nth-child(2){
+    width: 65%;
+}
+.AppItmcontentSection .Content-tables .table-2 tr .header:nth-child(3){
+    width: 15%;
+}
+ .AppItmcontentSection .Content-tables .table-2  tr .header.datatext,
+ .AppItmcontentSection .Content-tables .TableTanent  tr .header.datatext{
+    color: #18181B;
+    font-weight: 500;
+}

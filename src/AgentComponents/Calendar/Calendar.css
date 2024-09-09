@@ -1,0 +1,112 @@
+/* Container styles */
+.CardsContainerele {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Calendar card container styles */
+.HouseInfoCardContainer {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 16px;
+    /* background-color:  #d3d3e129; */
+    /* box-shadow: 0px 0px 32px 0px #FFFFFF; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Calendar header styles */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+}
+
+.calendar-header h1 {
+    margin: 0;
+    font-size: 18px;
+    color:blue;
+    font-weight:700;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color:blue;
+}
+
+/* Days row styles */
+.calendar-days-row {
+    display: flex;
+    justify-content: space-between; /* Changed from space-around to space-between */
+    margin-bottom: 10px;
+}
+
+.calendar-day-name {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Calendar body styles */
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Changed from space-between to flex-start */
+}
+
+.col {
+    flex: 1 0 14%; 
+    margin: 5px;
+    padding: 12px 12px 12px 12px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+    min-height: 150px;
+    box-sizing: border-box; 
+}
+
+.disabled {
+    background-color: #f1f1f1;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 100px;
+    
+}
+
+/* Event styles */
+.event {
+    background-color: #e0e7ff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #333;
+}
+
+.event.pink {
+    margin-top:18px;
+    background-color: #f287d7;
+}
+
+.event.blue {
+   margin-top:18px;
+    background-color: #cce7ff;
+}

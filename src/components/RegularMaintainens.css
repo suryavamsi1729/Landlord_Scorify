@@ -1,0 +1,152 @@
+.ServiceDetailsColumnrm{
+    width: 17.5%;
+}
+.CompletionDateColumnrm{
+    width: 17.5%;
+}
+.SatusColumnrm{
+    width: 12.5%;
+}
+.ReportColumnrm{
+    width: 25%;
+}
+.PhotosColumnrm{
+    width: 17.5%;
+}
+
+.MaintenanceSchedularItmContainer{
+    position: relative;
+    width: 100%;
+    height: 130px;
+    gap: 24px;
+}
+.topLayer{
+    position: relative;
+    width: 100%;
+    height: 130px;
+}
+.topLayer::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffca;
+    z-index: 101;
+}
+.MaintenanceSchedularItmContainer .RMImageContainer{
+    position: relative;
+    width: 15%;
+    height: 100%;
+    border-radius: 8px;
+    z-index: 100;
+}
+.MaintenanceSchedularItmContainer .RMImageContainer .RMImgDueDateContainer{
+    position: absolute;
+    bottom: 2.5%;
+    width: 95%;
+    height: 35%;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    padding: 6px;
+    
+}
+.MaintenanceSchedularItmContainer .RMImageContainer .RMImgDueDateContainer .heading{
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #18181B;
+    text-align: center;
+    line-height: 1vw;
+}
+.MaintenanceSchedularItmContainer .RMImageContainer .RMImgDueDateContainer .date{
+    font-size: 1vw;
+    font-weight: 600;
+    color: #18181B;
+    text-align: center;
+    line-height: 1.25vw;
+}
+.MaintenanceSchedularItmContainer .RMContentContainer{
+    width: 65%;
+    height: 100%;
+    gap: 4px;
+}
+.MaintenanceSchedularItmContainer .RMContentContainer .topContainer{
+    width: 100%;
+    height: auto;
+    gap: 4px;
+}
+.MaintenanceSchedularItmContainer .RMContentContainer .topContainer .heading{
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #18181B;
+    line-height: 1.4vw;
+}
+.MaintenanceSchedularItmContainer .RMContentContainer .topContainer .chipClass{
+    width: fit-content;
+    height: auto;
+    padding: 4px 6px;
+    border-radius: 8px;
+    border: 1px solid #5A74FA;
+    background-color: #EDF4FF;
+    color: #5A74FA;
+    font-size: 0.7vw;
+    font-weight: 500;
+    line-height: 0.8vw;
+}
+.MaintenanceSchedularItmContainer .RMContentContainer .RMItmText{
+    width: 100%;
+    height: auto;
+    font-size: 0.8vw;
+    font-weight: 400;
+    line-height: 1vw;
+    color: #71717A;
+}
+.MaintenanceSchedularItmContainer .RMBtnContainer{
+    width: calc(100% - 80% - 25px);
+    height: 100%;
+}
+.completedBtn{
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    background-color: #22C55E;
+    padding: 10px 14px;
+    gap: 8px;
+    font-size: 1vw;
+    line-height: 1.25vw;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+.StartedBtn{
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    background-color: #21296D;
+    padding: 10px 14px;
+    gap: 8px;
+    font-size: 1vw;
+    line-height: 1.25vw;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+.verticalLine{
+    position: absolute;
+    left: 7.5%;
+    top: 65px;
+    height: 130px;
+    border-right: 1px dashed #D4D4D8;
+    z-index: 99;
+}
+.verticalLineComplete{
+    border-right: 2px solid #D4D4D8;
+    
+}
+.MaintenanceSchedularItmContainer:last-child .verticalLine{
+    display: none;
+}
+.disableline{
+    display: none;
+}

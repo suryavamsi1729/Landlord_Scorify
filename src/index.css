@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*{
+  font-family: Urbanist;
+  text-align: left;
+  font-size: 100%;
+}
+:root{
+  --GreyScaleColors-Grey100: #EFEFF0;
+  --PrimaryColors-Green500 : #5A74FA;
+  --PrimaryColors-Green900-F: #21296D;
+  --GreyScaleColors-Grey900: #18181B;
+  --SuccessColors-Green500: #22C55E;
+  --WarningColors-Yellow300: #FCD34D;
+  --ErrorColors-Red500: #EF4444;
+  --graphcolor-1: #FF8AED;
+  --graphcolor-2: #50E0FF;
+  --GreyScaleColors-Grey600: #52525B;
+  --backgroundCol: #FFFFFF;
+}
+html {
+  font-size: 16px; /* Base font size */
+}

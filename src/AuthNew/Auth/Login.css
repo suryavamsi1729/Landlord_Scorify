@@ -1,0 +1,258 @@
+.MaintaontainerLogin{
+    width: 100vw;
+    height: 100vh;
+}
+.loginimgcontainer{
+    width: 100%;
+    height: 100vh;
+}
+.loginformcontainer{
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    padding: 60px 160px 60px 160px;
+    gap: 80px;
+}
+.Heading{
+    width: 100%;
+    height: auto;
+}
+.loginformcontainer .Heading .HeadingText{
+    width: 100%;
+    height: fit-content;
+    font-size: 3vw;
+    line-height: 3.75vw;
+    font-weight: 600;
+    color: #09090B;
+}
+.loginformcontainer .Heading .loginHeadingText{
+    width: 100%;
+    height: fit-content;
+    font-size: 1.5vw;
+    line-height: 1.75vw;
+    font-weight: 500;
+    color: #71717A;
+}
+.FormConatiner{
+    width: 100%;
+    height: 70%;
+    gap: 40px;
+}
+.FormEleContainer{
+    width: 100%;
+    height: auto;
+    gap: 16px;
+}
+.inputEle{
+    width: 100%;
+    height: auto;
+    gap: 4px;
+}
+.userName{
+    width: 100%;
+    height: auto;
+    font-size: 1vw;
+    line-height:  1.25vw;
+    font-weight: 500;
+    color: #18181B;
+}
+.UserNameinput{
+    width: 100%;
+    height: auto;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid  #E5E5E5;
+    outline: none;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #71717A;
+    font-weight: 500;
+    background-color: #FFFFFF;
+}
+.submitButton{
+    width: 100%;
+    height: auto;
+    background-color: #21296D;
+    padding: 12px 16px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+.LinkText{
+    width: 100%;
+    height: auto;
+    font-size: 1.2vw;
+    line-height:  1.5vw;
+    font-weight: 500;
+    color: #5A74FA;
+    text-align: right;
+}
+.Signupoption{
+    width: 100%;
+    height: auto;
+    font-size: 1.2vw;
+    line-height:  1.5vw;
+    font-weight: 500;
+    color: #09090B;
+    text-align: center;
+}
+.textlink{
+    color: #5A74FA;
+}
+.Text-ele{
+    width: 50%;
+    height: auto;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    font-weight: 500;
+    color: #71717A;
+}
+.navigatebefor{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #EDF4FF;
+    border: none;
+    padding: 8px 12px;
+}
+.PasswordInput{
+    width: calc(100%);
+    height: auto;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid  #E5E5E5;
+    outline: none;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #71717A;
+    font-weight: 500;
+    background-color: #FFFFFF;
+}
+.pswEle{
+    width: calc(100% - 20px);
+    height: auto;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #71717A;
+    font-weight: 500;
+}
+.ShowandHideIconPswd{
+    width: 20px;
+    height: auto;
+}
+.PasswordSetcontainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFFFFF;
+    padding: 100px 160px 60px 160px;
+}
+.IconContainer{
+    width: 100%;
+    height: auto;
+}
+.InputFieldsButtons{
+    width: 100%;
+    height: 100%;
+    padding-top: 2.5%;
+    padding-bottom: 10%;
+}
+.SuccessEle{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 12px solid #DEEBFF;
+    background-color: #21296D;
+}
+.BackToLoginBtn{
+    width: 50%;
+    height: auto;
+    padding: 12px 16px 12px 16px;
+    border-radius: 16px;
+    background-color: #21296D;
+    border: none;
+    outline: none;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #FFFFFF;
+    font-weight: 500;
+    text-align: center;
+}
+.TextContainer{
+    width: 100%;
+    height: auto;
+}
+.TextContainer .HeadingText{
+    font-size: 2.5vw;
+    line-height: 2.75vw;
+    color: #09090B;
+    font-weight: 600;
+}
+.TextContainer .SubHeadingText{
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color: #71717A;
+    font-weight: 500;
+}
+
+
+
+
+.OtpSubmitBtn{
+    width: 358px;
+    height: 48px;
+    padding: 12px 16px 12px 16px;
+    border-radius: 16px;
+    text-align: center;
+    background-color:  #21296D;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+}
+.OtpDRCodeText{
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    line-height: 24px;
+    color: #71717A;
+    text-align: center;
+    font-weight: 500;
+
+}
+.Linkresend{
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: #5A74FA;
+    text-decoration: none;
+}
+.HeadingTextOTP{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 26px;
+    text-align: left;
+    color:#030712;
+    margin-bottom: 5px;
+}
+.loginHeadingTextOTP{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: left;
+    color:#4B5563;
+}

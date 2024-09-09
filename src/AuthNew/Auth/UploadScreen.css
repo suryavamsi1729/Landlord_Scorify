@@ -1,0 +1,161 @@
+.UploadContainer{
+    width: 100vw;
+    height: auto;
+    gap: 48px;
+    background-color: #FFFFFF;
+}
+.UploadContainer .Logo{
+    width: auto;
+    height: auto;
+}
+.UploadContainer .Logo .BrandLogoImg{
+    width: 160px;
+    height: 48px;
+}
+.UploadContainer .HeadingProfile{
+    width: 640px;
+    height: 48px;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 600;
+    color: #09090B;
+}
+.DropText{
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    line-height: 24px;
+    color: #18181B;
+    font-weight: 500;
+}
+.ortext{
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color:#71717A;
+}
+.BrowsBtn{
+    width: 124px;
+    height: auto;
+    padding: 12px 36px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D;
+}
+.UploadItmContainer{
+    width: 640px;
+    height: auto;
+    padding: 8px;
+    border-radius: 12px;
+    gap:12px;
+    background-color: #FAFAFA;
+    border: none;
+}
+.TickContaoner{
+    width: 20px;
+    height: 20px;
+    background-color: #A1A1AA;
+    border-radius: 50%;
+    border: 1.5px solid  #A1A1AA;
+}
+.DocumentIconContainer{
+    width: auto;
+    height: auto;
+    padding: 14px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    border: none;
+}
+.DocumentNameContainer{
+    width: 238px;
+    height: auto;
+}
+.DocumentNameContainerProgress{
+    width: 160px;
+    height: auto;
+}
+.NameText{
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #18181B;
+}
+.Mb-text{
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #71717A;
+}
+.DropDownBtn{
+    width: 238px;
+    height: 48px;
+    padding: 14px 16px 14px 14px;
+    gap: 8px;
+    border-radius: 12px;
+    border: 1px solid  #E5E5E5;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.Text-ele{
+    width: 50%;
+    height: auto;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    font-weight: 500;
+    color: #71717A;
+}
+.footerSection{
+    width: 640px;
+    height: auto;
+}
+.PgrogressContainer{
+    position: relative;
+    width: 316px;
+    height: 16px;
+    border-radius: 8px;
+    background-color:  #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+}
+.ProgressLoder{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 16px;
+    border-radius: 8px;
+    background-image: linear-gradient(90deg, #21296D 0%, #5A74FA 100%);
+    ;
+}
+.EachBrowsBtn{
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D;
+}
+.MessageText{
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+}

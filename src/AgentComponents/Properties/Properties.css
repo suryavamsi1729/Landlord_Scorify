@@ -1,0 +1,196 @@
+.PropertiesSection{
+    width: 100%;
+    height: auto;
+}
+.CardContainer{
+    width: 100%;
+    height: auto;
+    border-radius:  18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    gap: 20px;
+}
+.CardContainer .Heading{
+    width: 100%;
+    height: auto;
+    line-height: 1.5vw;
+    font-size: 1.25vw;
+    color: #18181B;
+    font-weight: 600;
+}
+.CardContainer .Value{
+    width: 100%;
+    height: auto;
+    line-height: 2.25vw;
+    font-size: 2vw;
+    color: #21296D;
+    font-weight: 600;
+}
+.CardContainer .ProgressContainer{
+    width: 100%;
+    height: auto;
+}
+/*LinerProgress*/
+.CardContainer .ProgressContainer .LinerarPgrogress{
+    position: relative;
+    width: 100%;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #DEEBFF;
+}
+.CardContainer .ProgressContainer .Loader{
+    position: absolute;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #21296D 0%, #5A74FA 100%);
+}
+/*LinerPgrogress-end*/
+.CardContainer .ProgressContainer .Labels{
+    width: 100%;
+    height: auto;
+}
+.CardContainer .ProgressContainer .Labels .Dot{
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background: #DEEBFF;
+}
+.CardContainer .ProgressContainer .Labels .Text{
+    width: calc(100% - 12px - 2vw - 8px - 8px);
+    height: auto;
+    font-size: 1.25vw;
+    list-style: 1.5vw;
+    color: #18181B;
+    font-weight: 400;
+    text-align: left;
+}
+.CardContainer .ProgressContainer .Labels .Value{
+    width: 2vw;
+    height: auto;
+    font-size: 1.25vw;
+    line-height: 1.5vw;
+    color:  #18181B;
+    font-weight: 400;
+    text-align: right;
+}
+.CardContainer .ProgressContainer .Labels .Dot.Active{
+    background: linear-gradient(90deg, #21296D 0%, #5A74FA 100%);
+}
+.OpenRepairRegularMaintenance{
+    width: 100%;
+    height: 100%;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent{
+    width: 100%;
+    height: calc(100% - 12px - 1.5vw);
+    gap: 12px;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards{
+    flex: 1 1 0;
+    border-radius:  12px;
+    background-color: #E8FBFF;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards .Value{
+    width: auto;
+    height: auto;
+    line-height: 2.25vw;
+    font-size: 2vw;
+    color: #00B0D5;
+    font-weight: 600;
+    text-align: center;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards .Text{
+    width: auto;
+    height: auto;
+    font-size: 1.25vw;
+    list-style: 1.5vw;
+    color: #18181B;
+    font-weight: 400;
+    text-align: center;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards:nth-child(2){
+    background-color: #FFEFFC;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards:nth-child(3){
+    background-color: #F0FDF4;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards:nth-child(2)  .Value{
+    color: #AE62A2;
+}
+.CardContainer .OpenRepairRegularMaintenanceContent .Cards:nth-child(3)  .Value{
+    color: #22C55E;
+}
+/*TableSection*/
+.PropertiesTable{
+    width: 100%;
+    height: 560px;
+    border-radius: 18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 32px 0px #72729F29;
+    gap: 16px;
+}
+.PropertiesTable .TopSection{
+    width: 100%;
+    height: auto;
+}
+.PropertiesTable .TopSection .SearchContainetr{
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1.5px solid #EFEFF0;
+    background-color: #FFFFFF;
+}
+.PropertiesTable .TopSection .SearchContainetr .Icon{
+    width: 20px;
+    height: 20px;
+}
+.PropertiesTable .TopSection .SearchContainetr .InputSearch{
+    width: calc(100% - 20px - 8px);
+    height: 100%;
+}
+.PropertiesTable .TopSection .SearchContainetr .InputSearch .InputSearchTag{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #71717A;
+}
+.PropertiesTable .TopSection .ButtonGroupContainer{
+    width: calc(70% - 8px);
+    height: auto;
+}
+.BtnEle{
+    width: auto;
+    height: auto;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 1.5px solid #EFEFF0;
+    font-size: 1vw;
+    line-height: 20px;
+    color: #71717A;
+    font-weight: 400;
+
+}
+/*AllTables Sections*/
+/* .PropertiesTable.ReportEPCTAbleContent{
+    position: relative;
+    width: 100%;
+    height: 832px;
+    justify-content: space-between;
+}
+.PropertiesTable.ReportEPCTAbleContent .TopSection{
+    position: absolute;
+    top: 16px;
+}
+.PropertiesTable.ReportEPCTAbleContent .BottomSection{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+} */
