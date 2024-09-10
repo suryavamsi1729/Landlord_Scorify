@@ -309,7 +309,7 @@ export default function NavigationBarComp(){
                             }
                         </div>
                     </Link>
-                    <Link to="/calendar" onClick={()=>{
+                    {/* <Link to="/calendar" onClick={()=>{
                             dispatch({
                                 type:"path",
                                 payload:{
@@ -363,8 +363,8 @@ export default function NavigationBarComp(){
                             null
                         }
                     </div>
-                    </Link>
-                    <Link to="/property" onClick={()=>{
+                    </Link> */}
+                    {/* <Link to="/property" onClick={()=>{
                             dispatch({
                                 type:"path",
                                 payload:{
@@ -399,7 +399,7 @@ export default function NavigationBarComp(){
                             null
                         }
                     </div>
-                    </Link>
+                    </Link> */}
                     <Link to="/dashboard/regularmaintenance" onClick={()=>{
                             dispatch({
                                 type:"path",

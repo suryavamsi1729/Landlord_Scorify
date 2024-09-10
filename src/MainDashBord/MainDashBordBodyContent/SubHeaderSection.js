@@ -45,13 +45,13 @@ export default function SubHeaderSection(props){
             case "/reports/tenantself-inspections": return <UploadButton/>;
             case "/reports/inventory": return <UploadButton/>;
             case "/reports/check-out": return <UploadButton/>;
-            case '/calendar': return <Header currentDate={currentDate} prevMonth={prevmonth} nextMonth={nextmonth}/> ;
+            // case '/calendar': return <Header currentDate={currentDate} prevMonth={prevmonth} nextMonth={nextmonth}/> ;
             case "/agent/dashboard":return <UploadButton/>; 
-            case "/agent/Calendar" :return <Header 
-            currentDate={new Date()}
-            prevMonth={()=>{}}
-            nextMonth={()=>{}}
-            />;
+            // case "/agent/Calendar" :return <Header 
+            // currentDate={new Date()}
+            // prevMonth={()=>{}}
+            // nextMonth={()=>{}}
+            // />;
             default:
                 break
         }

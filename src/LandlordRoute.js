@@ -19,8 +19,8 @@ import RiskDowload from './components/RiskDowload';
 import ApplienceSection from './components/ApplienceSection';
 import OvenSection from './components/OvenSection';
 import HeatingSystem from './components/HeatingSystem';
-import Calendar from './AgentComponents/Calendar/Calendar';
-import Properties from './AgentComponents/Properties/Properties';
+// import Calendar from './AgentComponents/Calendar/Calendar';
+// import Properties from './AgentComponents/Properties/Properties';
 import MaintenanceandRepair from './AgentComponents/MaintenanceandRepair/MaintenanceandRepair';
 import ReportMainContent from './AgentComponents/Report/ReportsMainContent';
 import Inspection from './AgentComponents/Inspection/Inspection';
@@ -63,9 +63,9 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/applience" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
-                <Route path='/calendar' element={<PrivateRoute element={<MainDashBordComp><Calendar /></MainDashBordComp>} />} />
+                {/* <Route path='/calendar' element={<PrivateRoute element={<MainDashBordComp><Calendar /></MainDashBordComp>} />} /> */}
                 <Route path='/invite' element={<PrivateRoute element={<MainDashBordComp><Invite/></MainDashBordComp>} />} />
-                <Route path='/property' element={<PrivateRoute element={<MainDashBordComp><Properties /></MainDashBordComp>} />} />
+                {/* <Route path='/property' element={<PrivateRoute element={<MainDashBordComp><Properties /></MainDashBordComp>} />} /> */}
                 <Route path='/maintenance' element={<PrivateRoute element={<MainDashBordComp><MaintenanceandRepair /></MainDashBordComp>} />} />
                 <Route path='/reports' element={<PrivateRoute element={<MainDashBordComp><ReportMainContent /></MainDashBordComp>} />} />
                 <Route path='/reports/epc' element={<PrivateRoute element={<MainDashBordComp><ReportEPCTableContainer /></MainDashBordComp>} />} />
