@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import api from "../../api";
 import { type } from "@testing-library/user-event/dist/type";
 import Spinner from "../../components/Spinner/Spinner";
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 export default function ProfileScreen() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -29,7 +29,9 @@ export default function ProfileScreen() {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
     const {dispatch} = useContext(MainContext);
     const [loading, setLoading] = useState(false);
-
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    
     const [address, setAddress] = useState({
         formatted_address_1: '',
         formatted_address_2: '',
@@ -38,6 +40,8 @@ export default function ProfileScreen() {
         postcode: ''
       });
         
+
+ 
     const handleSubmit = async (event) => {
         setLoading(true);
         event.preventDefault();
@@ -103,11 +107,13 @@ export default function ProfileScreen() {
         } catch (error){
             setLoading(false);
             if (error.response && error.response.data) {
-                setError(error.response.data.message);
-                console.log(error.response);
+                setError(error.response?.data?.message || "An unexpected error occurred. Please try again.");
+                navigate('/signup');
             } else {
                 setError("An unexpected error occurred. Please try again.");
             }
+        }finally{
+            setLoading(false);
         }
     };
 
@@ -252,18 +258,50 @@ export default function ProfileScreen() {
                             </div>
                         </div>
                         <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
-                            <div className="InputCol d-flex flex-column">
-                                <label className="userName">Password</label>
-                                <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setPassword(ev.target.value)} placeholder='Enter Password' required type="password" />
-                                </div>
-                            </div>
-                            <div className="InputCol d-flex flex-column">
-                                <label className="userName">Confirm Password</label>
-                                <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setConfirmPassword(ev.target.value)} placeholder='Confirm Password' required type="password" />
-                                </div>
-                            </div>
+                        <div className="InputCol d-flex flex-column">
+                <label className="userName">Password</label>
+                <div className="InputContainer">
+                    <input
+                        className="pswEle"
+                        onChange={(ev) => setPassword(ev.target.value)}
+                        placeholder='Enter Password'
+                        required
+                        type={showPassword ? "text" : "password"}
+                    />
+                    <i
+                        className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{
+                            color:'grey',
+                            cursor: 'pointer',
+                            fontSize: '0.8rem', 
+                           
+                        }}
+                    ></i>
+                </div>
+            </div>
+            <div className="InputCol d-flex flex-column">
+                <label className="userName">Confirm Password</label>
+                <div className="InputContainer">
+                    <input
+                        className="pswEle"
+                        onChange={(ev) => setConfirmPassword(ev.target.value)}
+                        placeholder='Confirm Password'
+                        required
+                        type={showConfirmPassword ? "text" : "password"}
+                    />
+                    <i
+                        className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        style={{
+                            color:'grey',
+                            cursor: 'pointer',
+                            fontSize: '0.8rem', 
+                           
+                        }}
+                    ></i>
+                </div>
+            </div>
                         </div>
                         <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
                             <div className="InputCol d-flex flex-column w-100">
@@ -285,7 +323,7 @@ export default function ProfileScreen() {
                             <div className="InputCol w-50 d-flex flex-column">
                                 <label className="userName">Third Address Line</label>
                                 <div className="InputContainer">
-                                    <input className="pswEle" onChange={(ev) => setTrdAdd(ev.target.value)} id="formatted_address_2" type="text" required/>
+                                    <input className="pswEle" onChange={(ev) => setTrdAdd(ev.target.value)} id="formatted_address_2" type="text"/>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import { React, useCallback, useState, useRef } from "react";
 import "./UploadScreen.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../../components/Spinner/Spinner";
+import FileSpinner from "../../components/Spinner/FileSpinner";
 export default function UploadScreen() {
   const navigate = useNavigate();
   const [Message, setMessage] = useState("");
@@ -129,7 +129,7 @@ export default function UploadScreen() {
       setLoading(false);
       navigate("/dashboard"); 
     } catch (error) {
-      console.log("Error uploading files:", error);
+      // console.log("Error uploading files:", error);
       //   alert("Failed to upload files.");
       setMessage("Upload Failed");
       setUploadProgress(0);
@@ -145,6 +145,8 @@ export default function UploadScreen() {
         epcReport: null,
         inspectionReport: null,
       }));
+    }finally{
+      setLoading(false);
     }
   };
   // Trigger file input click
@@ -154,7 +156,7 @@ export default function UploadScreen() {
  
   return (
     <>
-      {loading && <Spinner/>}
+      {loading && <FileSpinner/>}
       <div className="UploadContainer d-flex flex-column justify-content-between align-items-center p-5">
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />

@@ -34,11 +34,13 @@ import UploadScreen from "./AuthNew/Auth/UploadScreen";
 import AddressLookup from './AuthNew/Auth/zipcode';
 import Invite from "./components/Invite";
 
+
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to="/login"/>} />
+              
                 <Route path="/login" element={<LoginPage/>} /> 
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
