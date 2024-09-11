@@ -26,7 +26,7 @@ export default function ProfileScreen() {
     const [town,setTown] = useState('');
     const [country,setCountry] = useState('');
     const [postCode,setPostCode] = useState('');
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const {dispatch} = useContext(MainContext);
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -65,7 +65,7 @@ export default function ProfileScreen() {
             return;
         }
         if (!passwordRegex.test(password)) {
-            setError("Password must be at least 8 characters long, contain at least one uppercase letter, and one number");
+            setError("Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character");
             setLoading(false);
             return;
         }
@@ -78,7 +78,10 @@ export default function ProfileScreen() {
  }
         try {
             const formData = new FormData();
-        // formData.append('profile_photo', profileImage); 
+            if (profileImage) {
+                formData.append('profile_photo', profileImage);
+            }
+        
         formData.append('email', emailAddress);
         formData.append('password', password);
         formData.append('password2', confirmPassword);
@@ -183,10 +186,6 @@ export default function ProfileScreen() {
         };
     
         return () => {
-        //   document.removeEventListener("getaddress-autocomplete-suggestions", () => {});
-        //   document.removeEventListener("getaddress-autocomplete-suggestions-failed", () => {});
-        //   document.removeEventListener("getaddress-autocomplete-address-selected", () => {});
-        //   document.removeEventListener("getaddress-autocomplete-address-selected-failed", () => {});
           document.body.removeChild(script);
         };
       }, []);
@@ -194,7 +193,7 @@ export default function ProfileScreen() {
 
     return (
         <>
-            {loading && <Spinner />}
+            {loading && <Spinner/>}
             <div className="ProfileScreenContainer d-flex flex-column justify-content-between align-items-center p-5">
                 <div className="Logo">
                     <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />

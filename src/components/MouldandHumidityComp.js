@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef} from "react";
 import './MouldandHumidityStyle.css';
 import SMHVentilationScoreCard from "./SMHBVentilationScoreCard";
 import SMHGraphComp from "./SMHGraphComp";
@@ -17,27 +17,36 @@ export default function MouldandHumidityComp() {
     const [ldata, setLdata] = useState(null);
     const [tempcond, setTempcond] = useState(null);
     const [dew, setDew] = useState(null);
+    const intervalRef = useRef(null);
+    const fetchData = async () => {
+        try {
+            const response = await api.get('landlord/mould/');
+            // Log response to check if it's working correctly
+            console.log("API Response:", response.data);
+
+            setAvgData(response.data.mould[0].avg_humidity_30_days);
+            setLtData(response.data.mould[0].humidity);
+            setCity(response.data.city);
+            setCondition(response.data.mould[0].condition);
+            setTemperature(response.data.mould[0].temperature);
+            setHumidity(response.data.humidity);
+            setHdata(response.data.high_temp_c);
+            setLdata(response.data.min_temp_c);
+            setTempcond(response.data.condition);
+            setDew(response.data.current_dewpoint_c);
+        } catch (error) {
+            console.log("Error while fetching the data:", error);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await api.get('landlord/mould/');
-                // console.log(response);
-                setAvgData(response.data.mould[0].avg_humidity_30_days);
-                setLtData(response.data.mould[0].humidity);
-                setCity(response.data.city);
-                setCondition(response.data.mould[0].condition);
-                setTemperature(response.data.mould[0].temperature);
-                setHumidity(response.data.humidity);
-                setHdata(response.data.high_temp_c);
-                setLdata(response.data.min_temp_c);
-                setTempcond(response.data.condition);
-                setDew(response.data.current_dewpoint_c);
-            } catch (error) {
-                console.log("Error while fetching the data", error);
-            }
-        };
+   
         fetchData();
+        intervalRef.current = setInterval(fetchData, 300000);
+
+        return () => {
+            clearInterval(intervalRef.current);
+        };
     }, []);
 
     const data = [

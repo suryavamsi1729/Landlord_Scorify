@@ -17,7 +17,7 @@ export default function LoginPage({updateSate}){
                 <div className="row m-0">
                     <div className="col-4 p-0">
                         <div className="loginimgcontainer">
-                            <img className="loginimg w-100 h-100" src={'/login.jpg'} alt="loginimg"/>
+                            <img className="loginimg w-100 h-100" src={'/login.jpg'} alt="loginimg" loading="lazy"/>
                         </div>
                     </div>
                     <div className="col-8 p-0">

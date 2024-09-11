@@ -5,11 +5,8 @@ import './MDBContentCompStyle.css';
 import { Link } from "react-router-dom";
 import img from './Svg/ImageAI.png';
 import Img from "./Svg/Image.jpg";
-import Floormap from "./Floormap";
-import imgavt from './Svg/Avatar2.jpg';
 import SectionPropertyScoreDetails from "./SectionPropertyScoreDetails";
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
 import api from "../../api";
 
 
@@ -39,22 +36,9 @@ export default function MainContentSection(){
         const fetchData = async () => {
             try {
                 const response = await api.get('landlord/dashboard/');
-                const property_id=response.data.properties[0].property[0].id;
-                const dateStr = response.data.due_date
-                const dateObj = new Date(dateStr);
-                // if (!dateStr || isNaN(dateObj.getTime())) {
-                //     return ""; 
-                // } 
-                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                const suffixes = ["th", "st", "nd", "rd"];
-                const day = dateObj.getDate();
-                const daySuffix = (day % 10 <= 3 && ![11, 12, 13].includes(day)) ? suffixes[day % 10] : suffixes[0];
-                const month = months[dateObj.getMonth()];
-                const formattedDate = `${day}${daySuffix} ${month}`;
-                
-
-                const pid=response.data.properties[0].property[0].id;
-                
+                const dateStr = response.data.due_date;
+                const formattedDate = formatDueDate(dateStr);
+                const pid=response.data.properties[0].property[0].id;    
                 dispatch({
                     type:"propertyid",
                     payload:{
@@ -62,8 +46,6 @@ export default function MainContentSection(){
                     },
                 })               
                 const res = await api.get(`landlord/house-photo/${pid}/`);
-
-             
                 const allImages = [];
                 res.data.forEach(item => {
                   item.house_item.forEach(houseItem => {
@@ -130,6 +112,17 @@ export default function MainContentSection(){
         fetchData();
     }, []);
 
+
+    const formatDueDate = (dateStr) => {
+        const dateObj = new Date(dateStr);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const suffixes = ["th", "st", "nd", "rd"];
+        const day = dateObj.getDate();
+        const daySuffix = (day % 10 <= 3 && ![11, 12, 13].includes(day)) ? suffixes[day % 10] : suffixes[0];
+        const month = months[dateObj.getMonth()];
+        return `${day}${daySuffix} ${month}`;
+    };
+
      useEffect(()=>{
          const fetchData=async()=>{
             try{ 
@@ -169,7 +162,7 @@ export default function MainContentSection(){
                             </Link>
                             <CardItm>
                                 <h1 className="HeadingText">AI - Score Fix</h1>
-                                <img className="AIImg" src={img} alt="img"/>
+                                <img className="AIImg" src={img} alt="img" loading="lazy"/>
                             </CardItm>
                         </div>
                         <div className="row">
@@ -327,12 +320,12 @@ export default function MainContentSection(){
             <div className="GalaryContainer">
                         <h1 className="heading">Floor Map & Photos</h1>
                         <div className="imgitmcontainer">
-                            <div className="imgcol"><img className="img1" src={img1} style={{ borderRadius:"8px"}} /></div>
+                            <div className="imgcol"><img className="img1" src={img1} alt="image1" style={{ borderRadius:"8px"}}  loading="lazy"/></div>
                             <div className="imgco2">
-                                <div className="imgrow1"><img className="img2" src={img2} style={{ borderRadius:"8px"}}/></div>
+                                <div className="imgrow1"><img className="img2" src={img2} alt="image2"  style={{ borderRadius:"8px"}} loading="lazy"/></div>
                                 <div className="imgrow2">
-                                    <div className="imgcol"><img className="img3" src={img3} style={{ borderRadius:"8px"}} /></div>
-                                    <div className="imgcol"><img className="img4" src={img4} style={{ borderRadius:"8px"}}/></div>
+                                    <div className="imgcol"><img className="img3" src={img3} alt="image3" style={{ borderRadius:"8px"}} loading="lazy" /></div>
+                                    <div className="imgcol"><img className="img4" src={img4} alt="image4"  style={{ borderRadius:"8px"}} loading="lazy"/></div>
                                 </div>
                             </div>
                         </div>
@@ -374,7 +367,7 @@ export default function MainContentSection(){
                         <h1 className="HeadingText">Agent Profile</h1>
                         <div className="containerwrapper">
                             <div className="imgele">
-                                <img src={Agimg} style={{width:"100%" , height:"100%",borderRadius:'50%'}} />
+                                <img src={Agimg} style={{width:"100%" , height:"100%",borderRadius:'50%'}} loading="lazy" alt="Agent" />
                             </div>
                             <div className="sidebox">
                                 <p className="text1">{Agname}</p>
