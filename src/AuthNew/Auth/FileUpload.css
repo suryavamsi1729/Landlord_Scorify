@@ -1,0 +1,233 @@
+.UploadContainer{
+    width: 100vw;
+    height: auto;
+    gap: 48px;
+    background-color: #FFFFFF;
+}
+.UploadContainer .Logo{
+    width: auto;
+    height: auto;
+}
+.UploadContainer .Logo .BrandLogoImg{
+    width: 160px;
+    height: 48px;
+}
+.UploadContainer .HeadingProfile{
+    width: 640px;
+    height: 48px;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 600;
+    color: #09090B;
+}
+.DropText{
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    line-height: 24px;
+    color: #18181B;
+    font-weight: 500;
+}
+.ortext{
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color:#71717A;
+}
+
+
+
+
+.EachBrowsBtn{
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D;
+}
+.MessageText{
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+
+.InputRows{
+    width: 40%;
+    height: auto;
+    display:flex;
+    flex-direction: row;
+    
+}
+.InputCol{
+    width: calc(50% - 8px);
+    height: auto;
+   
+}
+.userName{
+    padding-left: 34em;
+    text-align: start;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #18181B;
+}
+.InputContainer{
+    width: 20%;
+    height: auto;
+    padding: 14px 16px 14px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--GreyScaleColors-Grey200, #E5E5E5);
+    background: var(--WhiteColors-White100, #FFFFFF);
+}
+.pswEle{
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #71717A;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+upload-box {
+    border: 2px dashed #c0c0c0;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .file-upload {
+    position: relative;
+  }
+  
+  .file-upload input[type="file"] {
+    display: none;
+  }
+  
+  .file-upload label {
+    display: inline-block;
+    padding: 112px 112px;
+    /* background-color: #b8b8b8; */
+    background: var(--GreyScaleColors-Grey50, #FAFAFA);
+    border: 2px dashed var(--GreyScaleColors-Grey300, #D4D4D8);
+    border-radius:20px;
+    
+  }
+  
+  /* .file-upload label:hover {
+    background-color: #767778;
+  } */
+  
+  .progress {
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    background-color:#21296D;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  h5 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+.svg{
+    cursor: pointer;
+    color: #21296D;
+    padding: 9px 2px 3px 60px;
+}
+
+
+.input-h1{
+    padding-left:25px; 
+}
+.input-para{
+    padding-top:15px;
+    padding-left:76px;
+    color:gray;  
+}
+
+.input-file{
+    /* padding-top:15px; */
+    /* padding-left:10px; */
+    color:gray;  
+}
+
+
+.input-btn{
+    cursor: pointer;
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D;
+}
+
+
+.submit-btn{
+    cursor: pointer;
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D; 
+}
+
+.incontainer{
+    padding-top:12px;
+    padding-left:26px;
+}
+
+/* .EachBrowsBtn{
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: #21296D;
+} */

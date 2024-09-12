@@ -75,11 +75,17 @@ export default function RMServiceHistoryTable({ columns, name }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {tableData.length > 0 ? (
                             data(pageStart, pageStart + 10).map((itm, i) => (
-                                <RMSHTableRow key={i} data={itm} column={columns} name={name}/>
+                                <RMSHTableRow key={i} data={itm} column={columns} name={name} />
                             ))
-                        }
+                        ):(
+                            <tr>
+                                <td colSpan={columns.length + 1} className="NoDataContainer">
+                                    No data Available
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

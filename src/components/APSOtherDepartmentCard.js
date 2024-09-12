@@ -4,8 +4,8 @@ import './AgentsProfile.css';
 
 export default function APSOtherDepartmentCard({title}){
     const [data,setData]=useState({  
-        phone:"020 8810 1919",
-        email:"info@dexters.com",
+        // phone:"020 8810 1919",
+        // email:"info@dexters.com",
     })
     useEffect(()=>{
         const fetchData=async()=>{

@@ -52,7 +52,7 @@ export default function EPCSection() {
                 return (
                     <>
                         <div className="ImageContainerUpload p-3">
-                            <img src={img} className="ImageUpload" alt="EPC Report" />
+                            <img src={img} className="ImageUpload" alt="No Epc Report Found" />
                         </div>
                     </>
                 );

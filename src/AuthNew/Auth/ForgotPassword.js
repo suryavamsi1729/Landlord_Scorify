@@ -1,11 +1,13 @@
 import React,{useEffect} from "react";
 import './Login.css';
 import { useState,useRef } from 'react';
+import {useNavigate} from "react-router-dom";
 import api from "../../api";
 export default function ForgotPassword({setpageRender}){
     const [getEmail,setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [success,setSucess]=useState('');
+    const navigate=useNavigate();
     useEffect(()=>{
       
     },[]);
@@ -17,9 +19,12 @@ export default function ForgotPassword({setpageRender}){
             const response = await api.post('accounts/forgot-password/', {
                 email: getEmail,
             });
-
+            console.log(response.data.message);
             if (response.status === 200){
                     setSucess('Link sent successfully to your email');
+            }
+            else if(response.status===404){
+                   setErrorMessage("Email not found");
             }
         } catch (error) {
             setErrorMessage("Enter correct email");
@@ -27,7 +32,7 @@ export default function ForgotPassword({setpageRender}){
     };
     return(
         <>
-             <div style={{cursor:'pointer'}} className='navigatebefor d-flex flex-column justify-content-center align-items-center' onClick={()=>setpageRender('login')}>
+             <div style={{cursor:'pointer'}} className='navigatebefor d-flex flex-column justify-content-center align-items-center' onClick={()=>navigate('/login')}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.25 12.2743L19.25 12.2743" stroke="#21296D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M10.2998 18.2987L4.2498 12.2747L10.2998 6.24969" stroke="#21296D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

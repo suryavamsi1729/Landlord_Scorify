@@ -48,7 +48,7 @@ export default function InspectionInventory(props) {
 
 
     const tableSize = tableData.length;
-
+    
     const data = (start, range) => {
         if (range <= 0) {
             return tableData.slice(0, 10);
@@ -70,7 +70,13 @@ export default function InspectionInventory(props) {
                             ) : (
                                 <div className="w-100 h-100 p-0 m-0 d-flex flex-column gap-3">
                                     <Tabs />
-                                    <InspectionTable data={data(pageStart, pageStart + 10)} />
+                                    {tableData.length > 0 ? (
+                                        <InspectionTable data={data(pageStart, pageStart + 10)} />
+                                    ):(
+                                        <div className="NoDataContainer">
+                                            <p>No Data Available</p>
+                                        </div>
+                                    )}
                                     <div className="ButtonGroupContainer d-flex flex-row justify-content-end align-items-center gap-2">
                                         <button
                                             onClick={() => {

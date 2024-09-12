@@ -33,7 +33,7 @@ import ForgotPasswordPage from "./AuthNew/Auth/ForgotPasswordPage";
 import UploadScreen from "./AuthNew/Auth/UploadScreen";
 import AddressLookup from './AuthNew/Auth/zipcode';
 import Invite from "./components/Invite";
-
+import FileUpload from "./AuthNew/Auth/FileUpload";
 
 export default function LandLordNewRoute() {
     return (
@@ -45,6 +45,7 @@ export default function LandLordNewRoute() {
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
                 <Route path="/upload" element={<UploadScreen/>}/>
+                <Route path="/fileupload" element={<FileUpload/>}/>
                 <Route path="/verifyotp" element={<MianProvider><OtpScreen/></MianProvider>}/>
                 <Route path="/forgotpassword" element={<ForgotPasswordPage/>}/>
                 <Route path="/dashboard" element={<PrivateRoute element={<MainDashBordComp><MainContentSection/></MainDashBordComp>}/>}/>
@@ -57,7 +58,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/floarmapandphotos" element={<PrivateRoute element={<MainDashBordComp><FloarMapPhotosSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/floarmapandphotos/:itm" element={<PrivateRoute element={<MainDashBordComp><LivingRoomSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/agentsprofile" element={<PrivateRoute element={<MainDashBordComp><AgentsProfileSection /></MainDashBordComp>} />} />
-                <Route path="/dashboard/epc" element={<PrivateRoute element={<MainDashBordComp><EPCSection /></MainDashBordComp>} />} />
+                <Route path="/dashboard/epc" element={<PrivateRoute element={<MainDashBordComp><EPCSection/></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment" element={<PrivateRoute element={<MainDashBordComp><RiskAssessmentSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment/download" element={<PrivateRoute element={<MainDashBordComp><RiskDowload /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />

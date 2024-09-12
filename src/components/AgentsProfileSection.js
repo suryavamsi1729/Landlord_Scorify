@@ -6,12 +6,12 @@ import api from "../api";
 
 export default function AgentsProfileSection(){
     const [data,setData]=useState({
-        Img:"/Avatar.jpg",
-        name:"Dexters Agency",
-        phone:"020 8810 1919",
-        email:"info@dexters.com",
-        website:"WWW.dexters.com",
-        location:"2, New Ealing Broadway, London W5 2NU",
+        // Img:"/Avatar.jpg",
+        // name:"Dexters Agency",
+        // phone:"020 8810 1919",
+        // email:"info@dexters.com",
+        // website:"WWW.dexters.com",
+        // location:"2, New Ealing Broadway, London W5 2NU",
 
     })
     useEffect(()=>{
