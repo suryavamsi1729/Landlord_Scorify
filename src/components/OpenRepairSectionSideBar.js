@@ -37,7 +37,7 @@ export default function OpenRepairSectionSideBar({clickEvent}){
                             removeClick();
                             event.target.classList.add('ORSSBBtnActive');
                             }} name={'Open Repairs'}/>
-                        <ORSSBButton key={2} clickEvent={()=>{clickEvent('Open Repairs')}}  name={'Open Repairs'}/>
+                        {/* <ORSSBButton key={2} clickEvent={()=>{clickEvent('Open Repairs')}}  name={'Open Repairs'}/> */}
                         <ORSSBButton key={3} clickEvent={(event)=>{
                             clickEvent('Repairs History');
                             removeClick();

@@ -1,18 +1,18 @@
-.UploadContainer{
+.UContainer{
     width: 100vw;
     height: auto;
     gap: 48px;
     background-color: #FFFFFF;
 }
-.UploadContainer .Logo{
+.UContainer .Logo{
     width: auto;
     height: auto;
 }
-.UploadContainer .Logo .BrandLogoImg{
+.UContainer .Logo .BrandLogoImg{
     width: 160px;
     height: 48px;
 }
-.UploadContainer .HeadingProfile{
+.UContainer .HeadingProfile{
     width: 640px;
     height: 48px;
     font-size: 40px;
@@ -63,7 +63,7 @@
 
 
 
-.InputRows{
+.InRows{
     width: 40%;
     height: auto;
     display:flex;
@@ -75,15 +75,14 @@
     height: auto;
    
 }
-.userName{
-    padding-left: 34em;
+.UName{
     text-align: start;
     font-size: 16px;
     line-height: 20px;
     font-weight: 500;
     color: #18181B;
 }
-.InputContainer{
+.InContainer{
     width: 20%;
     height: auto;
     padding: 14px 16px 14px 14px;
@@ -121,7 +120,7 @@ upload-box {
   
   .file-upload label {
     display: inline-block;
-    padding: 112px 112px;
+    padding: 0px 112px;
     /* background-color: #b8b8b8; */
     background: var(--GreyScaleColors-Grey50, #FAFAFA);
     border: 2px dashed var(--GreyScaleColors-Grey300, #D4D4D8);
@@ -217,17 +216,3 @@ upload-box {
     padding-left:26px;
 }
 
-/* .EachBrowsBtn{
-    width: 120px;
-    height: auto;
-    padding: 10px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    text-align: center;
-    font-size: 16px;
-    line-height: 18px;
-    color: #FFFFFF;
-    font-weight: 500;
-    background-color: #21296D;
-} */

@@ -239,6 +239,24 @@ export default function MainContentSection(){
                         </CardItm>
                     </Link>
                     </div>
+                    <div className="AHContainer w-100 d-flex flex-row gap-3">
+                    <Link  to="/dashboard/moudleandhumidity" onClick={()=>{
+                                dispatch({
+                                    type:"path",
+                                    payload:{
+                                        path:"Moulde and Humidity",
+                                        sidebar:false
+                                    }
+                                });
+                                
+                            }} style={{textDecoration:'none',padding:'0px',width:'100%'}}>
+                      <div className="CategoryCardSection">
+                        {/* <p className="Heading">Mould and Ventilation</p> */}
+                        {/* <p className="SubHeading">{data.mvperc}%</p> */}
+                        <p className="Heading" style={{padding:'45px 0px 12px 18px'}}>Mould and Ventilation</p>
+
+                    </div>
+                    </Link>
                     <Link  to="/dashboard/moudleandhumidity" onClick={()=>{
                                 dispatch({
                                     type:"path",
@@ -250,10 +268,13 @@ export default function MainContentSection(){
                                 
                             }} style={{textDecoration:'none',padding:'0px',width:'100%'}}>
                     <div className="CategoryCardSection">
-                        <p className="Heading">Mould and Ventilation</p>
-                        <p className="SubHeading">{data.mvperc}%</p>
+                        {/* <p className="Heading">Mould and Ventilation</p> */}
+                        {/* <p className="SubHeading">{data.mvperc}%</p> */}
+                        <p className="Heading" style={{borderRadius:'10px'}}  style={{padding:'45px 0px 12px 88px'}}>ECIR</p>
+
                     </div>
                     </Link>
+                    </div>
                         <div className="AHContainer w-100 d-flex flex-row gap-3">
                         <Link  to="/dashboard/applience" onClick={()=>{
                                 dispatch({

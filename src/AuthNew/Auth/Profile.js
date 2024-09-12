@@ -198,7 +198,7 @@ export default function ProfileScreen() {
                 <div className="Logo">
                     <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
                 </div>
-                <h1 className="HeadingProfile m-0 text-center">Profile Details</h1>
+                <h1 className="HeadingProfile m-0 text-center">Property&Profile Details</h1>
                 <form className="DetailesContainer d-flex flex-column justify-content-between align-items-center" onSubmit={handleSubmit}>
 
                     <div className="ProfileImgContainer">
@@ -352,33 +352,21 @@ export default function ProfileScreen() {
                             
 
                         <div className="InputRows d-flex flex-column justify-content-center align-items-center gap-1">
-                        <div style={{cursor:'pointer'}} className="InputContainer d-flex flex-row justify-content-center align-items-center gap-1">
+                        {/* <div style={{cursor:'pointer'}} className="InputContainer d-flex flex-row justify-content-center align-items-center gap-1">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.1579 6.48661H4.3804C2.68457 6.48661 1.30957 7.86161 1.30957 9.55744L1.30957 13.6199C1.30957 15.3149 2.68457 16.6899 4.3804 16.6899H13.6554C15.3512 16.6899 16.7262 15.3149 16.7262 13.6199V9.54911C16.7262 7.85827 15.3554 6.48661 13.6646 6.48661H12.8787" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M9.01786 0.825452V10.8596" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M6.58862 3.26562L9.01779 0.825625L11.4478 3.26563" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             Upload Document
-                        </div>
+                        </div> */}
                     </div>
                     </div>
                     {error && <p className="ErrorMessage" style={{ color:'red' }}>{error}</p>}
-                    <button type="submit" className="Submitbtn d-flex flex-row justify-content-center align-items-center">Create Property    & Continue</button>
+                    <button type="submit" className="Submitbtn d-flex flex-row justify-content-center align-items-center">Create Property & Continue</button>
                 </form>
-                {/* <div className="footerSection d-flex flex-row justify-content-between">
-                    <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                    <p className="Text-ele text-end m-0">+385-1-555-66-99</p>
-                </div> */}
+          
             </div>
         </>
     );
 }
-
-
-
-
-
-
-
-
-

@@ -59,7 +59,7 @@
     height: auto;
 }
 .userName{
-    align-self: center;
+    text-align: start;
     font-size: 16px;
     line-height: 20px;
     font-weight: 500;

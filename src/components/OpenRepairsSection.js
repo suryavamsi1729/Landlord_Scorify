@@ -4,6 +4,7 @@ import OpenRepairSectionSideBar from "./OpenRepairSectionSideBar";
 import ORSMainContent from "./ORSMainContent";
 import ORSMCOpenRepair from "./ORSMCOpenRepairs";
 import ORTableContainer from "./ORTableContainer";
+import ORPTableContainer from "./ORPTableContainer";
 // import {data,sizeOfData} from "./MOCK_DATA";
 export default function OpenRepairsSection (){
     const columns = useMemo(
@@ -42,7 +43,8 @@ export default function OpenRepairsSection (){
     const optionRender = ()=>{
         switch (getOption) {
             case 'Open Repairs':
-                return <ORSMCOpenRepair/>
+                return <ORPTableContainer columns={columns}  name={"table1"}/>;
+            
             case 'Repairs History':
                 return <ORTableContainer columns={columns}  name={"table1"}/>;
                 // return <ORTableContainer columns={columns} data={data} sizeOfData={sizeOfData} name={"table1"}/>;

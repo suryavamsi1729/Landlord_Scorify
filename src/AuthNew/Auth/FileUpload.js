@@ -2,13 +2,10 @@ import { React, useCallback, useState, useRef } from "react";
 import "./FileUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import FileSpinner from "../../components/Spinner/FileSpinner";
+// import FileSpinner from "../Spinner/FileSpinner";
 export default function FileUpload() {
   const navigate = useNavigate();
-  
-  const [loading, setLoading] = useState(false);
-  const [postCode,setPostCode] = useState('');
-    
+  const [postcode,setPostCode]=useState();
   const [formData, setFormData] = useState({
     mandatory: null,
     optional: null, 
@@ -18,7 +15,7 @@ export default function FileUpload() {
     optional: 0, 
   });
 
-  const handleFileChange = (e, type) => {
+  const OhandleFileChange = (e, type) => {
     const file = e.target.files[0];
     setFormData((prevData) => ({
       ...prevData,
@@ -59,18 +56,16 @@ export default function FileUpload() {
   };
   return (
     <>
-     
-    
-      <div className="UploadContainer d-flex flex-column justify-content-between align-items-center p-5">
+      <div className="UContainer d-flex flex-column justify-content-between align-items-center p-5">
         
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
         </div>
 
-        <div className="InputRows w-100 d-flex flex-row justify-content-center align-items-center gap-3" style={{alignSelf:'center'}}>
+        <div className="InRows w-100 d-flex flex-row justify-content-center align-items-center gap-3" style={{alignSelf:'center'}}>
                             <div className="InputCol w-100 d-flex flex-column">
-                                <label className="userName" style={{alignSelf:'center'}}> Enter property PostCode</label>
-                                <div className="InputContainer" style={{alignSelf:'center'}}>
+                                <label className="UName" style={{alignSelf:'center'}}> Enter property PostCode</label>
+                                <div className="InContainer" style={{alignSelf:'center'}}>
                                     <input className="pswEle" onSelect={(ev) => setPostCode(ev.target.value)} id="postcode" type="text" required/>
                                 </div>
                             </div>
@@ -90,7 +85,7 @@ export default function FileUpload() {
                 <input
                   type="file"
                   id="mandatory-upload"
-                  onChange={(e) => handleFileChange(e, "mandatory")}
+                  onChange={(e) => OhandleFileChange(e, "mandatory")}
                 />
    
                 <label htmlFor="mandatory-upload">
@@ -105,7 +100,7 @@ export default function FileUpload() {
                 <div
                   className="input-btn"
                   type="file"
-                  onChange={(e) => handleFileChange(e, "mandatory")}
+                  onChange={(e) => OhandleFileChange(e, "mandatory")}
                 >
                   Browse
                 </div>
@@ -145,7 +140,7 @@ export default function FileUpload() {
                 <input
                   type="file"
                   id="optional-upload"
-                  onChange={(e) => handleFileChange(e, "optional")}
+                  onChange={(e) => OhandleFileChange(e, "optional")}
                 />
                 <label htmlFor="optional-upload">
                 <div className="svg">
@@ -159,17 +154,18 @@ export default function FileUpload() {
                 <div
                   className="input-btn"
                   type="file"
-                  onChange={(e) => handleFileChange(e, "mandatory")}
+                  onChange={(e) => OhandleFileChange(e, "mandatory")}
                 >
                   Browse
                 </div>
                 </div>
                 <p className="input-file">Maximum File size is 4MB</p> 
                 </label>
+                {/* {formData.mandatory && (
+                      <p>{formData.optional.name}</p>
+                    )} */}
               </div>
-              {formData.mandatory && (
-                      <p>{formData.mandatory.name}</p>
-                    )}
+          
               {formData.optional && uploadProgress.optional > 0 && (
                 <div className="progress mt-3">
                   <div
