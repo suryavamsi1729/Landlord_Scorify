@@ -61,7 +61,7 @@ export default function UploadScreen() {
     inspectionReport: 0,
   });
   const [filename,setFilename]=useState("");
-  const {email} = useContext(MainContext);
+  // const {email} = useContext(MainContext);
   // Refs for file inputs
   const inventoryRef = useRef();
   const epcRef = useRef();
@@ -175,6 +175,7 @@ const [zip,setZip]=useState('');
     e.preventDefault();
     setLoading(true);
     let jsonObj = {};
+    let dataToContext = {};
     const formData = new FormData();
     const today = new Date();
     Object.entries(files).forEach(([key, file]) => {
@@ -194,8 +195,8 @@ const [zip,setZip]=useState('');
     );
     try {
       formData.append("report", files.inventoryReport);
-      {files.epcReport && formData.append("report", files.epcReport);}
-      {files.inspectionReport && formData.append("report", files.inspectionReport);}
+      {files.epcReport && formData.append("epcReport", files.epcReport);}
+      {files.inspectionReport && formData.append("inspectionReport", files.inspectionReport);}
       {optionalfiles.EICR &&  formData.append("EICR", optionalfiles.EICR);}
       {optionalfiles["Gas Safety"] &&  formData.append("Gas Safety", optionalfiles.EICR);}
       {optionalfiles["Fire Safety"] &&  formData.append("Fire Safety", optionalfiles.EICR);}
@@ -204,16 +205,32 @@ const [zip,setZip]=useState('');
       formData.append("date", "2024-06-11");
       formData.append("type", "Initial Inspection");
       formData.append("title", "Annual property Inspection Report");
-      formData.append(
-        "expiry_date","2024-06-11");
+      formData.append("expiry_date","2024-06-11");
       formData.append("past_inventory", "False");
-
-
       formData.append('address', `${address.formatted_address_1} ${address.formatted_address_2}`);
-        formData.append('zipcode', address.postcode);
-        formData.append('city', `${address.formatted_address_3} ${address.formatted_address_4}`);
-        formData.append('house_name',zip);
-
+      formData.append('zipcode', address.postcode);
+      formData.append('city', `${address.formatted_address_3} ${address.formatted_address_4}`);
+      formData.append('house_name',zip);
+      dataToContext = {
+        ...dataToContext,
+        "report":files.inventoryReport,
+        "epcReport": files.epcReport,
+        "inspectionReport": files.inspectionReport,
+        "EICR": optionalfiles.EICR,
+        "Gas Safety":optionalfiles["Gas Safety"],
+        "Fire Safety":optionalfiles["Fire Safety"],
+        "Insurance Policy":optionalfiles["Insurance Policy"],
+        "Insurance Policy":optionalfiles["Insurance Policy"],
+        "date": "2024-06-11",
+        "type":"Initial Inspection",
+        "title":"Annual property Inspection Report",
+        "expiry_date":"2024-06-11",
+        "past_inventory":"False",
+        'address':`${address.formatted_address_1} ${address.formatted_address_2}`,
+        'zipcode':address.postcode,
+        'city': `${address.formatted_address_3} ${address.formatted_address_4}`,
+        'house_name':zip,
+      }
       const token = localStorage.getItem("access_token");
       // const response = await axios.post(
       //   "",
@@ -230,10 +247,10 @@ const [zip,setZip]=useState('');
       //   }
       // );
 
-      const response =await api.post('accounts/sendotp', { 
-        email:email,
+    //   const response =await api.post('accounts/sendotp', { 
+    //     email:email,
        
-    });
+    // });
 
       setUploadProgress(0);
       setUploadComplete((pre) => ({
@@ -251,16 +268,13 @@ const [zip,setZip]=useState('');
       dispatch({
         type:"formdata",
         payload:{
-            formdata:formData,
+            formdata:dataToContext,
         },
       });
-      // console.log(formData.get("date"));
       window.alert("Uploaded Successfully");
-      
       setLoading(false);
       navigate("/verifyotp"); 
     } catch (error) {
-      console.log(formData);
       setMessage("Upload Failed");
       setUploadProgress(0);
       setUploadComplete((pre) => ({
