@@ -1,10 +1,23 @@
-import { React, useCallback, useState, useRef } from "react";
+import { React, useCallback, useState, useRef ,useEffect,useContext} from "react";
 import "./UploadScreen.css";
+import DropDown from "./DropDown";
+import { FormDataContext } from "../../Context/FormDataContext";
 import "./FileUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileSpinner from "../../components/Spinner/FileSpinner";
+import { MainContext } from '../../Context/MainContext';
+import api from "../../api";
+
 export default function UploadScreen() {
+  const {dispatch,formdata} = useContext(FormDataContext);
+  const [address, setAddress] = useState({
+    formatted_address_1: '',
+    formatted_address_2: '',
+    formatted_address_3: '',
+    formatted_address_4: '',
+    postcode:''
+});
   const navigate = useNavigate();
   const [Message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,27 +31,47 @@ export default function UploadScreen() {
     const day = `0${date.getDate()}.slice(-2)`;
     return `${year}-${month}-${day}`;
   };
-
+  const [getoption,setoption] = useState("Gas Safety");
+  const SetOption = (ele)=>{
+      if(ele === ""){
+        setoption(getoption);
+      }
+      else{
+        setoption(ele);
+      }
+  };
   const [files, setFiles] = useState({
     inventoryReport: null,
     epcReport: null,
     inspectionReport: null,
   });
-
+  const [optionalfiles,setoptionalfiles] = useState(
+    {
+      "Gas Safety":null,
+      "EICR":null,
+      "Fire Safety":null,
+      "Insurance Policy":null,
+      "Tenancy Agreement":null,
+    }
+  );
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadComplete, setUploadComplete] = useState({
     inventoryReport: 0,
     epcReport: 0,
     inspectionReport: 0,
   });
-
+  const [filename,setFilename]=useState("");
+  const {email} = useContext(MainContext);
   // Refs for file inputs
   const inventoryRef = useRef();
   const epcRef = useRef();
   const inspectionRef = useRef();
 
   // Handle file selection
-  const handleFileChange = (e) => {
+  const handleFileChange = (e,opt) => {
+    console.log(opt);
+    console.log(getoption);
+
     console.log("hangelFileChanges");
     const { name, files: selectedFiles } = e.target;
     const size = selectedFiles?.size; // it's in bytes
@@ -47,12 +80,83 @@ export default function UploadScreen() {
       setMessage("File Size is less than 4MB");
       return;
     }
-    setFiles((prevFiles) => ({
-      ...prevFiles,
-      [name]: selectedFiles[0],
-    }));
+    if(opt==="optional"){
+      console.log(selectedFiles[0]);
+      setoptionalfiles((prevFiles) => ({
+        ...prevFiles,
+        [getoption]: selectedFiles[0],
+      }));
+      setFilename(selectedFiles[0]?.name);
+    }
+    else{
+      setFiles((prevFiles) => ({
+        ...prevFiles,
+        [name]: selectedFiles[0],
+      }));
+    }
   };
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://cdn.getaddress.io/scripts/getaddress-autocomplete-1.3.6.min.js";
+    script.async = true;
+    document.body.appendChild(script);
 
+    script.onload = () => {
+      
+      if (window.getAddress) {
+        window.getAddress.autocomplete(
+          'textbox_id',
+          'cX9Pb7orKE2O7p4wr9uHZg43744',
+          {
+            output_fields: {
+              formatted_address_1: 'formatted_address_1',
+              formatted_address_2: 'formatted_address_2',
+              formatted_address_3: 'formatted_address_3',
+              formatted_address_4: 'formatted_address_4',
+              postcode: 'postcode'
+            },
+            select_on_focus: true,
+            clear_list_on_select: true,
+            suggestion_count: 6,
+            minimum_characters: 2,
+            bind_output_fields: true
+          }
+        );
+      }
+
+
+      document.addEventListener("getaddress-autocomplete-suggestions", function (e) {
+        console.log(e.suggestions);
+      });
+
+      document.addEventListener("getaddress-autocomplete-suggestions-failed", function (e) {
+        console.log(e.status);
+        console.log(e.message);
+      });
+
+      document.addEventListener("getaddress-autocomplete-address-selected", function (e) {
+        const selectedAddress = e.address;
+
+        setAddress({
+          formatted_address_1: selectedAddress.line_1 || '',
+          formatted_address_2: selectedAddress.line_2 || '',
+          formatted_address_3: selectedAddress.town_or_city || '',
+          formatted_address_4: selectedAddress.county || '',
+          postcode: selectedAddress.postcode || ''
+        });
+      });
+
+      document.addEventListener("getaddress-autocomplete-address-selected-failed", function (e) {
+        console.log(e.status);
+        console.log(e.message);
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+},[]);
+const [zip,setZip]=useState('');
   // Handle unselecting the file
   const handleUnselect = (fileType) => {
     setFiles((prevFiles) => ({
@@ -79,10 +183,8 @@ export default function UploadScreen() {
           ...jsonObj,
           report: file.name,
         };
-        // formData.append(key, file.name);
-        // console.log(file.name);
+
       }
-      //   console.log(formData);
     });
     formData.append(
       "jsonObj",
@@ -90,31 +192,48 @@ export default function UploadScreen() {
         type: "application/json",
       })
     );
-
     try {
       formData.append("report", files.inventoryReport);
+      {files.epcReport && formData.append("report", files.epcReport);}
+      {files.inspectionReport && formData.append("report", files.inspectionReport);}
+      {optionalfiles.EICR &&  formData.append("EICR", optionalfiles.EICR);}
+      {optionalfiles["Gas Safety"] &&  formData.append("Gas Safety", optionalfiles.EICR);}
+      {optionalfiles["Fire Safety"] &&  formData.append("Fire Safety", optionalfiles.EICR);}
+      {optionalfiles["Tenancy Agreement"] &&  formData.append("Tenancy Agreement", optionalfiles.EICR);}
+      {optionalfiles["Insurance Policy"] &&  formData.append("Insurance Policy", optionalfiles.EICR);}
       formData.append("date", "2024-06-11");
       formData.append("type", "Initial Inspection");
       formData.append("title", "Annual property Inspection Report");
       formData.append(
         "expiry_date","2024-06-11");
       formData.append("past_inventory", "False");
-      console.log("trying");
+
+
+      formData.append('address', `${address.formatted_address_1} ${address.formatted_address_2}`);
+        formData.append('zipcode', address.postcode);
+        formData.append('city', `${address.formatted_address_3} ${address.formatted_address_4}`);
+        formData.append('house_name',zip);
+
       const token = localStorage.getItem("access_token");
-      const response = await axios.post(
-        "http://127.0.0.1:8000/landlord/upload-report/",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-          onUploadProgress: ({ loaded, total }) => {
-            const percentCompleted = Math.round((loaded / total) * 100);
-            setUploadProgress(percentCompleted);
-          },
-        }
-      );
+      // const response = await axios.post(
+      //   "",
+      //   formData,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //     onUploadProgress: ({ loaded, total }) => {
+      //       const percentCompleted = Math.round((loaded / total) * 100);
+      //       setUploadProgress(percentCompleted);
+      //     },
+      //   }
+      // );
+
+      const response =await api.post('accounts/sendotp', { 
+        email:email,
+       
+    });
 
       setUploadProgress(0);
       setUploadComplete((pre) => ({
@@ -129,11 +248,19 @@ export default function UploadScreen() {
         epcReport: null,
         inspectionReport: null,
       }));
+      dispatch({
+        type:"formdata",
+        payload:{
+            formdata:formData,
+        },
+      });
+      // console.log(formData.get("date"));
       window.alert("Uploaded Successfully");
+      
       setLoading(false);
-      navigate("/dashboard"); 
+      navigate("/verifyotp"); 
     } catch (error) {
-    
+      console.log(formData);
       setMessage("Upload Failed");
       setUploadProgress(0);
       setUploadComplete((pre) => ({
@@ -164,18 +291,27 @@ export default function UploadScreen() {
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
         </div>
+        <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
+                            <div className="InputCol d-flex flex-column w-100">
+                                <label className="userName py-1">Zip Code</label>
+                                <div className="InputContainer">
+                                    {/* <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Code' id="textbox_id" type="text" /> */}
+                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Zip Code' id="textbox_id" type="text" required/>
+                                </div>
+                            </div>
+            </div>
         <h1 className="HeadingProfile m-0 text-center">Upload Document</h1>
 
-        <div className="w-auto h-auto">
+        <div className="w-100 h-auto">
           <form
             onSubmit={handleSubmit}
-            className="w-auto h-auto d-flex flex-column justify-content-center align-items-center gap-3"
+            className="w-100 h-auto d-flex flex-column justify-content-center align-items-center gap-3"
           >
-            <div className="row">
-            <div className="col-md-6">
-            <h5 style={{paddingTop:"10px"}}>Mandatory Documents</h5>
+            <div className="row h-100">
+            <div className="col-md-6 h-100 d-flex flex-column align-items-center gap-5">
+            <h5 className="m-0">Mandatory Documents</h5>
             <div className="DocumentsSection w-auto h-auto d-flex flex-column justify-content-start align-items-center gap-3">
-              <div className="UploadItmContainer d-flex flex-row justify-content-center align-items-center">
+              <div className="UploadItmContainer w-auto d-flex flex-row justify-content-center align-items-center">
                 <div
                   className="TickContaoner d-flex flex-column justify-content-center align-items-center"
                   style={
@@ -242,7 +378,7 @@ export default function UploadScreen() {
                   </svg>
                 </div>
 
-                <div className="DocumentNameContainer d-flex flex-column justify-content-center align-items-start">
+                <div className="DocumentNameContainer  d-flex flex-column justify-content-center align-items-start">
                   <p className="m-0 NameText">Inventory Report</p>
                   {inventoryRef.current?.value && (
                     <p className="m-0 Mb-text">{`${(
@@ -304,7 +440,7 @@ export default function UploadScreen() {
                   </div>
                 )}
               </div>
-              <div className="UploadItmContainer d-flex flex-row justify-content-center align-items-center">
+              <div className="UploadItmContainer w-auto d-flex flex-row justify-content-center align-items-center">
                 <div
                   className="TickContaoner d-flex flex-column justify-content-center align-items-center"
                   style={
@@ -434,7 +570,7 @@ export default function UploadScreen() {
                   </div>
                 )}
               </div>
-              <div className="UploadItmContainer d-flex flex-row justify-content-center align-items-center">
+              <div className="UploadItmContainer w-auto d-flex flex-row justify-content-center align-items-center">
                 <div
                   className="TickContaoner d-flex flex-column justify-content-center align-items-center"
                   style={
@@ -566,11 +702,12 @@ export default function UploadScreen() {
                 )}
               </div>
               </div>
-
-              </div>
-              <div className="col-md-6">
+            </div>
+            <div className="col-md-6 d-flex flex-column align-items-center ">
             <div className="upload-box">
+                
               <h5>Optional Documents</h5>
+              <DropDown setoption={SetOption}/>
               <div className="file-upload">
                 <input
                   type="file"
@@ -578,14 +715,14 @@ export default function UploadScreen() {
                   onChange={(e) => handleFileChange(e, "optional")}
                 />
                 <label htmlFor="optional-upload">
-                <div className="svg">
+                <div className="svg p-0">
                 <svg width="50" color="blue" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.2189 1.25 12.427 1.34567 12.5694 1.51191L15.5694 5.01191C15.839 5.3264 15.8026 5.79988 15.4881 6.06944C15.1736 6.33901 14.7001 6.30259 14.4306 5.98809L12.75 4.02744L12.75 15C12.75 15.4142 12.4142 15.75 12 15.75C11.5858 15.75 11.25 15.4142 11.25 15L11.25 4.02744L9.56944 5.98809C9.29988 6.30259 8.8264 6.33901 8.51191 6.06944C8.19741 5.79988 8.16099 5.3264 8.43056 5.01191L11.4306 1.51191C11.573 1.34567 11.7811 1.25 12 1.25ZM6.99583 8.25196C7.41003 8.24966 7.74768 8.58357 7.74999 8.99778C7.7523 9.41198 7.41838 9.74963 7.00418 9.75194C5.91068 9.75803 5.1356 9.78642 4.54735 9.89448C3.98054 9.99859 3.65246 10.1658 3.40901 10.4092C3.13225 10.686 2.9518 11.0746 2.85315 11.8083C2.75159 12.5637 2.75 13.5648 2.75 15.0002V16.0002C2.75 17.4356 2.75159 18.4367 2.85315 19.1921C2.9518 19.9259 3.13225 20.3144 3.40901 20.5912C3.68577 20.868 4.07434 21.0484 4.80812 21.1471C5.56347 21.2486 6.56458 21.2502 8 21.2502H16C17.4354 21.2502 18.4365 21.2486 19.1919 21.1471C19.9257 21.0484 20.3142 20.868 20.591 20.5912C20.8678 20.3144 21.0482 19.9259 21.1469 19.1921C21.2484 18.4367 21.25 17.4356 21.25 16.0002V15.0002C21.25 13.5648 21.2484 12.5637 21.1469 11.8083C21.0482 11.0746 20.8678 10.686 20.591 10.4092C20.3475 10.1658 20.0195 9.99859 19.4527 9.89448C18.8644 9.78642 18.0893 9.75803 16.9958 9.75194C16.5816 9.74963 16.2477 9.41198 16.25 8.99778C16.2523 8.58357 16.59 8.24966 17.0042 8.25196C18.0857 8.25798 18.9871 8.28387 19.7236 8.41916C20.4816 8.55839 21.1267 8.82363 21.6517 9.34856C22.2536 9.95048 22.5125 10.7084 22.6335 11.6085C22.75 12.4754 22.75 13.5778 22.75 14.9453V16.0551C22.75 17.4227 22.75 18.525 22.6335 19.392C22.5125 20.2921 22.2536 21.0499 21.6517 21.6519C21.0497 22.2538 20.2919 22.5127 19.3918 22.6337C18.5248 22.7503 17.4225 22.7502 16.0549 22.7502H7.94513C6.57754 22.7502 5.47522 22.7503 4.60825 22.6337C3.70814 22.5127 2.95027 22.2538 2.34835 21.6519C1.74643 21.0499 1.48754 20.2921 1.36652 19.392C1.24996 18.525 1.24998 17.4227 1.25 16.0551V14.9453C1.24998 13.5777 1.24996 12.4754 1.36652 11.6085C1.48754 10.7084 1.74643 9.95048 2.34835 9.34856C2.87328 8.82363 3.51835 8.55839 4.27635 8.41916C5.01291 8.28386 5.9143 8.25798 6.99583 8.25196Z" fill="#1C274C"/>
 </svg>
 </div>   
-                  <h6 className="input-h1">Drop Your File Here</h6>
-                  <p className="input-para">or</p> 
-                <div className="incontainer">
+                  <h6 className="input-h1 p-0">Drop Your File Here</h6>
+                  <p className="input-para p-0">or</p> 
+                <div className="incontainer p-0">
                 <div
                   className="input-btn"
                   type="file"
@@ -595,6 +732,7 @@ export default function UploadScreen() {
                 </div>
                 </div>
                 <p className="input-file">Maximum File size is 4MB</p> 
+                <p className="namefile">{filename} </p>
                 </label>
                 {/* {formData.mandatory && (
                       <p>{formData.optional.name}</p>

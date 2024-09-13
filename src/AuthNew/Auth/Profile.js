@@ -100,7 +100,7 @@ export default function ProfileScreen() {
         });
             setLoading(false);
             if (response.status === 200){
-                navigate('/verifyotp');
+                navigate('/upload');
             }
             else if(response.status==400){
                 setLoading(false);

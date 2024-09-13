@@ -17,6 +17,7 @@ function MainReducer(state,action){
                     return{...state};
         case 'propertyid':state. propertyId=action.payload.Pid;
                     return{...state};
+        
         default:
             return {...state}
     }

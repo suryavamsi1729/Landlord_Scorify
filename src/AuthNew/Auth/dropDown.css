@@ -1,0 +1,40 @@
+.DropDownContainer{
+    width: 100%;
+    height: auto;
+    padding: 8px;
+}
+.Lable{
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #18181B;
+}
+.selectOptionValueContainer{
+    position: relative;
+    width: fit-content;
+    height: auto;
+    padding: 12px,8px;
+    outline: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+}
+.selectOptionContainer{
+    position: relative;
+    width: fit-content;
+    border-radius: 6px;
+    background-color: #21296D;
+    color: #FFFFFF;
+}
+.selectOptionContainer:hover{
+    cursor: pointer;
+    background-color: #454c8f;;
+    color: #FFFFFF;
+}
+option{
+    color: #21296D;
+    font-weight: 500;
+}

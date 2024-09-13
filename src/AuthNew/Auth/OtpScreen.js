@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import api from '../../api';
 import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../Context/MainContext';
+import { FormDataContext } from '../../Context/FormDataContext';
 import './Login.css';
 import axios from "axios";
 import Spinner from '../../components/Spinner/Spinner';
 export default function OtpScreen() {
     const {email} = useContext(MainContext);
+    const {formdata} = useContext(FormDataContext);
+    // console.log(formdata.get("date"));
     const navigate = useNavigate();
     const [otp, setOtp] = useState(new Array(6).fill(''));
     const [error, setError] = useState('');

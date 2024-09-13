@@ -34,19 +34,18 @@ import UploadScreen from "./AuthNew/Auth/UploadScreen";
 import AddressLookup from './AuthNew/Auth/zipcode';
 import Invite from "./components/Invite";
 import FileUpload from "./AuthNew/Auth/FileUpload";
-
+import { FormDataProvider } from "./Context/FormDataContext";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Navigate to="/login"/>} />
-              
+                <Route path="/" element={<Navigate to="/login"/>}/>
                 <Route path="/login" element={<LoginPage/>} /> 
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
-                <Route path="/upload" element={<UploadScreen/>}/>
+                <Route path="/upload" element={<FormDataProvider><UploadScreen/></FormDataProvider>}/>
                 <Route path="/fileupload" element={<FileUpload/>}/>
-                <Route path="/verifyotp" element={<MianProvider><OtpScreen/></MianProvider>}/>
+                <Route path="/verifyotp" element={<MianProvider><FormDataProvider><OtpScreen/></FormDataProvider></MianProvider>}/>
                 <Route path="/forgotpassword" element={<ForgotPasswordPage/>}/>
                 <Route path="/dashboard" element={<PrivateRoute element={<MainDashBordComp><MainContentSection/></MainDashBordComp>}/>}/>
                 <Route path="/propertytimeline" element={<PrivateRoute element={<MainDashBordComp><PropertytimeLineBodyContent /></MainDashBordComp>} />} />
@@ -64,9 +63,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/applience" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
-                {/* <Route path='/calendar' element={<PrivateRoute element={<MainDashBordComp><Calendar /></MainDashBordComp>} />} /> */}
                 <Route path='/invite' element={<PrivateRoute element={<MainDashBordComp><Invite/></MainDashBordComp>} />} />
-                {/* <Route path='/property' element={<PrivateRoute element={<MainDashBordComp><Properties /></MainDashBordComp>} />} /> */}
                 <Route path='/maintenance' element={<PrivateRoute element={<MainDashBordComp><MaintenanceandRepair /></MainDashBordComp>} />} />
                 <Route path='/reports' element={<PrivateRoute element={<MainDashBordComp><ReportMainContent /></MainDashBordComp>} />} />
                 <Route path='/reports/epc' element={<PrivateRoute element={<MainDashBordComp><ReportEPCTableContainer /></MainDashBordComp>} />} />
