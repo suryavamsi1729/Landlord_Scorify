@@ -348,3 +348,14 @@ table.EPCTable>thead>tr:last-child>th{
     border: none;
     background-color: #ffffff77;
 }
+
+
+.noDataCell{
+    font-family: Urbanist;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    color: hsl(240, 6%, 10%);
+    padding: 199px 17px 32px 240px;
+}

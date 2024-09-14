@@ -1,47 +1,57 @@
-import React,{useState,useEffect,useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FormDataContext } from "../../Context/FormDataContext";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-import  FileSpinner from '../../components/Spinner/FileSpinner'
-const DocumentsUploading = () => {
-    const {formdata} = useContext(FormDataContext);
-   const navigate=useNavigate();
-   const [loading, setLoading] = useState(false);
+import { useNavigate } from 'react-router-dom';
+import FileSpinner from '../../components/Spinner/FileSpinner';
 
-  useEffect(()=>{
-    console.log(formdata.date);
-    const upload=async()=>{
-     try{
+const DocumentsUploading = () => {
+  const { formdata } = useContext(FormDataContext);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [statusCode, setStatusCode] = useState(null);
+  // const [uploadSuccess, setUploadSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!formdata) {
+      window.alert("Form Data is not available");
+      navigate('/upload');
+      return;
+    }
+
+    const upload = async () => {
+      try {
         setLoading(true);
         const token = localStorage.getItem("access_token");
         const response = await axios.post(
-          "landlord/upload-report/",
+          "http://127.0.0.1:8000/landlord/upload-report/",
           formdata,
           {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
-            }
+            },
           }
         );
-        if(response.status==200){
-            <FileSpinner statusCode={response.status}/>
-            navigate('/dashboard');
+        if (response.status === 200) {
+          setStatusCode(response.status);
+          navigate('/dashboard');
         }
-     }catch(err){
+      } catch (err) {
         setLoading(false);
-        console.log("Error while fecthing the data",err);
-        // navigate('/upload');
-     }
-    }
-   upload();
-  },[])
+        navigate('/upload');
+        console.error("Error while fetching the data", err);
+      }
+    };
+
+    upload();
+  }, [formdata, navigate]);
+
   return (
     <> 
-     {<FileSpinner/>}
+      {loading && <FileSpinner statusCode={statusCode} />}
+   
+    </>
+  );
+};
 
-        </>
-  )
-}
-
-export default DocumentsUploading
+export default DocumentsUploading;

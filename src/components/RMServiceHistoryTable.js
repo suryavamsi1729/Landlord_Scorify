@@ -81,7 +81,7 @@ export default function RMServiceHistoryTable({ columns, name }) {
                             ))
                         ):(
                             <tr>
-                                <td colSpan={columns.length + 1} className="NoDataContainer">
+                                <td colSpan={columns.length + 1} className="noDataCell">
                                     No data Available
                                 </td>
                             </tr>

@@ -89,7 +89,6 @@ export default function MainContentSection(){
 
                 //Scorecard
                 SetDate(response.data.properties[0].property[0].next_inspection_date);
-                console.log(response.data.properties[0].property[0].next_inspection_date);
                 Setscore(Math.round(response.data.properties[0].property[0].score));
 
                 setData({

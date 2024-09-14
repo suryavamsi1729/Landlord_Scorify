@@ -93,7 +93,7 @@ export default function HeatingSystem(){
             case 'Current Report':
                 return(
                     <>
-                        <img src={data.Img} className="HSImageUpload" alt="img"/>
+                        <img src={data.Img} className="HSImageUpload" alt="No Current Report Found"/>
                     </>
                 );
                 case 'Previous Report':

@@ -56,7 +56,11 @@ export default function HPEPCRTableComp(){
                 </thead>
              
                 <tbody>
-        {data.map((item, index) => (
+                  {data.length==0?(
+                     <tr>
+                     <td colSpan="4" className='noDataCell'>No Data Available</td>
+                 </tr>
+                  ):( data.map((item, index) => (
           <tr key={index} className='w-100 d-flex flex-row'>
             <td className='datacol'>{convertDateFormat(item.report_date)}</td>
             <td className='datacol'>{item.report_description}</td>
@@ -126,7 +130,8 @@ export default function HPEPCRTableComp(){
           </a>
             </td>
           </tr>
-        ))}
+        )))}
+       
       </tbody>
 
             </table>

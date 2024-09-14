@@ -46,7 +46,7 @@ export default function RMMaintenanceSchedule() {
     return (
         <div className="w-100 h-100 RMMaintenanceSchedule d-flex flex-column justify-content-between p-2">
             {data.length === 0 ? (
-                <div>No data available</div>
+                <div className="noDataCell">No data available</div>
             ) : (
                 data.map((item) => (
                     <MaintenanceSchedularItm

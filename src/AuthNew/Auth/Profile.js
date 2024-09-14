@@ -98,6 +98,7 @@ export default function ProfileScreen() {
                 'Content-Type': 'multipart/form-data',
             },
         });
+           console.log(response.status);
             setLoading(false);
             if (response.status === 200){
                 navigate('/upload');
@@ -106,7 +107,7 @@ export default function ProfileScreen() {
                 window.alert("User already Exists");
                 navigate("/login");
             }
-            else if(response.status==400){
+            else if(response.status===400){
                 setLoading(false);
                 window.alert("Please signup again");
                 navigate('/signup');
