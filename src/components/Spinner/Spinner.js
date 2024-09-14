@@ -3,9 +3,9 @@ import './spinner.css';
 
 const Spinner = () => {
   return (
-    <div className="spinner-overlay">
-      <div className="spinner-container">
-        <div className="loader"></div>
+    <div className="spin-overlay">
+      <div className="spin-container">
+        <div className="load"></div>
       </div>
     </div>
   );

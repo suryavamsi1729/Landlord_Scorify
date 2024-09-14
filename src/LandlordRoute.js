@@ -34,7 +34,8 @@ import UploadScreen from "./AuthNew/Auth/UploadScreen";
 import AddressLookup from './AuthNew/Auth/zipcode';
 import Invite from "./components/Invite";
 import FileUpload from "./AuthNew/Auth/FileUpload";
-import { FormDataProvider } from "./Context/FormDataContext";
+import { FormDataProvider } from "./Context/FormDataContext";   
+import DocumentsUploading from "./AuthNew/Auth/DocumentsUploading";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
@@ -43,8 +44,8 @@ export default function LandLordNewRoute() {
                 <Route path="/login" element={<LoginPage/>} /> 
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
-                <Route path="/upload" element={<FormDataProvider><UploadScreen/></FormDataProvider>}/>
-                <Route path="/fileupload" element={<FileUpload/>}/>
+                <Route path="/upload" element={<MianProvider><FormDataProvider><UploadScreen/></FormDataProvider></MianProvider>}/>
+                <Route path="/verifydocuments" element={<FormDataProvider><DocumentsUploading/></FormDataProvider>}/>
                 <Route path="/verifyotp" element={<MianProvider><FormDataProvider><OtpScreen/></FormDataProvider></MianProvider>}/>
                 <Route path="/forgotpassword" element={<ForgotPasswordPage/>}/>
                 <Route path="/dashboard" element={<PrivateRoute element={<MainDashBordComp><MainContentSection/></MainDashBordComp>}/>}/>

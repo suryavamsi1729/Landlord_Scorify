@@ -1,5 +1,5 @@
 
-.spinner-overlay {
+.spin-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   z-index: 9999;
 }
 
-.spinner-container {
+.spin-container {
   width: 80px;
   height: 80px;
   display: flex;
@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.loader {
+.load{
   border: 8px solid #f3f3f3;
   border-radius: 50%;
   border-top: 8px solid #3498db;

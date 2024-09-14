@@ -7,8 +7,10 @@ const FileSpinner=({statusCode}) => {
 
   useEffect(() => {
     if (statusCode===200){
-      setProgress(100);
-      setStatus("Completed");
+      setTimeout(() => {
+        setProgress(100);
+        setStatus("Completed");
+      }, 10000);
       return;
     }
 

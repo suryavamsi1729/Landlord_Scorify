@@ -5,11 +5,12 @@ import { FormDataContext } from "../../Context/FormDataContext";
 import "./FileUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import FileSpinner from "../../components/Spinner/FileSpinner";
+import Spinner from "../../components/Spinner/Spinner";
 import { MainContext } from '../../Context/MainContext';
 import api from "../../api";
 
 export default function UploadScreen() {
+  const {email} = useContext(MainContext);
   const {dispatch,formdata} = useContext(FormDataContext);
   const [address, setAddress] = useState({
     formatted_address_1: '',
@@ -172,6 +173,10 @@ const [zip,setZip]=useState('');
 
   // Handle form submission
   const handleSubmit = async (e) => {
+    if(!zip){
+      window.alert("Please enter zipcode");
+      return;
+    }
     e.preventDefault();
     setLoading(true);
     let jsonObj = {};
@@ -247,10 +252,7 @@ const [zip,setZip]=useState('');
       //   }
       // );
 
-    //   const response =await api.post('accounts/sendotp', { 
-    //     email:email,
-       
-    // });
+     
 
       setUploadProgress(0);
       setUploadComplete((pre) => ({
@@ -271,6 +273,10 @@ const [zip,setZip]=useState('');
             formdata:dataToContext,
         },
       });
+
+    const response =await api.post('accounts/sendotp', { 
+        email:email 
+    });
       window.alert("Uploaded Successfully");
       setLoading(false);
       navigate("/verifyotp"); 
@@ -289,6 +295,7 @@ const [zip,setZip]=useState('');
         epcReport: null,
         inspectionReport: null,
       }));
+      
     }finally{
       setLoading(false);
     }
@@ -300,7 +307,7 @@ const [zip,setZip]=useState('');
  
   return (
     <>
-      {loading && <FileSpinner/>}
+      {loading && <Spinner/>}
       <div className="UploadContainer d-flex flex-column justify-content-between align-items-center p-5">
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />

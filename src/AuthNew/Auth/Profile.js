@@ -102,6 +102,10 @@ export default function ProfileScreen() {
             if (response.status === 200){
                 navigate('/upload');
             }
+            else if(response.status===409){
+                window.alert("User already Exists");
+                navigate("/login");
+            }
             else if(response.status==400){
                 setLoading(false);
                 window.alert("Please signup again");

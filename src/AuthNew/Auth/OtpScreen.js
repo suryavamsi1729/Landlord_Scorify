@@ -56,7 +56,7 @@ export default function OtpScreen() {
                 localStorage.setItem('access_token', access);
                 localStorage.setItem('refresh_token', refresh);
                 setLoading(false);
-                navigate('/upload');
+                navigate('/verifydocuments');
             } else {
                 throw new Error('Failed to verify OTP');
             }
