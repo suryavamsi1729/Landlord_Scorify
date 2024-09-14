@@ -109,10 +109,6 @@ export default function LoginScreen({ setpageRender }) {
             <p className="Signupoption">
                 Don’t have an account? <span className="textlink" onClick={() => navigate('/signup')} style={{ cursor: 'pointer' }}>Signup</span>
             </p>
-            <div className="w-100 d-flex flex-row justify-content-between">
-                <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                <p className="Text-ele text-end m-0">+385-1-555-66-36</p>
-            </div>
         </>
     );
 }

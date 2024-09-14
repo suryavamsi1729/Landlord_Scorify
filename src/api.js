@@ -30,7 +30,7 @@ const refreshToken = async () => {
     try {
         const refresh_token = localStorage.getItem('refresh_token');
         if (refresh_token) {
-            const response = await axios.post(`${base_path}custom/token/refresh/`, {
+            const response = await axios.post(`${base_path}accounts/custom/token/refresh/`, {
                 refresh: refresh_token,
             });
             if (response.status === 200) {

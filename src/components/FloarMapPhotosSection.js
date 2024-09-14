@@ -6,7 +6,12 @@ import { MainContext } from "../Context/MainContext";
 import api from "../api";
 
 export default function FloarMapPhotosSection() {
-    const [roomData, setRoomData] = useState({});  
+    const [roomData, setRoomData] = useState({}); 
+    
+    function capitalizeFirstLetter(word) {
+      
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -65,7 +70,7 @@ export default function FloarMapPhotosSection() {
                                 }}
                                 style={{ textDecoration: 'none', padding: '0px', width: 'calc(100%)', font: 'none' }}
                             >
-                                <FMPSGalleryComp title={room.type} data={roomData[room.type]} />
+                                <FMPSGalleryComp title={capitalizeFirstLetter(room.type)} data={roomData[room.type]} />
                             </Link>
                         </div>
                     ))}

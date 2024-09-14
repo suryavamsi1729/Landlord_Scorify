@@ -6,7 +6,7 @@ const FileSpinner=({statusCode}) => {
   const [status, setStatus] = useState("Extracting data");
 
   useEffect(() => {
-    if (statusCode===200){
+    if (statusCode===201){
       setTimeout(() => {
         setProgress(100);
         setStatus("Completed");
@@ -14,7 +14,7 @@ const FileSpinner=({statusCode}) => {
       return;
     }
 
-    const totalDuration = 3 * 60 * 1000; 
+    const totalDuration = 7 * 60 * 1000; 
     const intervalDuration=1000; 
     const progressIncrement=100/(totalDuration/intervalDuration);
 
@@ -27,14 +27,14 @@ const FileSpinner=({statusCode}) => {
 
     if(progress<33) {
       setStatus("Extracting data");
-    } else if(progress < 66) {
+    } else if(progress<50){
       setStatus("Analyzing with AI");
-    } else if(progress < 100) {
+    } else if(progress<70){
       setStatus("Processing");
     }
 
     return ()=>clearInterval(progressInterval);
-  }, [progress,statusCode]);
+  }, []);
 
   return (
     <>

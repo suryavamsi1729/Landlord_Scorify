@@ -6,6 +6,7 @@ import ORSMCOpenRepair from "./ORSMCOpenRepairs";
 import ORTableContainer from "./ORTableContainer";
 import RMMaintenanceSchedule from "./RMMaintenanceSchedule";
 import RMServiceHistoryTable from "./RMServiceHistoryTable";
+import UCServiceHistoryTable from "./UCServiceHistoryTable";
 import {data,sizeOfData} from "./MOCK_DATA";
 import axios from "axios";
 export default function RegularMaintenance (){
@@ -45,7 +46,7 @@ export default function RegularMaintenance (){
     const optionRender = ()=>{
         switch (getOption) {
             case 'Up-Coming Service':
-                return <ORSMCOpenRepair/>
+                return <UCServiceHistoryTable columns={columns} name={"table2"}/>
             case 'Service History':
                 return <RMServiceHistoryTable columns={columns} name={"table2"}/>
                 // return <ORTableContainer columns={columns} data={data} sizeOfData={sizeOfData} name={"table2"}/>;

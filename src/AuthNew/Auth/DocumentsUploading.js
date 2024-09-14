@@ -9,7 +9,6 @@ const DocumentsUploading = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [statusCode, setStatusCode] = useState(null);
-  // const [uploadSuccess, setUploadSuccess] = useState(false);
 
   useEffect(() => {
     if (!formdata) {
@@ -32,8 +31,9 @@ const DocumentsUploading = () => {
             },
           }
         );
-        if (response.status === 200) {
-          setStatusCode(response.status);
+        setStatusCode(response.status);
+        if(response.status === 200 || 201) {
+   
           navigate('/dashboard');
         }
       } catch (err) {

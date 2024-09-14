@@ -142,8 +142,8 @@ export default function OtpScreen() {
 
                             </div>
                             <div className="w-100 d-flex flex-row justify-content-between">
-                                <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                                <p className="Text-ele text-end m-0">+385-1-555-66-36</p>
+                                <p className="Text-ele text-start m-0"></p>
+                                <p className="Text-ele text-end m-0"></p>
                             </div>
                         </div>
                     </div>
