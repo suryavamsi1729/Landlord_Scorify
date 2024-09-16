@@ -65,7 +65,7 @@ export default function FileUpload() {
         <div className="InRows w-100 d-flex flex-row justify-content-center align-items-center gap-3" style={{alignSelf:'center'}}>
                             <div className="InputCol w-100 d-flex flex-column">
                                 <label className="UName" style={{alignSelf:'center'}}> Enter property PostCode</label>
-                                <div className="InContainer" style={{alignSelf:'center'}}>
+                                <div className="InCon" style={{alignSelf:'center'}}>
                                     <input className="pswEle" onSelect={(ev) => setPostCode(ev.target.value)} id="postcode" type="text" required/>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ export default function FileUpload() {
 </div>   
                   <h6 className="input-h1">Drop Your File Here</h6>
                   <p className="input-para">or</p> 
-                <div className="incontainer">
+                <div className="InCon">
                 <div
                   className="input-btn"
                   type="file"
@@ -150,7 +150,7 @@ export default function FileUpload() {
 </div>   
                   <h6 className="input-h1">Drop Your File Here</h6>
                   <p className="input-para">or</p> 
-                <div className="incontainer">
+                <div className="InCon">
                 <div
                   className="input-btn"
                   type="file"

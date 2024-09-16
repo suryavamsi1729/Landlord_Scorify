@@ -159,10 +159,21 @@ export default function MainContentSection(){
                                     <p className="Text">{data.Inspec}</p>
                                 </CardItm>
                             </Link>
+                            <Link  to="/dashboard/AIScoreFix" onClick={()=>{
+                                dispatch({
+                                    type:"path",
+                                    payload:{
+                                        path:"AIScoreFix",
+                                        sidebar:false
+                                    }
+                                });
+                                
+                            }} style={{textDecoration:'none',padding:'0px',width:'calc(50% - 8px)'}}>
                             <CardItm>
                                 <h1 className="HeadingText">AI - Score Fix</h1>
                                 <img className="AIImg" src={img} alt="img" loading="lazy"/>
                             </CardItm>
+                            </Link>
                         </div>
                         <div className="row">
                         <Link  to="/dashboard/openrepair" onClick={()=>{
@@ -328,7 +339,7 @@ export default function MainContentSection(){
                         </Link>
                         </div>
                         <Link 
-            to="/dashboard/floarmapandphotos"
+            to="/dashboard/floormapandphotos"
             onClick={() => {
                 dispatch({
                     type: "path",

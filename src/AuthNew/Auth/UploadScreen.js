@@ -26,6 +26,24 @@ export default function UploadScreen() {
     mandatory: null,
     optional: null, 
   });
+  const [zip,setZip]=useState('');
+const [suggestions, setSuggestions] = useState([]);
+const [selectedAddress, setSelectedAddress] = useState(null);
+const [inloading, setInloading] = useState(false); 
+const [error, setError] = useState(null);
+const [noData, setNoData] = useState(false);
+  
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
+  const [address3, setAddress3] = useState('');
+  const [postcode, setPostcode] = useState('');
+  const [currentEnergyRating, setCurrentEnergyRating] = useState('');
+  const [potentialEnergyRating, setPotentialEnergyRating] = useState('');
+  const [propertyType, setPropertyType] = useState('');
+  const [inspectionDate, setInspectionDate] = useState('');
+  const [heatingCostCurrent, setHeatingCostCurrent] = useState('');
+  const [heatingCostPotential, setHeatingCostPotential] = useState('');
+  const [currentenergyefficiency,setCurrentEnergyEfficiency]=useState('');
  
   const [getoption,setoption] = useState("Gas Safety");
   const SetOption = (ele)=>{
@@ -92,24 +110,7 @@ export default function UploadScreen() {
     }
   };
 
-const [zip,setZip]=useState('');
-const [suggestions, setSuggestions] = useState([]);
-const [selectedAddress, setSelectedAddress] = useState(null);
-const [inloading, setInloading] = useState(false); 
-const [error, setError] = useState(null);
-const [noData, setNoData] = useState(false);
-  
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
-  const [address3, setAddress3] = useState('');
-  const [postcode, setPostcode] = useState('');
-  const [currentEnergyRating, setCurrentEnergyRating] = useState('');
-  const [potentialEnergyRating, setPotentialEnergyRating] = useState('');
-  const [propertyType, setPropertyType] = useState('');
-  const [inspectionDate, setInspectionDate] = useState('');
-  const [heatingCostCurrent, setHeatingCostCurrent] = useState('');
-  const [heatingCostPotential, setHeatingCostPotential] = useState('');
-  
+
   const handleUnselect = (fileType) => {
     setFiles((prevFiles) => ({
       ...prevFiles,
@@ -168,17 +169,17 @@ const [noData, setNoData] = useState(false);
     const fullAddress = `${address.address1} ${address.address2} ${address.address3}`;
     setZip(fullAddress); 
     setSelectedAddress(address);
-    // setAddress1(address.address1);
-    // setAddress2(address.address2);
-    // setAddress3(address.address3);
-    // setPostcode(address.postcode);
-    // setCurrentEnergyRating(address['current-energy-rating']);
-    // setPotentialEnergyRating(address['potential-energy-rating']);
-    // setPropertyType(address['property-type']);
-    // setInspectionDate(address['inspection-date']);
-    // setHeatingCostCurrent(address['heating-cost-current']);
-    // setHeatingCostPotential(address['heating-cost-potential']);
-    // setSelectedAddress(address)
+    setAddress1(address.address1);
+    setAddress2(address.address2);
+    setAddress3(address.address3);
+    setPostcode(address.postcode);
+    setCurrentEnergyRating(address['current-energy-rating']);
+    setPotentialEnergyRating(address['potential-energy-rating']);
+    setPropertyType(address['property-type']);
+    setInspectionDate(address['inspection-date']);
+    setHeatingCostCurrent(address['heating-cost-current']);
+    setHeatingCostPotential(address['heating-cost-potential']);
+    setCurrentEnergyEfficiency(address['current-energy-efficiency']);
     setSuggestions([]); 
   };
 
@@ -232,10 +233,10 @@ const [noData, setNoData] = useState(false);
       {optionalfiles["Fire Safety"] &&  formData.append("Fire Safety", optionalfiles.EICR);}
       {optionalfiles["Tenancy Agreement"] &&  formData.append("Tenancy Agreement", optionalfiles.EICR);}
       {optionalfiles["Insurance Policy"] &&  formData.append("Insurance Policy", optionalfiles.EICR);}
-      formData.append("date",formatDate(today));
+      formData.append("date",formatDate(today).toString());
       formData.append("type", "Initial Inspection");
       formData.append("title", "Annual property Inspection Report");
-      formData.append("expiry_date",getExpiryDate(today));
+      formData.append("expiry_date",getExpiryDate(today).toString());
       formData.append("past_inventory", "False");
       formData.append('address1', address1);
       formData.append('address2', address2);
@@ -247,7 +248,7 @@ const [noData, setNoData] = useState(false);
       formData.append('inspection-date', inspectionDate);
       formData.append('heating-cost-current', heatingCostCurrent);
       formData.append('heating-cost-potential', heatingCostPotential); 
-
+      formData.append('current-energy-efficiency',currentenergyefficiency);
       dataToContext = {
         ...dataToContext,
         "report":files.inventoryReport,
@@ -258,10 +259,10 @@ const [noData, setNoData] = useState(false);
         "Fire Safety":optionalfiles["Fire Safety"],
         "Insurance Policy":optionalfiles["Insurance Policy"],
         "Insurance Policy":optionalfiles["Insurance Policy"],
-        "date": "2024-06-11",
+        "date": formatDate(today).toString(),
         "type":"Initial Inspection",
         "title":"Annual property Inspection Report",
-        "expiry_date":"2024-06-11",
+        "expiry_date":getExpiryDate(today).toString(),
         "past_inventory":"False",
         'address1': address1,
          'address2':address2,
@@ -272,7 +273,8 @@ const [noData, setNoData] = useState(false);
         'property-type':propertyType,
          'inspection-date':inspectionDate,
          'heating-cost-current':heatingCostCurrent,
-         'heating-cost-potential':heatingCostPotential
+         'heating-cost-potential':heatingCostPotential,
+         'current-energy-efficiency':currentenergyefficiency
       }
       const token = localStorage.getItem("access_token");
       // const response = await axios.post(
@@ -315,6 +317,9 @@ const [noData, setNoData] = useState(false);
     const response =await api.post('accounts/sendotp', { 
         email:email 
     });
+     if(response.status==201){
+        navigate("/verifydocuments");
+     }
       
       setLoading(false);
       navigate("/verifyotp"); 
@@ -344,7 +349,9 @@ const [noData, setNoData] = useState(false);
   };
 
 //  useEffect(()=>{
-//    console.log(selectedAddress);
+//   const today=new Date();
+//    console.log(formatDate(today).toString());
+//    console.log(selectedAddress['current-energy-efficiency'])
 //  },[])
  
  

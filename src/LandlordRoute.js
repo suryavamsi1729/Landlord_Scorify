@@ -36,12 +36,15 @@ import Invite from "./components/Invite";
 import FileUpload from "./AuthNew/Auth/FileUpload";
 import { FormDataProvider } from "./Context/FormDataContext";   
 import DocumentsUploading from "./AuthNew/Auth/DocumentsUploading";
+import FileSpinner from "./components/Spinner/FileSpinner";
+import AIScoreFix from "./components/AIScoreFix";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to="/login"/>}/>
                 <Route path="/login" element={<LoginPage/>} /> 
+                <Route path="/bar" element={<FileSpinner/>}/>
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
                 <Route path="/upload" element={<MianProvider><FormDataProvider><UploadScreen/></FormDataProvider></MianProvider>}/>
@@ -55,8 +58,8 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/tenantsprofile" element={<PrivateRoute element={<MainDashBordComp><TenantProfileSectionComp /></MainDashBordComp>} />} />
                 <Route path="/dashboard/openrepair" element={<PrivateRoute element={<MainDashBordComp><OpenRepairsSection/></MainDashBordComp>} />} />
                 <Route path="/dashboard/regularmaintenance" element={<PrivateRoute element={<MainDashBordComp><RegularMaintenance /></MainDashBordComp>} />} />
-                <Route path="/dashboard/floarmapandphotos" element={<PrivateRoute element={<MainDashBordComp><FloarMapPhotosSection /></MainDashBordComp>} />} />
-                <Route path="/dashboard/floarmapandphotos/:itm" element={<PrivateRoute element={<MainDashBordComp><LivingRoomSection /></MainDashBordComp>} />} />
+                <Route path="/dashboard/floormapandphotos" element={<PrivateRoute element={<MainDashBordComp><FloarMapPhotosSection /></MainDashBordComp>} />} />
+                <Route path="/dashboard/floormapandphotos/:itm" element={<PrivateRoute element={<MainDashBordComp><LivingRoomSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/agentsprofile" element={<PrivateRoute element={<MainDashBordComp><AgentsProfileSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/epc" element={<PrivateRoute element={<MainDashBordComp><EPCSection/></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment" element={<PrivateRoute element={<MainDashBordComp><RiskAssessmentSection /></MainDashBordComp>} />} />
@@ -64,6 +67,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/appliance" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
+                <Route path='/dashboard/AIScoreFix' element={<PrivateRoute element={<MainDashBordComp><AIScoreFix/></MainDashBordComp>} />} />
                 <Route path='/invite' element={<PrivateRoute element={<MainDashBordComp><Invite/></MainDashBordComp>} />} />
                 <Route path='/maintenance' element={<PrivateRoute element={<MainDashBordComp><MaintenanceandRepair /></MainDashBordComp>} />} />
                 <Route path='/reports' element={<PrivateRoute element={<MainDashBordComp><ReportMainContent /></MainDashBordComp>} />} />
@@ -72,6 +76,7 @@ export default function LandLordNewRoute() {
                 <Route path='/reports/inventory' element={<PrivateRoute element={<MainDashBordComp><RTISITableContainer /></MainDashBordComp>} />} />
                 <Route path='/reports/check-out' element={<PrivateRoute element={<MainDashBordComp><RTISITableContainer /></MainDashBordComp>} />} />
                 <Route path='/inspections' element={<PrivateRoute element={<MainDashBordComp><Inspection /></MainDashBordComp>} />} />
+               
             </Routes>
         </BrowserRouter>
     );

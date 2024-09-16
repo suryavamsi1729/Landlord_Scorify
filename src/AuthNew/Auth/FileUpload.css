@@ -82,10 +82,10 @@
     font-weight: 500;
     color: #18181B;
 }
-.InContainer{
+.InCon{
     width: 20%;
     height: auto;
-    padding: 14px 16px 14px 14px;
+    padding: 14px 50px 14px 14px;
     border-radius: 12px;
     border: 1px solid var(--GreyScaleColors-Grey200, #E5E5E5);
     background: var(--WhiteColors-White100, #FFFFFF);
@@ -217,18 +217,18 @@ upload-box {
     background-color: #21296D; 
 }
 
-.incontainer{
+.InCon{
     padding-top:12px;
     padding-left:26px;
 }
 
 
-.InputContainer {
+/* .InputContainer {
     width: 100%;
     height: auto;
-    padding: 17px 140px 14px 14px;
+    padding: 17px 30px 14px 14px;
     border-radius: 12px;
     border: 1px solid var(--GreyScaleColors-Grey200, #E5E5E5);
     background: var(--WhiteColors-White100, #FFFFFF);
-}
+} */
 

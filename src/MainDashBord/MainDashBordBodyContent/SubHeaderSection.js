@@ -3,11 +3,13 @@ import './MDBContentCompStyle.css';
 import UploadButton from "./UploadButton";
 import UploadDownloadBtn from "./UploadDownloadBtn";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../AgentComponents/Calendar/Header";
 import { MainContext } from "../../Context/MainContext";
 export default function SubHeaderSection(props){
     const { DateCal,dispatch } = useContext(MainContext);
     const [currentDate,setCurrentDate]=useState(DateCal);
+    const navigate=useNavigate();
     const prevmonth=()=>{ 
         setCurrentDate(new Date(currentDate.getFullYear(),currentDate.getMonth()-1,1));
         dispatch({
@@ -68,7 +70,7 @@ export default function SubHeaderSection(props){
                         mypathArray.map((itm,i)=>{
                             return (
                                 <>
-                                    <h5 className={`${i!==mypathArray.length-1?"PathTextInactive":"PathText"} m-0`}>{itm}</h5>
+                                    <h5 className={`${i!==mypathArray.length-1?"PathTextInactive":"PathText"} m-0`} onClick={()=>navigate(`/${itm}`)} style={{cursor:'pointer'}}>{itm}</h5>
                                     <h5 className={`${i===mypathArray.length-1?"PathTextSpecialInactive":"PathTextSpecial"} m-0`}>/</h5>
                                 </>
                             );

@@ -48,7 +48,7 @@ export default function FloarMapPhotosSection() {
 
     const rooms = Object.keys(roomData).map((roomType, index) => ({
         type: roomType,
-        path: `/dashboard/floarmapandphotos/${roomType}`
+        path: `/dashboard/floormapandphotos/${roomType}`
     }));
 
     return (

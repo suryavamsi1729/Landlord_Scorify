@@ -1,5 +1,6 @@
 import {React,useState} from "react";
 import './RegularMaintainens.css';
+import img from './svg/mn.png';
 
 export default function MaintenanceSchedularItm({statusval,countval,title,reported,description,due_date,report_photos}){
     const [status,setStatus] = useState(statusval);
@@ -33,7 +34,7 @@ export default function MaintenanceSchedularItm({statusval,countval,title,report
         <>
             <div className={`MaintenanceSchedularItmContainer ${(status==='Pending')&&(countval===1)?"topLayer":""} d-flex flex-row gap-3`}>
                 <div className="RMImageContainer d-flex flex-row justify-content-center">
-                    <img className="w-100 h-100 RMImage" src={report_photos} alt="imagepic"/>
+                    <img className="w-100 h-100 RMImage" src={report_photos || img} alt={"image"}/>
                     <div className="RMImgDueDateContainer d-flex flex-column justify-content-center p-1">
                         <h1 className="heading m-0 ">Due Date</h1>
                         <p className="date m-0">{due_date}</p>
