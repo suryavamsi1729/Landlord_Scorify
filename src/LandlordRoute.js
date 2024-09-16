@@ -61,7 +61,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/epc" element={<PrivateRoute element={<MainDashBordComp><EPCSection/></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment" element={<PrivateRoute element={<MainDashBordComp><RiskAssessmentSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment/download" element={<PrivateRoute element={<MainDashBordComp><RiskDowload /></MainDashBordComp>} />} />
-                <Route path="/dashboard/applience" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
+                <Route path="/dashboard/appliance" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
                 <Route path='/invite' element={<PrivateRoute element={<MainDashBordComp><Invite/></MainDashBordComp>} />} />

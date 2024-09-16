@@ -164,3 +164,57 @@
     height: auto;
     text-wrap: wrap;
 }
+
+
+.suggestions-box {
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 8px;
+    pointer-events: auto;
+  }
+  
+  .suggestion-item {
+    padding: 12px; /* More padding for a comfortable look */
+    cursor: pointer;
+    font-size: 14px;
+    color: #333; /* Dark text for readability */
+    border-bottom: 1px solid #f1f1f1; /* Light border between items */
+    transition: background-color 0.2s ease-in-out; /* Smooth transition */
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f9f9f9; /* Light gray hover effect */
+    color: #007BFF; /* Change text color on hover to blue for contrast */
+  }
+  
+  .suggestion-item:active {
+    background-color: #007BFF; /* Active click effect with blue background */
+    color: #fff; /* White text on active */
+  }
+  
+  .no-data-message {
+    padding: 12px;
+    color: #ff4d4f; /* Red for the 'no data found' message */
+    font-style: italic;
+  }
+  
+  .suggestions-box::-webkit-scrollbar {
+    width: 8px; /* Custom scrollbar width */
+  }
+  
+  .suggestions-box::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px; 
+  }
+  
+  .suggestions-box::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Darker gray on hover */
+  }

@@ -9,7 +9,7 @@ const DocumentsUploading = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [statusCode, setStatusCode] = useState(null);
-
+ 
   useEffect(() => {
     if (!formdata) {
       window.alert("Form Data is not available");
@@ -33,7 +33,7 @@ const DocumentsUploading = () => {
         );
         setStatusCode(response.status);
         if(response.status === 200 || 201) {
-   
+          setStatusCode(response.status);
           navigate('/dashboard');
         }
       } catch (err) {

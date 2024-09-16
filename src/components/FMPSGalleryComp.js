@@ -22,7 +22,7 @@ export default function FMPSGalleryComp({ title, data }) {
                                 <img alt="photoimg" className="Img" src={image.image} style={{borderRadius:"8px"}}/>
                                 {index===1 && remainingImages>0 &&(
                                     <div className="OverFlowContainer d-flex flex-column justify-content-center align-items-center">
-                                        {remainingImages < 10 ? `${remainingImages+1}+` : `${remainingImages}+`}
+                                        {remainingImages < 10 ? `+${remainingImages+1}` : `+${remainingImages}`}
                                     </div>
                                 )}
                             </div>

@@ -3,7 +3,7 @@ import './Applience.css';
 export default function OvenSection(){
     return(
         <>
-            <div className="OvenSection">
+            {/* <div className="OvenSection">
                 <div className="container-fluid  p-0">
                     <div className="row m-0">
                         <div className="col-4">
@@ -149,7 +149,12 @@ export default function OvenSection(){
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+             <div className="under-construction-container">
+            <h1 className="title">We are building something great</h1>
+            <p className="message">Hold for Next update.Catch you soon!</p>
+            <div className="construction-icon">🎉</div>
+        </div>
         </>
     );
 }

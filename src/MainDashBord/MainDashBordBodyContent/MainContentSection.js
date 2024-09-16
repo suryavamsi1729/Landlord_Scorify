@@ -234,7 +234,7 @@ export default function MainContentSection(){
                             }} style={{textDecoration:'none',padding:'0px',width:'calc(50% - 8px)'}}>
                         <CardItm>
                             <h1 className="Heading">Risk Assessment</h1>
-                            <p className="SubHeading">04 %</p>
+                            <p className="SubHeading">{}</p>
                         </CardItm>
                     </Link>
                     </div>
@@ -275,7 +275,7 @@ export default function MainContentSection(){
                     </Link>
                     </div>
                         <div className="AHContainer w-100 d-flex flex-row gap-3">
-                        <Link  to="/dashboard/applience" onClick={()=>{
+                        <Link  to="/dashboard/appliance" onClick={()=>{
                                 dispatch({
                                     type:"path",
                                     payload:{
@@ -295,7 +295,8 @@ export default function MainContentSection(){
                                 </div>
                                 <div className="textItm">
                                     <p className="Subheading">Appliance</p>
-                                    <p className="Subheading2">20th Aug</p>
+                                    {/* <p className="Subheading2">20th Aug</p> */}
+                                    <p className="Subheading2"></p>
                                 </div>
                             </div>
                         </Link>
@@ -320,7 +321,8 @@ export default function MainContentSection(){
                                 </div>
                                 <div className="textItm">
                                     <p className="Subheading">Heating System</p>
-                                    <p className="Subheading2">16th Aug</p>
+                                    {/* <p className="Subheading2">16th Aug</p> */}
+                                    <p className="Subheading2"></p>
                                 </div>
                             </div>
                         </Link>

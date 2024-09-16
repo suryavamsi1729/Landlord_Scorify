@@ -26,12 +26,7 @@ export default function UploadScreen() {
     mandatory: null,
     optional: null, 
   });
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = `0${date.getMonth() + 1}.slice(-2)`;
-    const day = `0${date.getDate()}.slice(-2)`;
-    return `${year}-${month}-${day}`;
-  };
+ 
   const [getoption,setoption] = useState("Gas Safety");
   const SetOption = (ele)=>{
       if(ele === ""){
@@ -96,69 +91,25 @@ export default function UploadScreen() {
       }));
     }
   };
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://cdn.getaddress.io/scripts/getaddress-autocomplete-1.3.6.min.js";
-    script.async = true;
-    document.body.appendChild(script);
 
-    script.onload = () => {
-      
-      if (window.getAddress) {
-        window.getAddress.autocomplete(
-          'textbox_id',
-          'cX9Pb7orKE2O7p4wr9uHZg43744',
-          {
-            output_fields: {
-              formatted_address_1: 'formatted_address_1',
-              formatted_address_2: 'formatted_address_2',
-              formatted_address_3: 'formatted_address_3',
-              formatted_address_4: 'formatted_address_4',
-              postcode: 'postcode'
-            },
-            select_on_focus: true,
-            clear_list_on_select: true,
-            suggestion_count: 6,
-            minimum_characters: 2,
-            bind_output_fields: true
-          }
-        );
-      }
-
-
-      document.addEventListener("getaddress-autocomplete-suggestions", function (e) {
-        console.log(e.suggestions);
-      });
-
-      document.addEventListener("getaddress-autocomplete-suggestions-failed", function (e) {
-        console.log(e.status);
-        console.log(e.message);
-      });
-
-      document.addEventListener("getaddress-autocomplete-address-selected", function (e) {
-        const selectedAddress = e.address;
-
-        setAddress({
-          formatted_address_1: selectedAddress.line_1 || '',
-          formatted_address_2: selectedAddress.line_2 || '',
-          formatted_address_3: selectedAddress.town_or_city || '',
-          formatted_address_4: selectedAddress.county || '',
-          postcode: selectedAddress.postcode || ''
-        });
-      });
-
-      document.addEventListener("getaddress-autocomplete-address-selected-failed", function (e) {
-        console.log(e.status);
-        console.log(e.message);
-      });
-    };
-
-    return () => {
-      document.body.removeChild(script);
-    };
-},[]);
 const [zip,setZip]=useState('');
-  // Handle unselecting the file
+const [suggestions, setSuggestions] = useState([]);
+const [selectedAddress, setSelectedAddress] = useState(null);
+const [inloading, setInloading] = useState(false); 
+const [error, setError] = useState(null);
+const [noData, setNoData] = useState(false);
+  
+  const [address1, setAddress1] = useState('');
+  const [address2, setAddress2] = useState('');
+  const [address3, setAddress3] = useState('');
+  const [postcode, setPostcode] = useState('');
+  const [currentEnergyRating, setCurrentEnergyRating] = useState('');
+  const [potentialEnergyRating, setPotentialEnergyRating] = useState('');
+  const [propertyType, setPropertyType] = useState('');
+  const [inspectionDate, setInspectionDate] = useState('');
+  const [heatingCostCurrent, setHeatingCostCurrent] = useState('');
+  const [heatingCostPotential, setHeatingCostPotential] = useState('');
+  
   const handleUnselect = (fileType) => {
     setFiles((prevFiles) => ({
       ...prevFiles,
@@ -171,7 +122,81 @@ const [zip,setZip]=useState('');
     if (fileType === "inspectionReport") inspectionRef.current.value = null;
   };
 
+
+  //Fetching the data from the input
+  const handleZipChange = async (ev) => {
+    const enteredZip = ev.target.value;
+    setZip(enteredZip);
+
+    if (enteredZip.length >= 2) { // Trigger the API when at least 2 characters are entered
+      setInloading(true); // Show loading indicator
+      setError(null); // Clear previous error
+      setNoData(false); // Reset "No data" state
+
+      try {
+      
+        const formData = new FormData();
+        formData.append('postcode', enteredZip);
+
+       
+        const response = await api.post('landlord/epc/', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+
+        if (response.data.length > 0) {
+          setSuggestions(response.data); // Update suggestions with API data
+          setNoData(false); // Ensure no data flag is false
+        } else {
+          setSuggestions([]); // Clear suggestions
+          setNoData(true); // Show "No data found" message if no results
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Failed to fetch data. Please try again.');
+        setSuggestions([]); // Clear suggestions on error
+      } finally {
+        setInloading(false); // Stop loading indicator
+      }
+    } else {
+      setSuggestions([]);
+      setNoData(false); // Clear "No data" when input is cleared
+    }
+  };
+
+  // Function to handle selection of a suggestion
+  const handleSelect = (address) => {
+    const fullAddress = `${address.address1} ${address.address2} ${address.address3}`;
+    setZip(fullAddress); 
+    setSelectedAddress(address);
+    // setAddress1(address.address1);
+    // setAddress2(address.address2);
+    // setAddress3(address.address3);
+    // setPostcode(address.postcode);
+    // setCurrentEnergyRating(address['current-energy-rating']);
+    // setPotentialEnergyRating(address['potential-energy-rating']);
+    // setPropertyType(address['property-type']);
+    // setInspectionDate(address['inspection-date']);
+    // setHeatingCostCurrent(address['heating-cost-current']);
+    // setHeatingCostPotential(address['heating-cost-potential']);
+    // setSelectedAddress(address)
+    setSuggestions([]); 
+  };
+
   // Handle form submission
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so +1
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const getExpiryDate = (startDate) => {
+    const expiryDate = new Date(startDate);
+    expiryDate.setMonth(expiryDate.getMonth() + 1);
+    return formatDate(expiryDate);
+  };
+
   const handleSubmit = async (e) => {
     if(!zip){
       window.alert("Please enter zipcode");
@@ -207,15 +232,22 @@ const [zip,setZip]=useState('');
       {optionalfiles["Fire Safety"] &&  formData.append("Fire Safety", optionalfiles.EICR);}
       {optionalfiles["Tenancy Agreement"] &&  formData.append("Tenancy Agreement", optionalfiles.EICR);}
       {optionalfiles["Insurance Policy"] &&  formData.append("Insurance Policy", optionalfiles.EICR);}
-      formData.append("date", "2024-06-11");
+      formData.append("date",formatDate(today));
       formData.append("type", "Initial Inspection");
       formData.append("title", "Annual property Inspection Report");
-      formData.append("expiry_date","2024-06-11");
+      formData.append("expiry_date",getExpiryDate(today));
       formData.append("past_inventory", "False");
-      formData.append('address', `${address.formatted_address_1} ${address.formatted_address_2}`);
-      formData.append('zipcode', address.postcode);
-      formData.append('city', `${address.formatted_address_3} ${address.formatted_address_4}`);
-      formData.append('house_name',zip);
+      formData.append('address1', address1);
+      formData.append('address2', address2);
+      formData.append('address3', address3);
+      formData.append('postcode', postcode);
+      formData.append('current-energy-rating', currentEnergyRating);
+      formData.append('potential-energy-rating', potentialEnergyRating);
+      formData.append('property-type', propertyType);
+      formData.append('inspection-date', inspectionDate);
+      formData.append('heating-cost-current', heatingCostCurrent);
+      formData.append('heating-cost-potential', heatingCostPotential); 
+
       dataToContext = {
         ...dataToContext,
         "report":files.inventoryReport,
@@ -231,10 +263,16 @@ const [zip,setZip]=useState('');
         "title":"Annual property Inspection Report",
         "expiry_date":"2024-06-11",
         "past_inventory":"False",
-        'address':`${address.formatted_address_1} ${address.formatted_address_2}`,
-        'zipcode':address.postcode,
-        'city': `${address.formatted_address_3} ${address.formatted_address_4}`,
-        'house_name':zip,
+        'address1': address1,
+         'address2':address2,
+         'address3':address3,
+        'postcode':postcode,
+         'current-energy-rating':currentEnergyRating,
+        'potential-energy-rating':potentialEnergyRating,
+        'property-type':propertyType,
+         'inspection-date':inspectionDate,
+         'heating-cost-current':heatingCostCurrent,
+         'heating-cost-potential':heatingCostPotential
       }
       const token = localStorage.getItem("access_token");
       // const response = await axios.post(
@@ -277,7 +315,7 @@ const [zip,setZip]=useState('');
     const response =await api.post('accounts/sendotp', { 
         email:email 
     });
-      window.alert("Uploaded Successfully");
+      
       setLoading(false);
       navigate("/verifyotp"); 
     } catch (error) {
@@ -304,6 +342,11 @@ const [zip,setZip]=useState('');
   const handleBrowseClick = (ref) => {
     ref.current.click();
   };
+
+//  useEffect(()=>{
+//    console.log(selectedAddress);
+//  },[])
+ 
  
   return (
     <>
@@ -312,15 +355,46 @@ const [zip,setZip]=useState('');
         <div className="Logo">
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
         </div>
-        <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
-                            <div className="InputCol d-flex flex-column w-100">
-                                <label className="userName py-1">Zip Code</label>
-                                <div className="InputContainer">
-                                    {/* <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Code' id="textbox_id" type="text" /> */}
-                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Zip Code' id="textbox_id" type="text" required/>
-                                </div>
-                            </div>
-            </div>
+        <div>
+      <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
+        <div className="InputCol d-flex flex-column w-100">
+          <label className="userName py-1">Zip Code</label>
+          <div className="InputContainer position-relative">
+            <input
+              className="pswEle"
+              onChange={handleZipChange}
+              value={zip}
+              placeholder="Enter Zip Code"
+              id="textbox_id"
+              type="text"
+              required
+            />
+           
+            {suggestions.length > 0 && (
+              <div className="suggestions-box">
+                {suggestions.map((item, index) => (
+                  <div
+                    key={index}
+                    className="suggestion-item"
+                    onClick={() => handleSelect(item)}
+                  >
+                    {`${item.address1} ${item.address2} ${item.address3}`.trim()}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            
+            {noData && (
+              <div className="no-data-message">No data found for this postcode.</div>
+            )}
+          </div>
+        </div>
+      </div>
+      {inloading && <p>Loading suggestions...</p>}
+      {error && <p className="error">{error}</p>}
+
+    </div>
         <h1 className="HeadingProfile m-0 text-center">Upload Document</h1>
 
         <div className="w-100 h-auto">

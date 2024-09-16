@@ -3,11 +3,18 @@ import'./Applience.css';
 import ApplienceComp from "./ApplienceComp";
 import { Link } from "react-router-dom";
 import { MainContext } from "../Context/MainContext";
+import './Construction.css';
+
 export default function ApplienceSection(){
     const {dispatch} = useContext(MainContext);
     return(
         <>
-            <div className="ApplienceSection">
+            <div className="under-construction-container">
+            <h1 className="title">We are building something great</h1>
+            <p className="message">Hold for Next update.Catch you soon!</p>
+            <div className="construction-icon">🎉</div>
+        </div>
+            {/* <div className="ApplienceSection">
                 <div className="container-fluid">
                     <div className="row m-0 gy-4">
                         <div className="col-6">
@@ -122,7 +129,7 @@ export default function ApplienceSection(){
                     </div>
                 </div>
                 
-            </div>
+            </div> */}
         </>
     )
 }

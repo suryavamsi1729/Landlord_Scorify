@@ -14,7 +14,7 @@ const FileSpinner=({statusCode}) => {
       return;
     }
 
-    const totalDuration = 7 * 60 * 1000; 
+    const totalDuration=7*60*1000; 
     const intervalDuration=1000; 
     const progressIncrement=100/(totalDuration/intervalDuration);
 
@@ -26,7 +26,7 @@ const FileSpinner=({statusCode}) => {
     },intervalDuration);
 
     if(progress<33) {
-      setStatus("Extracting data");
+      setStatus("Extracting data"); //Fetching images,
     } else if(progress<50){
       setStatus("Analyzing with AI");
     } else if(progress<70){

@@ -8,7 +8,7 @@ export default function CardsComp({prop,age}) {
         <>
             <div className="CardsContainer">
                 <HouseInfoCard data={{ heading: prop, subheading: "Property Type" }} />
-                <HouseInfoCard data={{ heading: "04 Years", subheading: "Current Tenancy" }} />
+                <HouseInfoCard data={{ heading: "", subheading: "Current Tenancy" }} />
                 <HouseInfoCard data={{ heading: age, subheading: "House Age" }} />
             </div>
         </>
