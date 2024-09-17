@@ -10,7 +10,7 @@ export default function  RadialGaugeComp ({value,title}) {
   // const angelEnd = 130;
   useEffect(
     ()=>{
-      const percent = (value/100)*100;
+      const percent = (value/1000)*100;
   const angel = ((percent/100)*260) - 130;
   const angelStart= -130;
   const angelEnd = 130;

@@ -1,6 +1,7 @@
 import {React,useState,useEffect} from "react";
 import './OpenRepairsSection.css';
 import ORSSBButton from "./ORSSBButtons";
+import api from "../api";
 import ORSGraphSection from "./ORSGraphSection";
 const removeClick =()=>{
     const elements = document.querySelectorAll('.ORSSBBtn');
@@ -8,7 +9,24 @@ const removeClick =()=>{
         itm.classList.remove('ORSSBBtnActive');
     })
 }
+
+
+
 export default function RMSSideBar({clickEvent}){
+    const [mscore,setMscore]=useState('')
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get("landlord/regular-maintenance/service-history/");
+                const data = response.data; 
+                setMscore(data.maintenance_score);
+            
+            } catch (err) {
+                console.log("Error while fetching Data", err);
+            }
+        };
+        fetchData();
+    }, []);
     useEffect(()=>{
         clickEvent('Up-Coming Service');
         removeClick();
@@ -36,7 +54,7 @@ export default function RMSSideBar({clickEvent}){
                             }} name={'Service History'}/>
                     </div>
                     <div className="col-12 p-0">
-                        <ORSGraphSection heading={"Regular Maintenance Score"}/>
+                        <ORSGraphSection heading={"Regular Maintenance Score"} value={mscore}/>
                     </div>
                 </div>
             </div>

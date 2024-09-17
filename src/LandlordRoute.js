@@ -43,8 +43,7 @@ export default function LandLordNewRoute() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to="/login"/>}/>
-                <Route path="/login" element={<LoginPage/>} /> 
-                <Route path="/bar" element={<FileSpinner/>}/>
+                <Route path="/login" element={<LoginPage/>}/> 
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
                 <Route path="/upload" element={<MianProvider><FormDataProvider><UploadScreen/></FormDataProvider></MianProvider>}/>

@@ -70,7 +70,17 @@ export default function SubHeaderSection(props){
                         mypathArray.map((itm,i)=>{
                             return (
                                 <>
-                                    <h5 className={`${i!==mypathArray.length-1?"PathTextInactive":"PathText"} m-0`} onClick={()=>navigate(`/${itm}`)} style={{cursor:'pointer'}}>{itm}</h5>
+                                    <h5 className={`${i!==mypathArray.length-1?"PathTextInactive":"PathText"} m-0`} onClick={() => {
+  if (itm === "floormapandphotos") {
+    navigate("/dashboard/floormapandphotos");
+  }
+  else if(itm==="riskassessment"){
+    navigate("/dashboard/riskassessment");
+  }
+   else {
+    navigate(`/${itm}`);
+  }
+}} style={{cursor:'pointer'}}>{itm}</h5>
                                     <h5 className={`${i===mypathArray.length-1?"PathTextSpecialInactive":"PathTextSpecial"} m-0`}>/</h5>
                                 </>
                             );

@@ -3,13 +3,13 @@ import { FormDataContext } from "../../Context/FormDataContext";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import FileSpinner from '../../components/Spinner/FileSpinner';
-
+import { base_path } from '../../config';
 const DocumentsUploading = () => {
   const { formdata } = useContext(FormDataContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [statusCode, setStatusCode] = useState(null);
- 
+  
   useEffect(() => {
     if (!formdata) {
       window.alert("Form Data is not available");
@@ -22,7 +22,7 @@ const DocumentsUploading = () => {
         setLoading(true);
         const token = localStorage.getItem("access_token");
         const response = await axios.post(
-          "http://127.0.0.1:8000/landlord/upload-report/",
+          `${base_path}landlord/upload-report/`,
           formdata,
           {
             headers: {
@@ -34,7 +34,7 @@ const DocumentsUploading = () => {
         // setStatusCode(response.status);
         if(response.status === 201){
           setStatusCode(response.status);
-          navigate('/dashboard');
+          // navigate('/dashboard');
         }
       } catch (err) {
         setLoading(false);

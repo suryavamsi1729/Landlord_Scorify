@@ -9,7 +9,7 @@ export default function ORSGraphSection({value,heading}){
         <>
             <div className="ORSGraphSection d-flex flex-column align-items-center gap-2 p-3">
                 <h1 className="Heading">{heading}</h1>
-                <RadialGaugeComp value={value} title={heading}/>
+                <RadialGaugeComp value={value} title={heading} />
                 {/* <SMHBVentilationGraph score={75} title={"Ventilation Score"}/> */}
             </div>
         </>
