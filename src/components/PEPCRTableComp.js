@@ -43,10 +43,10 @@ export default function PEPCRTableComp(){
                                 <div className='EERrow-1 col-head'>EER</div>
                                 <div className='EERrow-2 d-flex flex-row'>
                                     <div className='EERrow-itm1 col-head w-50 h-100'>
-                                        current
+                                        Current
                                     </div>
                                     <div className='EERrow-itm2 col-head w-50 h-100'>
-                                        current
+                                        Potential
                                     </div>
                                 </div>
                             </div>

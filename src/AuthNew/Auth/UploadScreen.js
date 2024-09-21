@@ -200,7 +200,11 @@ const [noData, setNoData] = useState(false);
 
   const handleSubmit = async (e) => {
     if(!zip){
-      window.alert("Please enter zipcode");
+      window.alert("Please enter Postcode");
+      return;
+    }
+    if(!files.inventoryReport){
+      window.alert("Please upload the inventoryReport");
       return;
     }
     e.preventDefault();
@@ -365,13 +369,13 @@ const [noData, setNoData] = useState(false);
         <div>
       <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
         <div className="InputCol d-flex flex-column w-100">
-          <label className="userName py-1">Zip Code</label>
+          <label className="userName py-1">Post Code</label>
           <div className="InputContainer position-relative">
             <input
               className="pswEle"
               onChange={handleZipChange}
               value={zip}
-              placeholder="Enter Zip Code"
+              placeholder="Enter Post Code"
               id="textbox_id"
               type="text"
               required

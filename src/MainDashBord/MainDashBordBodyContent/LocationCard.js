@@ -34,7 +34,7 @@ export default function LocationCard({data}){
                     </div>
                     <div className="HousInfoWrapper">
                         <div className="TextInfoWrapper">
-                            <p className="ZipCodeInfo">{`Zip Code:`}</p>
+                            <p className="ZipCodeInfo">{`PostCode:`}</p>
                             <p className="ZipcodeVal">{data.ZipCode}</p>
                         </div>
                         <div className="RoomInfoContainer">

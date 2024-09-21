@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import './RegularMaintainens.css';
 import MaintenanceSchedularItm from "./MaintenanceSchedularItm";
@@ -44,9 +45,9 @@ export default function RMMaintenanceSchedule() {
     };
 
     return (
-        <div className="w-100 h-100 RMMaintenanceSchedule d-flex flex-column justify-content-between p-2">
+        <div className="w-100 h-100 RMMaintenanceSchedule d-flex flex-column justify-content-start p-2">
             {data.length === 0 ? (
-                <div className="noDataCell">No data available</div>
+                <div>No data available</div>
             ) : (
                 data.map((item) => (
                     <MaintenanceSchedularItm

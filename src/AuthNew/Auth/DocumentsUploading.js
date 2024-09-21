@@ -32,7 +32,7 @@ const DocumentsUploading = () => {
           }
         );
         // setStatusCode(response.status);
-        if(response.status === 201){
+        if(response.status===201){
           setStatusCode(response.status);
           // navigate('/dashboard');
         }

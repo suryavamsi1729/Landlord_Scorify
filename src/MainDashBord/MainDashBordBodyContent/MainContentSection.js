@@ -96,8 +96,8 @@ export default function MainContentSection(){
                     Repair:response.data.properties[0].property[0].open_repair_count,
                     Duedate: formattedDate,  
                     mvperc:response.data.properties[0].ventilation_score,
-                    Pstat:response.data.properties[0].current_score,
-                    Cstat:response.data.properties[0].potential_score,
+                    Cstat:response.data.properties[0].current_score,
+                    Pstat:response.data.properties[0].potential_score,
                     // Tname:response.data.tenants[0].name,
                     // Tnumber:response.data.tenants[0].phone_number
                 });

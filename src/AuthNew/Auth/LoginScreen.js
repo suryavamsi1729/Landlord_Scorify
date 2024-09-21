@@ -2,13 +2,16 @@ import React, { useRef, useState,useEffect} from "react";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import api from '../../api'
+import api from '../../api';
+import Spinner from "../../components/Spinner/Spinner";
+
 
 export default function LoginScreen({ setpageRender }) {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const [toggleIcon, setToggleIcon] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const HideShowPwd = () => {
@@ -28,6 +31,7 @@ export default function LoginScreen({ setpageRender }) {
     },[navigate]);
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         try {
             const response = await api.post('accounts/login/', {
@@ -36,18 +40,23 @@ export default function LoginScreen({ setpageRender }) {
             });
 
             if (response.status === 200){
+                setLoading(false);
                 const { refresh,access}=response.data.token;
                 localStorage.setItem('access_token', access);
                 localStorage.setItem('refresh_token',refresh);
                 navigate('/dashboard');
             }
-        } catch (error) {
+        }catch(error){
+            setLoading(false);
             setErrorMessage('Enter correct email or password');
+        }finally{
+            setLoading(false);
         }
     };
 
     return (
         <>
+            {loading && <Spinner/>}
             <div className="Heading">
                 <h1 className="HeadingText m-0">Login</h1>
                 <p className="loginHeadingText m-0">

@@ -37,6 +37,7 @@ import FileUpload from "./AuthNew/Auth/FileUpload";
 import { FormDataProvider } from "./Context/FormDataContext";   
 import DocumentsUploading from "./AuthNew/Auth/DocumentsUploading";
 import FileSpinner from "./components/Spinner/FileSpinner";
+
 import AIScoreFix from "./components/AIScoreFix";
 export default function LandLordNewRoute() {
     return (
@@ -44,6 +45,7 @@ export default function LandLordNewRoute() {
             <Routes>
                 <Route path="/" element={<Navigate to="/login"/>}/>
                 <Route path="/login" element={<LoginPage/>}/> 
+                <Route path="/bar" element={<FileSpinner/>}/>
                 <Route path="/zipcode" element={<AddressLookup/>}/>
                 <Route path="/signup" element={<MianProvider><ProfileScreen/></MianProvider>}/>
                 <Route path="/upload" element={<MianProvider><FormDataProvider><UploadScreen/></FormDataProvider></MianProvider>}/>

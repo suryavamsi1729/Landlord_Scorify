@@ -102,6 +102,7 @@ export default function ProfileScreen() {
             setLoading(false);
             if (response.status === 200){
                 navigate('/upload');
+                window.scrollTo(0, 0);
             }
             else if(response.status===409){
                 window.alert("User already Exists");
@@ -309,10 +310,10 @@ export default function ProfileScreen() {
                         </div>
                         <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
                             <div className="InputCol d-flex flex-column w-100">
-                                <label className="userName">Zip Code</label>
+                                <label className="userName">Post Code</label>
                                 <div className="InputContainer">
                                     {/* <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Code' id="textbox_id" type="text" /> */}
-                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Zip Code' id="textbox_id" type="text" required/>
+                                    <input className="pswEle" onChange={(ev) => setZip(ev.target.value)} placeholder='Enter Post Code' id="textbox_id" type="text" required/>
                                 </div>
                             </div>
                         </div>
