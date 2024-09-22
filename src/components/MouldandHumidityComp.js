@@ -22,7 +22,6 @@ export default function MouldandHumidityComp() {
         const fetchData = async () => {
             try {
                 const response = await api.get('landlord/mould/');
-                // console.log(response);
                 setAvgData(response.data.mould[0].avg_humidity_30_days);
                 setLtData(response.data.mould[0].humidity);
                 setCity(response.data.city);

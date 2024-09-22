@@ -122,20 +122,20 @@ export default function MainContentSection(){
         return `${day}${daySuffix} ${month}`;
     };
 
-     useEffect(()=>{
-         const fetchData=async()=>{
-            try{ 
+    //  useEffect(()=>{
+    //      const fetchData=async()=>{
+    //         try{ 
 
-                const Agentres=await api.get("landlord/agent/");
-                setAgname(Agentres.data.data.name);
-                setAgnum(Agentres.data.data.phone);
-                setAgimg(Agentres.data.data.profile_photo)
-            }catch(err){
-                console.log(err);
-            }
-         }
-         fetchData();
-     },[])
+    //             const Agentres=await api.get("landlord/agent/");
+    //             setAgname(Agentres.data.data.name);
+    //             setAgnum(Agentres.data.data.phone);
+    //             setAgimg(Agentres.data.data.profile_photo)
+    //         }catch(err){
+    //             console.log(err);
+    //         }
+    //      }
+    //      fetchData();
+    //  },[])
 
     return(
         <>
