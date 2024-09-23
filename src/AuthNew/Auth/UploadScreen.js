@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
 import { MainContext } from '../../Context/MainContext';
 import api from "../../api";
-
+import VacantDropDown from "./VacantDropDown";
 export default function UploadScreen() {
   const {email} = useContext(MainContext);
   const {dispatch,formdata} = useContext(FormDataContext);
@@ -32,6 +32,7 @@ const [selectedAddress, setSelectedAddress] = useState(null);
 const [inloading, setInloading] = useState(false); 
 const [error, setError] = useState(null);
 const [noData, setNoData] = useState(false);
+const [selectedOption, setSelectedOption] = useState(''); //occupancy selected one
   
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
@@ -139,7 +140,6 @@ const [noData, setNoData] = useState(false);
         const formData = new FormData();
         formData.append('postcode', enteredZip);
 
-       
         const response = await api.post('landlord/epc/', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
@@ -201,11 +201,13 @@ const [noData, setNoData] = useState(false);
   const handleSubmit = async (e) => {
     if(!zip){
       window.alert("Please enter Postcode");
-      return;
     }
     if(!files.inventoryReport){
       window.alert("Please upload the inventoryReport");
-      return;
+    }
+    if(!selectedOption){
+      window.alert("Please select occupancy status");
+      // return;
     }
     e.preventDefault();
     setLoading(true);
@@ -253,6 +255,7 @@ const [noData, setNoData] = useState(false);
       formData.append('heating-cost-current', heatingCostCurrent);
       formData.append('heating-cost-potential', heatingCostPotential); 
       formData.append('current-energy-efficiency',currentenergyefficiency);
+      formData.append('user_type','landlord')
       dataToContext = {
         ...dataToContext,
         "report":files.inventoryReport,
@@ -278,26 +281,10 @@ const [noData, setNoData] = useState(false);
          'inspection-date':inspectionDate,
          'heating-cost-current':heatingCostCurrent,
          'heating-cost-potential':heatingCostPotential,
-         'current-energy-efficiency':currentenergyefficiency
+         'current-energy-efficiency':currentenergyefficiency,
+         'user_type':"landlord",
       }
       const token = localStorage.getItem("access_token");
-      // const response = await axios.post(
-      //   "",
-      //   formData,
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //     onUploadProgress: ({ loaded, total }) => {
-      //       const percentCompleted = Math.round((loaded / total) * 100);
-      //       setUploadProgress(percentCompleted);
-      //     },
-      //   }
-      // );
-
-     
-
       setUploadProgress(0);
       setUploadComplete((pre) => ({
         ...pre,
@@ -319,7 +306,8 @@ const [noData, setNoData] = useState(false);
       });
 
     const response =await api.post('accounts/sendotp', { 
-        email:email 
+        email:email,
+        user_type:"landlord" 
     });
      if(response.status==201){
         navigate("/verifydocuments");
@@ -352,13 +340,7 @@ const [noData, setNoData] = useState(false);
     ref.current.click();
   };
 
-//  useEffect(()=>{
-//   const today=new Date();
-//    console.log(formatDate(today).toString());
-//    console.log(selectedAddress['current-energy-efficiency'])
-//  },[])
- 
- 
+
   return (
     <>
       {loading && <Spinner/>}
@@ -367,10 +349,11 @@ const [noData, setNoData] = useState(false);
           <img className="BrandLogoImg" src="/BrandLogo.jpg" alt="BrandLogo" />
         </div>
         <div>
+        <h1 className="HeadingProfile m-0 text-center">Property Details</h1>
       <div className="InputRows d-flex flex-row justify-content-center align-items-center gap-3">
         <div className="InputCol d-flex flex-column w-100">
           <label className="userName py-1">Post Code</label>
-          <div className="InputContainer position-relative">
+          <div className="InputContainer position-relative" style={{backgroundColor:'#c6c6c699'}}>
             <input
               className="pswEle"
               onChange={handleZipChange}
@@ -393,9 +376,7 @@ const [noData, setNoData] = useState(false);
                   </div>
                 ))}
               </div>
-            )}
-
-            
+            )}  
             {noData && (
               <div className="no-data-message">No data found for this postcode.</div>
             )}
@@ -404,6 +385,7 @@ const [noData, setNoData] = useState(false);
       </div>
       {inloading && <p>Loading suggestions...</p>}
       {error && <p className="error">{error}</p>}
+      <VacantDropDown setoption={setSelectedOption}/>
 
     </div>
         <h1 className="HeadingProfile m-0 text-center">Upload Document</h1>

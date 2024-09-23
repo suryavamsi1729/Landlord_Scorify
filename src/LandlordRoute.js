@@ -19,8 +19,6 @@ import RiskDowload from './components/RiskDowload';
 import ApplienceSection from './components/ApplienceSection';
 import OvenSection from './components/OvenSection';
 import HeatingSystem from './components/HeatingSystem';
-// import Calendar from './AgentComponents/Calendar/Calendar';
-// import Properties from './AgentComponents/Properties/Properties';
 import MaintenanceandRepair from './AgentComponents/MaintenanceandRepair/MaintenanceandRepair';
 import ReportMainContent from './AgentComponents/Report/ReportsMainContent';
 import Inspection from './AgentComponents/Inspection/Inspection';
@@ -37,8 +35,9 @@ import FileUpload from "./AuthNew/Auth/FileUpload";
 import { FormDataProvider } from "./Context/FormDataContext";   
 import DocumentsUploading from "./AuthNew/Auth/DocumentsUploading";
 import FileSpinner from "./components/Spinner/FileSpinner";
-
 import AIScoreFix from "./components/AIScoreFix";
+import SetPasswordPage from "./AuthNew/Auth/SetPasswordPage";
+import PasswordSetSuccessful from "./AuthNew/Auth/PasswordSetSuccessful";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
@@ -51,7 +50,9 @@ export default function LandLordNewRoute() {
                 <Route path="/upload" element={<MianProvider><FormDataProvider><UploadScreen/></FormDataProvider></MianProvider>}/>
                 <Route path="/verifydocuments" element={<FormDataProvider><DocumentsUploading/></FormDataProvider>}/>
                 <Route path="/verifyotp" element={<MianProvider><FormDataProvider><OtpScreen/></FormDataProvider></MianProvider>}/>
-                <Route path="/forgotpassword" element={<ForgotPasswordPage/>}/>
+                <Route path="/forgotpassword" element={<MianProvider><ForgotPasswordPage/></MianProvider>}/>
+                <Route path="/setpassword" element={<MianProvider><SetPasswordPage/></MianProvider>}/>
+                <Route path="/success" element={<PasswordSetSuccessful/>    }/>
                 <Route path="/dashboard" element={<PrivateRoute element={<MainDashBordComp><MainContentSection/></MainDashBordComp>}/>}/>
                 <Route path="/propertytimeline" element={<PrivateRoute element={<MainDashBordComp><PropertytimeLineBodyContent /></MainDashBordComp>} />} />
                 <Route path='/dashboard/inspections&inventory' element={<PrivateRoute element={<MainDashBordComp><InspectionInventory /></MainDashBordComp>} />} />

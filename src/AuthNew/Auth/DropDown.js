@@ -4,7 +4,6 @@ export default function DropDown({setoption}){
     const [selectedOption, setSelectedOption] = useState('');
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
-        console.log(event.target.value);
         setoption(event.target.value);
     };
     const handleContainerClick = () => {

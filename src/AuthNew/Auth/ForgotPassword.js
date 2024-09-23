@@ -1,37 +1,55 @@
 import React,{useEffect} from "react";
 import './Login.css';
 import { useState,useRef } from 'react';
+import { useContext } from "react";
+import { MainContext } from "../../Context/MainContext";
+import Spinner from "../../components/Spinner/Spinner";
 import {useNavigate} from "react-router-dom";
 import api from "../../api";
 export default function ForgotPassword({setpageRender}){
     const [getEmail,setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [success,setSucess]=useState('');
-    const navigate=useNavigate();
-    useEffect(()=>{
-      
-    },[]);
-    
-
-    const handleSubmit = async (e) => {
+    const navigate=useNavigate();   
+    const [loading, setLoading] = useState(false);
+    const {dispatch} = useContext(MainContext);
+    const handleSubmit = async (e) =>{
+        setLoading(true);
+        setErrorMessage('');
+        setSucess('');
         e.preventDefault();
+        dispatch({
+            type:"emailset",
+            payload:{
+                email:getEmail
+            },
+        });
         try {
             const response = await api.post('accounts/forgot-password/', {
                 email: getEmail,
             });
-            console.log(response.data.message);
-            if (response.status === 200){
+            
+            if (response.status ===200){
+                    setLoading(false);
                     setSucess('Link sent successfully to your email');
+                    navigate('/setpassword');
             }
-            else if(response.status===404){
-                   setErrorMessage("Email not found");
+            
+        }catch(error){
+            setLoading(false);
+            if (error.response && error.response.status === 404) {
+                setErrorMessage("Email not found");
+            } else {
+                setErrorMessage("Enter correct email");
             }
-        } catch (error) {
-            setErrorMessage("Enter correct email");
+        }finally{
+            setLoading(false);
+           
         }
     };
     return(
         <>
+            {loading && <Spinner/>}
              <div style={{cursor:'pointer'}} className='navigatebefor d-flex flex-column justify-content-center align-items-center' onClick={()=>navigate('/login')}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.25 12.2743L19.25 12.2743" stroke="#21296D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,26 +64,28 @@ export default function ForgotPassword({setpageRender}){
                     </p>
                 </div>
                 <form className="FormEleContainer d-flex flex-column gap-3" onSubmit={handleSubmit}>
-                {errorMessage && (
-                        <p className="error-message" style={{ color: 'red' }}>
-                            {errorMessage}
-                        </p>
-                    )}
-                    {success && (
-                        <p className="error-message" style={{ color: 'green' }}>
-                            {success}
-                        </p>
-                    )}
+              
                     <div className="inputEle d-flex flex-column gap-3">
                         <label className="userName">Email Address</label>
                         <input className="UserNameinput" onChange={(ev) => setEmail(ev.target.value)} placeholder='Enter Email Address' required type="email"/>
                     </div>
                     <button className="submitButton">Send Email</button>
                 </form>
+                {(errorMessage || success)&&(
+                            <p
+                    className="message"
+                    style={{
+                        color: errorMessage ? 'red' : 'green',
+                        fontSize: '18px',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    {errorMessage || success}
+                </p>)}
             </div>
             <div className="w-100 d-flex flex-row justify-content-between">
-                    <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                    <p className="Text-ele text-end m-0">+385-1-555-66-36</p>
+                    <p className="Text-ele text-start m-0"></p>
+                    <p className="Text-ele text-end m-0"></p>
             </div>
         </>
     );

@@ -2,15 +2,8 @@ import { useState } from 'react';
 import React from "react";
 import './Login.css';
 import LoginScreen from './LoginScreen';
-import ForgotPassword from './ForgotPassword';
-import SetPassword from './SetPassword';
-import Signup from './Signup';
 export default function LoginPage({updateSate}){
-    const [getUserName,setUserName] = useState('');
-    const [getPassword,setPassword] = useState('');
     const [pageRender,setpageRender] = useState('login');
-    const [getEmail,setEmail] = useState('');
- 
     return(
         <div className="MaintaontainerLogin">
             <div className="container-fluid p-0">

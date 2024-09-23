@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import React from "react";
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 export default function PasswordSetSuccessful({setoptionPages}){
+    const navigate=useNavigate();
     return(
         <>
             <div className='PasswordSetcontainer d-flex flex-column align-itmes-center'>
@@ -18,12 +20,12 @@ export default function PasswordSetSuccessful({setoptionPages}){
                         <h1 className='HeadingText text-center m-0'>The password has been successfully set.</h1>
                         <p className='SubHeadingText text-center m-0'>You will be redirected to the login page.</p>
                     </div>
-                    <button className='BackToLoginBtn' onClick={()=>{setoptionPages('login')}}>Back to Login</button>
+                    <button className='BackToLoginBtn' onClick={()=>navigate('/login')}>Back to Login</button>
                     
                 </div>
                 <div className="w-100 d-flex flex-row justify-content-between">
-                    <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                    <p className="Text-ele text-end m-0">+385-1-555-66-36</p>
+                    <p className="Text-ele text-start m-0"></p>
+                    <p className="Text-ele text-end m-0"></p>
                 </div>
             </div>
         </>

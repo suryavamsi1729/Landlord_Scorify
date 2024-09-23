@@ -1,34 +1,59 @@
 import React from "react";
 import './Login.css';
-import { useState,useRef } from 'react';
-import axios from "axios";
+import { useState,useRef,useContext,useEffect} from 'react';
+import api from "../../api";
+import { MainContext } from '../../Context/MainContext';
+import Spinner from '../../components/Spinner/Spinner';
+import {useNavigate} from "react-router-dom";
+
 export default function SetPassword({updateSate}){
+    const {email} = useContext(MainContext);
     const [getPassword1,setPassword1] = useState('');
     const [getPassword2,setPassword2] = useState('');
     const [toggleIcon1,setToggleIcon1] = useState(false);
     const [toggleIcon2,setToggleIcon2] = useState(false);
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [success,setSucess]=useState('');
+    const navigate=useNavigate();
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSucess('');
+        setError('');
+        setLoading(true);
         if (getPassword1 !== getPassword2) {
-            setError("Passwords do not match.");
-            return;
+            setError("Passwords do not match.");  
         }
-        try {
-            const response = await axios.post('/api/update-password', {
-                password: getPassword1
+        if (!passwordRegex.test(getPassword1) && !passwordRegex.test(getPassword2) ) {
+            setError("Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character");
+            setLoading(false);
+        }
+        try{
+            const response = await api.put('accounts/change-password/',{
+                email:email,              
+                password: getPassword1,
+                password1:getPassword2
+                
             });
 
-            if (response.status === 200) {
-                updateSate('success');
-            } else {
-                setError("Failed to update password.");
+            if (response.status === 200){
+                setLoading(false);
+                navigate('/success');   
             }
-        } catch (err) {
-            setError("An error occurred: " + err.message);
+        }catch(err){
+            setLoading(false);
+            if (error.response && error.response.status===404) {
+                setError("User with the given email does not exist");
+            }else{
+                setError("An UnExpected error occurred");
+            }
+        }finally{
+             setLoading(false);
         }
     };
+   
     const HideShowPwd = (val)=>{
         const ele = document.querySelectorAll('.pswEle');
        switch (val) {
@@ -58,6 +83,7 @@ export default function SetPassword({updateSate}){
     }
     return(
         <>
+          {loading && <Spinner/>}
             <div className="FormConatiner d-flex flex-column align-items-center" style={{gap:'80px'}}>
                 <div className="Heading">
                     <h1 className="HeadingText m-0">Set New Password</h1>
@@ -110,13 +136,23 @@ export default function SetPassword({updateSate}){
                             </div>
                         </div>
                     </div>
-                    {error && <p className="error-message">{error}</p>}
-                    <button className="submitButton" onClick={()=>{updateSate('success')}}>Submit</button>
+                    <button className="submitButton" >Submit</button>
                 </form>
+                {(error || success)&&(
+                            <p
+                    className="message"
+                    style={{
+                        color: error ? 'red' : 'green',
+                        fontSize: '18px',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    {error|| success}
+                </p>)}
             </div>
             <div className="w-100 d-flex flex-row justify-content-between">
-                <p className="Text-ele text-start m-0">EcoMobile d.o.c.</p>
-                <p className="Text-ele text-end m-0">+385-1-555-66-36</p>
+                <p className="Text-ele text-start m-0"></p>
+                <p className="Text-ele text-end m-0"></p>
             </div>
         </>
     );

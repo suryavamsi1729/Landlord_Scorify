@@ -37,7 +37,7 @@ export default function MouldandHumidityComp() {
             }
         };
         fetchData();
-    }, []);
+    }, [avgData,ltData,city,condition,temperature,humidity,hdata,ldata,tempcond,dew]);
 
     const data = [
         {
