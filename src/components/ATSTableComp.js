@@ -9,19 +9,20 @@ export default function ATSTableComp(){
             </tr>
             <tr>
                 <td className="Name">Start Date</td>
-                <td className="NameVal">{`12/05/2024`}</td>
+                <td className="NameVal">{``}</td>
             </tr>
             <tr>
                 <td className="Name">End Date</td>
-                <td className="NameVal">{`25/05/2024`}</td>
+                <td className="NameVal">{``}</td>
             </tr>
             <tr>
                 <td className="Name">Rent Amount</td>
-                <td className="NameVal">{`$ 2200`}</td>
+                {/* <td className="NameVal">{`$ 2200`}</td> */}
+                <td className="NameVal">{`$`}</td>
             </tr>
             <tr>
                 <td className="Name">Deposit</td>
-                <td className="NameVal">{`$ 2000`}</td>
+                <td className="NameVal">{`$`}</td>
             </tr>
         </table>
         </>

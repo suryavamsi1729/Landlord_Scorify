@@ -4,7 +4,7 @@ import SMHVentilationScoreCard from "./SMHBVentilationScoreCard";
 import SMHGraphComp from "./SMHGraphComp";
 import SMHTCardsComp from "./SMHTCardsComp";
 import api from "../api";
-
+import DataSpinner from "./Spinner/DataSpinner";
 export default function MouldandHumidityComp() {
    
     const [avgData, setAvgData] = useState(null);
@@ -17,11 +17,21 @@ export default function MouldandHumidityComp() {
     const [ldata, setLdata] = useState(null);
     const [tempcond, setTempcond] = useState(null);
     const [dew, setDew] = useState(null);
-
+    const [details,SetDetails]=useState([]);
+    const [score,setScore]=useState("0");
+    const [loading,setLoading]=useState(false);
     useEffect(() => {
+        setLoading(true);
         const fetchData = async () => {
             try {
                 const response = await api.get('landlord/mould/');
+                if(response.status==200){
+                   setLoading(false);
+                }
+                let k=response.data.mould[0].mould_presence_90_days;
+                let fd=Object.values(k).map(val=>parseInt(val));
+                SetDetails(fd);
+                setScore(response.data.mould[0].ventilation_score);
                 setAvgData(response.data.mould[0].avg_humidity_30_days);
                 setLtData(response.data.mould[0].humidity);
                 setCity(response.data.city);
@@ -56,6 +66,7 @@ export default function MouldandHumidityComp() {
 
     return (
         <>
+            {loading && <DataSpinner/>}
             <div className="SectionModuleandHumidty">
                 <div className="container-fluid p-0">
                     <div className="row g-3 m-0">
@@ -67,7 +78,7 @@ export default function MouldandHumidityComp() {
                         <div className="col-12 col-md-6 col-lg-4">
                             <div className="row m-0">
                                 <div className="col-12 mb-3 p-0">
-                                    <SMHVentilationScoreCard />
+                                    <SMHVentilationScoreCard  score={score}/>
                                 </div>
                                 <div className="col-6 p-0 pe-2">
                                     <div className="Wethercard d-flex flex-column justify-content-around align-items-center p-3 gap-2" style={{ backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/b87d/5c38/e9be0bd4446dbc59190e8deb01de2c9e?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ju9GtX0sySNt-Kr6tepLR87lB2pVJjQ9MSUnnFu1dlTe~hGA3KJsHl5tDlv4mIi~EsAd5QgfyQ9K924DTvE2YxPpTrN4XzqwMmWnfTzMQ2PUIdoYFM6iza3kX5Lp1OlTCIx~TNmdTRIzLCPE3rKONlLFneWOWy-mu0UOrWRGsyGnATadRGhZtq6q1OqyFE6reO5wAHGkSWmzfcrzlIW56J2mYzBEt6Rd7vvymFb6vIZMmXVtQgQlcwmXbtlDN-JP1eWEUk2UK6oLt4sozVMS7NoD5GjnuBGeu-luhMXos2WhTcVAq89CMSVsohYZJWtyWCQt-O~AbICN3cNh32nDzg__)', backgroundSize: 'cover' }}>
@@ -109,7 +120,7 @@ export default function MouldandHumidityComp() {
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-8">
-                            <SMHGraphComp />
+                            <SMHGraphComp details={details}/>
                         </div>
                     </div>
                 </div>

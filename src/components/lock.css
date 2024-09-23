@@ -1,0 +1,73 @@
+.graph-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.6); /* Subtle white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.locked {
+    cursor: not-allowed;
+}
+
+.blurred {
+    filter: blur(8px); /* Strong blur effect */
+    pointer-events: none; /* Prevent interactions with the graph */
+    opacity: 0.7; /* Slight transparency */
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+/* Lock icon with circular background */
+.lock-circle {
+    background-color: rgba(255, 255, 255, 0.8); /* White background for circle */
+    border-radius: 50%;
+    padding: 15px; /* Adjust padding for circle size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow for lock */
+}
+
+.lock-icon {
+    font-size: 48px; /* Decreased size for lock icon */
+    color: #000; /* Black color for lock */
+}
+
+/* "Updated soon" text */
+.updated-soon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 18px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Shadow for updated text */
+}
+
+/* Overall container appearance */
+.TPSGraphSection {
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.Heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}

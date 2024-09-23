@@ -1,64 +1,71 @@
-import React,{useState,useEffect} from "react";
-import "./TenantProfileSectionStyle.css";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart, elements } from "chart.js/auto";
-import axios from "axios";
+import { Chart } from "chart.js/auto";
+import { FaLock } from "react-icons/fa"; // Import lock icon
+import "./TenantProfileSectionStyle.css";
+import "./lock.css"; // Lock icon styles for the graph component
 
-export default function TPSGraphComp(){
-    const [details,setDetails]=useState([77,86,67,49,90,83,55,76,69,71,83,84,10,100]);
-    useEffect(()=>{
-       const fetchData=async()=>{
-          try{
-            const response=await axios.get("http://127.0.0.1:8000/landlords/epc/reports/84958037-b6a3-4ee6-b481-83bc5256a5ad");
-            const epcScores = response.data.map(report => report.epc_score);
-            
-            setDetails(epcScores);
-          }catch(err){
-             console.log("Error while fetching data",err);
-          }
-       }  
-       fetchData();
-    },[])    
+export default function TPSGraphComp() {
+    const [details, setDetails] = useState([]);
+    const [locked] = useState(true); // Always locked (for now)
+    const [showText, setShowText] = useState(false); // State to manage text visibility on click
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Example API fetch (uncomment if needed)
+                // const res = await api.get('landlord/dashboard/');
+                // const pid = res.data.properties[0].property[0].id;
+                // const response = await api.get(`landlords/epc/reports/${pid}`);
+                // const epcScores = response.data.map(report => report.epc_score);
+                // setDetails(epcScores);
+            } catch (err) {
+                console.log("Error while fetching data", err);
+            }
+        };
+        fetchData();
+    }, []);
+
+    // Registering chart plugin for the vertical line
     Chart.register({
         id: 'verticalLinePlugin',
         beforeDraw: (chart) => {
-          if (chart.tooltip._active && chart.tooltip._active.length) {
-            const activePoint = chart.tooltip._active[0];
-            const ctx = chart.ctx;
-            const x = activePoint.element.x;
-            const topY = chart.scales.y.top;
-            const bottomY = chart.scales.y.bottom;
-      
-            ctx.save();
-            ctx.beginPath();
-            ctx.setLineDash([3,3]); 
-            ctx.moveTo(x, topY);
-            ctx.lineTo(x, bottomY);
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = '#D4D4D8';
-            ctx.stroke();
-            ctx.restore();
-          }
+            if (chart.tooltip._active && chart.tooltip._active.length) {
+                const activePoint = chart.tooltip._active[0];
+                const ctx = chart.ctx;
+                const x = activePoint.element.x;
+                const topY = chart.scales.y.top;
+                const bottomY = chart.scales.y.bottom;
+
+                ctx.save();
+                ctx.beginPath();
+                ctx.setLineDash([3, 3]);
+                ctx.moveTo(x, topY);
+                ctx.lineTo(x, bottomY);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = '#D4D4D8';
+                ctx.stroke();
+                ctx.restore();
+            }
         }
-      });
-    const labels = ['Jan','Feb','Mar',"Apr",'May','Jun','JUl','Agu','Sep','Oct','Nov','Dec']
+    });
+
+    const labels = ['Jan', 'Feb', 'Mar', "Apr", 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const options = {
         responsive: true,
         maintainAspectRatio: false,
-        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove','mouseover'],
         plugins: {
-            legend:{
+            legend: {
                 display: false
             },
-            tooltip:{
+            tooltip: {
                 events: ['click'],
                 enabled: true,
                 position: 'nearest',
-                
             }
         },
-        elements:{
-            point:{
+        elements: {
+            point: {
                 borderWidth: 1,
                 backgroundColor: "#FFFFFF",
                 borderColor: "#9FBEFF",
@@ -66,53 +73,39 @@ export default function TPSGraphComp(){
                 hoverRadius: 9,
                 hoverBorderWidth: 6,
             },
-            line:{
+            line: {
                 borderColor: "#5A74FA",
                 borderWidth: 2,
             }
         },
         scales: {
-            x:{
-                grid:{
-                    display: false,
-                },
-                ticks:{
+            x: {
+                grid: { display: false },
+                ticks: {
                     padding: 5,
                     color: "#09090B",
-                    font:{
-                        size: 14,
-                        family: 'Urbanist',
-                        weight: 600,
-                    }
+                    font: { size: 14, family: 'Urbanist', weight: 600 },
                 }
             },
-            y:{
+            y: {
                 min: 0,
                 max: 100,
                 ticks: {
                     padding: 10,
                     color: "#09090B",
-                    font:{
-                        size: 14,
-                        family: 'Urbanist',
-                        weight: 600,
-                    }
+                    font: { size: 14, family: 'Urbanist', weight: 600 },
                 },
-                grid:{
+                grid: {
                     color: '#D4D4D8',
                     drawTicks: true,
                 },
                 border: {
-                    dash: function(context) {
-                        if (context.tick.value == 0) {
-                        return null;
-                        }
-                        return [2,3];
-                    },
+                    dash: (context) => context.tick.value !== 0 ? [2, 3] : null,
                 },
             }
         }
-    }
+    };
+    
     const data = {
         labels,
         datasets: [
@@ -121,13 +114,39 @@ export default function TPSGraphComp(){
                 data: details,
             },
         ]
-    }
-    return(
-        <>
-        <div className="LineGraphSection">
-            <Line options={options} data={data}/>
-        </div>
+    };
+
+    // Function to handle lock icon click
+    const handleLockClick = () => {
+        setShowText(true); // Display the "Updated soon" text on click
+    };
+
+    return (
+        <div className="LineGraphSection position-relative">
+            {/* Lock Overlay */}
+            {locked && (
+                <div className="overlay">
+                    <div 
+                        className="lock-circle" 
+                        onClick={handleLockClick} // Handle click event
+                    > 
+                        {/* Circle effect for lock icon */}
+                        <FaLock className="lock-icon" />
+                    </div>
+
+                    {/* Hover text, only visible on click */}
+                    {showText && (
+                        <div className="updated-soon">
+                            Updated soon
+                        </div>
+                    )}
+                </div>
+            )}
             
-        </>
+            {/* Blurred Graph Component */}
+            <div className={`graph-content ${locked ? "blurred" : ""}`}>
+                <Line options={options} data={data} />
+            </div>
+        </div>
     );
 }

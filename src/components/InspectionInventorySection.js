@@ -5,11 +5,11 @@ import { MainContext } from "../Context/MainContext";
 import InspectionTable from "./InspectionTable";
 import DocumentViewerComp from "./DocumentViewerComp.js";
 import api from "../api.js";
-
+import DataSpinner from "./Spinner/DataSpinner.js";
 export default function InspectionInventory(props) {
     const [pageStart, setPageStart] = useState(0);
     const { docView, dispatch } = useContext(MainContext);
-
+    const [loading,setLoading]=useState(false);
     const [tableData, setTableData] = useState([]); 
     function convertDate(dateString) {
         const [year, month, day] = dateString.split('-');
@@ -18,12 +18,15 @@ export default function InspectionInventory(props) {
 
  
     useEffect(() => {
+         setLoading(true);
         const fetchData = async () => {
             try {
                 const res = await api.get('landlord/dashboard/');
                 const pid = res.data.properties[0].property[0].id;
                 const response = await api.get(`landlord/inventory-inspection/${pid}/`);
-
+                if(response.status==200){
+                    setLoading(false);
+                }
                 const fetchedData = response.data.data.map((item, index) => ({
                     document: {
                         id: index + 1,
@@ -39,6 +42,7 @@ export default function InspectionInventory(props) {
                     expiary_date: convertDate(item.expiry_date),
                 }));
                 setTableData(fetchedData); 
+                setLoading(false);
             } catch (err) {
                 console.log("Error while fetching the data", err);
             }
@@ -61,6 +65,7 @@ export default function InspectionInventory(props) {
 
     return (
         <>
+           {loading && <DataSpinner/>}
             <div className="container-fluid p-0">
                 <div className="row m-0">
                     <div className="col-12 p-0">

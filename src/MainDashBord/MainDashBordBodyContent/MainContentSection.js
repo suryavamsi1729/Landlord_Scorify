@@ -109,10 +109,14 @@ export default function MainContentSection(){
         };
 
         fetchData();
+        
     }, []);
 
 
     const formatDueDate = (dateStr) => {
+        if(dateStr==null){
+            return "";
+        }
         const dateObj = new Date(dateStr);
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const suffixes = ["th", "st", "nd", "rd"];
@@ -267,11 +271,11 @@ export default function MainContentSection(){
 
                     </div>
                     </Link>
-                    <Link  to="/dashboard/moudleandhumidity" onClick={()=>{
+                    <Link  to="/dashboard/ECIR" onClick={()=>{
                                 dispatch({
                                     type:"path",
                                     payload:{
-                                        path:"Moulde and Humidity",
+                                        path:"ECIR",
                                         sidebar:false
                                     }
                                 });
@@ -376,17 +380,18 @@ export default function MainContentSection(){
                                                 sidebar:false
                                             }
                                         }); 
-                                    }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
+                                    }} style={{textDecoration:'none',color:"#18181B",paddingLeft:'0px',width:'calc(90% - 8px)'}}>
                                     <CardItm>
                                         <h1 className="HeadingText">Tenants Profile</h1>
                                         <div className="containerwrapper d-flex flex-column gy-4">
-                                            <p className="text1 m-0">{data.Tname}</p>
-                                            <p className="text2 m-0">{data.Tnumber}</p>
+                                            <p className="text1 m-0" >{Tname}</p>
+                                            <p className="text2 m-0">{Tnumber}</p>
                                         </div>
                                     </CardItm>
                                 </Link>
                             )}
-                    {Agname && Agnum &&(
+
+                    {/* {Agname && Agnum &&(
                     <Link  to="/dashboard/agentsprofile" onClick={()=>{
                         dispatch({
                             type:"path",
@@ -395,7 +400,7 @@ export default function MainContentSection(){
                                 sidebar:false
                             }
                         }); 
-                    }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'calc(50% - 8px)'}}>
+                    }} style={{textDecoration:'none',color:"#18181B",padding:'0px',width:'100%'}}>
                     <CardItm>
                         <h1 className="HeadingText">Agent Profile</h1>
                         <div className="containerwrapper">
@@ -409,7 +414,7 @@ export default function MainContentSection(){
                         </div>
                     </CardItm>
                 </Link>
-                )}   
+                )}    */}
                         
                         </div>
                     </div>

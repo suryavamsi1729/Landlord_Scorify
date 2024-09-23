@@ -3,40 +3,8 @@ import TPSprofileCard from "./TPSProfileCard";
 import './TenantProfileSectionStyle.css';
 // import axios from "axios";
 import api from "../api";
-export default function TPSProfileCardSection() {
-    const [details, setDetails] = useState([
-        // {
-        //     PFImg: "/pimgTP1.jpg",
-        //     name: "Khadijah Ali",
-        //     details: "Pharmacist"
-        // },
-        // {
-        //     PFImg: "/pimgTP2.jpg",
-        //     name: "Sara Jane",
-        //     details: "Business Woman"
-        // }
-    ]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response=await api.get('landlord/tenants/');
-             
-                const fetchdata = response.data.map((item) => ({
-                    PFImg: item.profile_photo,
-                    name: item.name,
-                    details:item.occupation
-                }));
-             
-                setDetails(fetchdata);
-            } catch (err) {
-                console.log("Error while fetching the data", err);
-            }
-        };
-        fetchData();
-    }, []);
-
+export default function TPSProfileCardSection({details}){
     const imageUrl = [`url(/CoveWrphoto.jpg)`,`url(/CoveWrphoto2.jpg)`,`url(/CoveWrphoto3.jpg)`,`url(/CoveWrphoto4.jpg)`]
-
     return (
         <>
             <div className="TPSProfileCardSection w-100 p-0">

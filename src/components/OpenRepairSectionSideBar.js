@@ -1,6 +1,7 @@
 import {React,useState,useEffect} from "react";
 import './OpenRepairsSection.css';
 import ORSSBButton from "./ORSSBButtons";
+import ORSBButton from "./ORSBButtons";
 import ORSGraphSection from "./ORSGraphSection";
 import api from "../api";
 const removeClick =()=>{
@@ -36,13 +37,15 @@ export default function OpenRepairSectionSideBar({clickEvent}){
                             clickEvent('Open Repairs');
                             removeClick();
                             event.target.classList.add('ORSSBBtnActive');
-                            }} name={'Open Repairs'}/>
+                            }} name={'Open Repairs'} 
+                            
+                            />
                         {/* <ORSSBButton key={2} clickEvent={()=>{clickEvent('Open Repairs')}}  name={'Open Repairs'}/> */}
                         <ORSSBButton key={3} clickEvent={(event)=>{
                             clickEvent('Repairs History');
                             removeClick();
                             event.target.classList.add('ORSSBBtnActive');
-                            }} name={'Repairs History'}/>
+                            }} name={'Repairs History'} />
                     </div>
                     <div className="col-12 p-0">
                         <ORSGraphSection  value={score} heading={"Repair score"}/>

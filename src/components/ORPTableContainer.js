@@ -4,12 +4,12 @@ import './OpenRepairsSection.css';
 import './InspectionInventory.css';
 import ORTableRow from "./ORTableRow";
 import api from "../api";
-
+import DataSpinner from "./Spinner/DataSpinner";
 export default function ORPTableContainer({ columns, name }) {
     const [pageStart, setPageStart] = useState(0);
     const [tableData, setTableData] = useState([]);
     const [tableSize, setTableSize] = useState(0);
-   
+    const [isdata,setIsData]=useState('')
     function formatDate(dateString) {
         const date = new Date(dateString);
         const formattedDate = date.toLocaleDateString('en-GB');
@@ -19,9 +19,10 @@ export default function ORPTableContainer({ columns, name }) {
         const fetchData = async () => {
             try {
                 const response = await api.get('landlord/repairs/');
-                console.log(response.data);
-                const item = response.data;
+                if(response.status===200){
 
+                
+                const item = response.data;
                 const transformData = item.repairs.map(val => ({
                     RepairDetails: val.title,
                     CompletionDate: formatDate(val.completion_date),
@@ -33,13 +34,21 @@ export default function ORPTableContainer({ columns, name }) {
 
                 setTableData(transformData);
                 setTableSize(transformData.length);
-
+            }else if(response.status===404){
+                setIsData("No Data Available");
+            }
+            else{
+                setIsData("No Data Available");
+            }
             } catch (err) {
+                setIsData("No Data Available");
                 console.log("Error while fetching data", err);
             }
         }
         fetchData();
-    }, []);
+    }, [tableData]);
+
+   
 
     const data = (start, range) => {
         if (range <= 0) {
@@ -79,7 +88,7 @@ export default function ORPTableContainer({ columns, name }) {
                         {tableData.length === 0 ? (
                             <tr className="w-100 d-flex flex-row">
                                 <td className="noDataCell" colSpan={columns.length + 1}>
-                                    No data available
+                                    {isdata}
                                 </td>
                             </tr>
                         ):(

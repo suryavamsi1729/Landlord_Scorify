@@ -54,7 +54,7 @@ export default function OpenRepairsSection (){
     }
     return (
         <>
-            <div className="OpenReapairSection">
+            <div className="OpenReapairSection" style={{padding:'0px 0px 0px 0px'}}>
                 <div className="container-fluid p-0 w-100 h-100">
                     <div className="row m-0 w-100 h-100">
                         <div className="col-4 p-0 pe-2 h-100">

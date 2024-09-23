@@ -10,15 +10,18 @@ export default function UCServiceHistoryTable({ columns, name }) {
     const [pageStart, setPageStart] = useState(0);
     const [tableData, setTableData] = useState([]);
     const [tableSize, setTableSize] = useState(0);
-
+    const [isdata,setIsData]=useState('');
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await api.get("landlord/regular-maintenance/service-history/");
+                if(response.status==200){
+
+                
                 const data = response.data.data; 
 
                 const transformedData = data.map(item => ({
-                    'RepairDetails': item.details,
+                    'RepairDetails': item.title,
                     'CompletionDate': new Date(item.completion_date).toLocaleDateString('en-GB'),
                     'Status': item.status,
                     'CompletionReport': item.report,
@@ -28,13 +31,24 @@ export default function UCServiceHistoryTable({ columns, name }) {
 
                 setTableData(transformedData);
                 setTableSize(transformedData.length);
+                if(transformedData.length===0){
+                    setIsData("No Data Available");
+                }
+            }
+             else if(response.status===404){
+                setIsData("No Data Available");
+            }
+            else{
+                setIsData("No Data Available");
+            }
             } catch (err) {
-                console.log("Error while fetching Data", err);
+                setIsData("No Data Available");
+                console.log("Error while fetching data", err);
             }
         };
         fetchData();
-    }, []);
-
+    },[]);
+    
     const data = (start, range) => {
         if (range <= 0) {
             return tableData.slice(0, 10);
@@ -45,7 +59,7 @@ export default function UCServiceHistoryTable({ columns, name }) {
         }
     };
 
-    return (
+    return(
         <>
             <div className="ORTableContainer">
                 <table className="ORTable">
@@ -82,7 +96,7 @@ export default function UCServiceHistoryTable({ columns, name }) {
                         ):(
                             <tr>
                                 <td colSpan={columns.length + 1} className="noDataCell">
-                                    No data Available
+                                    {isdata}
                                 </td>
                             </tr>
                         )}

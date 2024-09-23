@@ -4,17 +4,21 @@ import api from '../api';
 export default function PEPCRTableComp(){
   
     const [data,setData]=useState([]);
+    const [isdata,setIsData]=useState('')
     useEffect(()=>{
       const fetchdata=async()=>{
         try{
           const res = await api.get('landlord/dashboard/');
           const pid = res.data.properties[0].property[0].id;
-          console.log(pid);
           const response = await api.get(`landlords/epc/reports/${pid}`);
-         
-        //    console.log(response.data);
-           setData(response.data);
+          if(response.status===200){
+            setData(response.data);
+            if(data.length===0){
+                setIsData("No Data Available");
+            }
+          }
         }catch(err){
+            setIsData("No Data Available");
             console.log("Error while fetching the data",err);
         }
       } 
@@ -82,7 +86,7 @@ export default function PEPCRTableComp(){
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="5" className='no-data-message'>No Data Available</td>
+                            <td colSpan="5" className='noDataCell'>{isdata}</td>
                         </tr>
                     )}
                 </tbody>

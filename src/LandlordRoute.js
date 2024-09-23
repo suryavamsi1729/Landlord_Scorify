@@ -38,11 +38,13 @@ import FileSpinner from "./components/Spinner/FileSpinner";
 import AIScoreFix from "./components/AIScoreFix";
 import SetPasswordPage from "./AuthNew/Auth/SetPasswordPage";
 import PasswordSetSuccessful from "./AuthNew/Auth/PasswordSetSuccessful";
+import DataSpinner from "./components/Spinner/DataSpinner";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to="/login"/>}/>
+                <Route path="/loader" element={<DataSpinner/>}/>
                 <Route path="/login" element={<LoginPage/>}/> 
                 <Route path="/bar" element={<FileSpinner/>}/>
                 <Route path="/zipcode" element={<AddressLookup/>}/>
@@ -59,7 +61,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/moudleandhumidity" element={<PrivateRoute element={<MainDashBordComp><MouldandHumidityComp /></MainDashBordComp>} />} />
                 <Route path="/dashboard/tenantsprofile" element={<PrivateRoute element={<MainDashBordComp><TenantProfileSectionComp /></MainDashBordComp>} />} />
                 <Route path="/dashboard/openrepair" element={<PrivateRoute element={<MainDashBordComp><OpenRepairsSection/></MainDashBordComp>} />} />
-                <Route path="/dashboard/regularmaintenance" element={<PrivateRoute element={<MainDashBordComp><RegularMaintenance /></MainDashBordComp>} />} />
+                <Route path="/dashboard/regularmaintenance" element={<PrivateRoute element={<MainDashBordComp><RegularMaintenance/></MainDashBordComp>} />} />
                 <Route path="/dashboard/floormapandphotos" element={<PrivateRoute element={<MainDashBordComp><FloarMapPhotosSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/floormapandphotos/:itm" element={<PrivateRoute element={<MainDashBordComp><LivingRoomSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/agentsprofile" element={<PrivateRoute element={<MainDashBordComp><AgentsProfileSection /></MainDashBordComp>} />} />
@@ -70,6 +72,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
                 <Route path='/dashboard/AIScoreFix' element={<PrivateRoute element={<MainDashBordComp><AIScoreFix/></MainDashBordComp>} />} />
+                <Route path='/dashboard/ECIR' element={<PrivateRoute element={<MainDashBordComp><AIScoreFix/></MainDashBordComp>} />} />
                 <Route path='/invite' element={<PrivateRoute element={<MainDashBordComp><Invite/></MainDashBordComp>} />} />
                 <Route path='/maintenance' element={<PrivateRoute element={<MainDashBordComp><MaintenanceandRepair /></MainDashBordComp>} />} />
                 <Route path='/reports' element={<PrivateRoute element={<MainDashBordComp><ReportMainContent /></MainDashBordComp>} />} />
@@ -77,8 +80,7 @@ export default function LandLordNewRoute() {
                 <Route path='/reports/tenantself-inspections' element={<PrivateRoute element={<MainDashBordComp><RTISITableContainer /></MainDashBordComp>} />} />
                 <Route path='/reports/inventory' element={<PrivateRoute element={<MainDashBordComp><RTISITableContainer /></MainDashBordComp>} />} />
                 <Route path='/reports/check-out' element={<PrivateRoute element={<MainDashBordComp><RTISITableContainer /></MainDashBordComp>} />} />
-                <Route path='/inspections' element={<PrivateRoute element={<MainDashBordComp><Inspection /></MainDashBordComp>} />} />
-               
+                <Route path='/inspections' element={<PrivateRoute element={<MainDashBordComp><Inspection /></MainDashBordComp>} />} />    
             </Routes>
         </BrowserRouter>
     );

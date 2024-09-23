@@ -24,7 +24,6 @@ export default function EPCSection() {
             try {
                 const res = await api.get('landlord/dashboard/');
                 const pid = res.data.properties[0].property[0].id;
-
                 const response1 = await api.get(`landlords/epc/latest/${pid}`);
                 const response2 = await api.get(`landlords/epc/scores/${pid}`);
                    
@@ -51,9 +50,14 @@ export default function EPCSection() {
             case 'Current EPC Report':
                 return (
                     <>
-                        <div className="ImageContainerUpload p-3">
+                    {img?(<div className="ImageContainerUpload p-3">
                             <img src={img} className="ImageUpload" alt="No Epc Report Found" />
+                        </div>):(
+                            <div className="ImageContainerUpload p-3">
+                            <div className='noDataCell'>No Data Available</div>
                         </div>
+                        )}
+                       
                     </>
                 );
             case 'Previous EPC Report':

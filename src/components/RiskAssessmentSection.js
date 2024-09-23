@@ -10,16 +10,16 @@ export default function RiskAssessmentSection(){
     const {dispatch} = useContext(MainContext);
     const btnRef = useRef([]);
     const [score,setScore]=useState();
+    const [data,setdata]=useState([]);
     const [getActive,setActive] = useState('Upload Reports');
     useEffect(()=>{
             btnRef.current[0].classList.add('ActiveEleBtn');
-
+            
             const fetchData=async()=>{
                 try{
                   const response=await api.get('/landlord/safety-report');
-                 
                   setScore(Math.round(response.data[0].score)); 
-
+                  setdata(response.data);
                 }catch(err){
                     console.log("Error while fetching the Data",err);
                 } 
@@ -38,7 +38,7 @@ export default function RiskAssessmentSection(){
             case 'Upload Reports':
                 return(
                     <>
-                        <RASUploadReport/>
+                        <RASUploadReport data={data}/>
                     </>
                 );
             case 'Download Reports':

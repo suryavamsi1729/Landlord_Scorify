@@ -6,19 +6,21 @@ import api from "../api";
 
 export default function RMMaintenanceSchedule() {
     const [data, setData] = useState([]);
-
+    const [isdata,setIsData]=useState('');
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await api.get("landlord/regular-maintenance/schedule/");
-                
-                if (Array.isArray(response.data.data)) {
-                    setData(response.data.data);
-                } else {
-                    console.warn("Unexpected data format:", response.data);
-                    setData([]);
+                if(response.status===200){
+                    if (Array.isArray(response.data.data)) {
+                        setData(response.data.data);
+                        if(data.length===0){
+                            setIsData("No Data Avaiable")
+                        }
+                    } 
                 }
-            } catch (err) {
+            } catch (err){
+                setIsData("No Data Available");
                 console.log("Error while fetching the data", err);
                 setData([]);
             }
@@ -47,7 +49,7 @@ export default function RMMaintenanceSchedule() {
     return (
         <div className="w-100 h-100 RMMaintenanceSchedule d-flex flex-column justify-content-start p-2">
             {data.length === 0 ? (
-                <div>No data available</div>
+                <div className="noDataCell">{isdata}</div>
             ) : (
                 data.map((item) => (
                     <MaintenanceSchedularItm

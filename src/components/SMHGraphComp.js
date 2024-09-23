@@ -4,23 +4,7 @@ import { Line } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
 import api from "../api";
 
-export default function SMHGraphComp(){
-    const [details,SetDetails]=useState([1,2,3,0,9,10,0,11]);
-    useEffect(()=>{
-        const fetchData=async()=>{
-            try{
-            const response = await api.get('landlord/mould/');
-
-              let k=response.data.mould[0].mould_presence_90_days;
-              let fd=Object.values(k).map(val=>parseInt(val));
-             
-              SetDetails(fd);
-            }catch(error){
-              console.log("Error while fetching data",error);
-            }
-        }
-        fetchData();
-    })
+export default function SMHGraphComp({details}){
     const options = {
         responsive: true,
         elements: {

@@ -4,23 +4,7 @@ import RiskAssessmentCard from "./RiskAssessmentCard";
 import './EPC.css';
 import api from "../api";
 
-export default function EPCUploadReport(){
-    const [data,setdata]=useState([]);
-
-    useEffect(()=>{
-        const fetchData=async()=>{
-          try{
-              const response=await api.get("landlord/safety-report");
-               const k=data.map((item)=>{
-                   
-               }); 
-              setdata(response.data);
-          }catch(err){
-            console.log("Error while fetching the data",err);
-          }
-        }
-        fetchData();
-    },[]);
+export default function EPCUploadReport({data}){
     return(
         <>
             <div className="containe-fluid p-0 ParentBluerContainer">
