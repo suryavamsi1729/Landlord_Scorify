@@ -10,7 +10,14 @@ export default function RiskAssessmentCard({children,title,score}){
                     <h1 className="Heading m-0">{title}</h1>
                     <div className="RiskIndicatorContainer d-flex flex-column justify-content-end">
                         <div className="IndicatorContainer">
-                            <div className="indicator" style={{left:`calc(${score}% -5px)`}}></div>
+                            <div className="indicator" style={{
+                                position: 'absolute',
+                                left: `calc(${score}% - 5px)`, 
+                                width: '10px',
+                                height: '100%',  
+                                transition: 'left 0.3s ease', 
+                            }} 
+                            ></div>
                         </div>
                         <div className="SubContainer d-flex flex-column">
                             <div className="RiskIndicator"></div>

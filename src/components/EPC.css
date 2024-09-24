@@ -360,3 +360,23 @@ table.EPCTable>thead>tr:last-child>th{
     padding: 199px 17px 32px 240px;
 }
 
+.lockIconEle {
+    position: relative;
+  }
+  
+  .lockText {
+    position: absolute;
+    bottom: -30px; /* Adjust this value to position text as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f6f6fe;
+    font-weight: bold;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease;
+  }
+  
+  .lockIconEle:hover .lockText {
+    opacity: 1; /* Show text on hover */
+  }
+  
+

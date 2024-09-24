@@ -255,7 +255,8 @@ const [selectedOption, setSelectedOption] = useState(''); //occupancy selected o
       formData.append('heating-cost-current', heatingCostCurrent);
       formData.append('heating-cost-potential', heatingCostPotential); 
       formData.append('current-energy-efficiency',currentenergyefficiency);
-      formData.append('user_type','landlord')
+      formData.append('user_type','landlord');
+      formData.append('vacnat',selectedOption);
       dataToContext = {
         ...dataToContext,
         "report":files.inventoryReport,
@@ -283,6 +284,8 @@ const [selectedOption, setSelectedOption] = useState(''); //occupancy selected o
          'heating-cost-potential':heatingCostPotential,
          'current-energy-efficiency':currentenergyefficiency,
          'user_type':"landlord",
+         'vacant':selectedOption,
+         
       }
       const token = localStorage.getItem("access_token");
       setUploadProgress(0);

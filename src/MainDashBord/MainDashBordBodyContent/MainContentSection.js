@@ -31,7 +31,7 @@ export default function MainContentSection(){
     const [date,SetDate]=useState('');
     const [score,Setscore]=useState('');
     const {dispatch} = useContext(MainContext);
-
+    const [tenancy,setTenancy]=useState('');
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -85,7 +85,7 @@ export default function MainContentSection(){
                 //CardComp
                 setProperty(response.data.properties[0].property[0].property_type);
                 setAge(response.data.properties[0].property[0].house_age);
-
+                setTenancy(response.data.properties[0].property[0].tenancy);
 
                 //Scorecard
                 SetDate(response.data.properties[0].property[0].next_inspection_date);
@@ -145,7 +145,7 @@ export default function MainContentSection(){
         <>
             <div className="MainContentContainerSection">
                 <div className="ContentContainer">
-                    <SectionPropertyScoreDetails locationcard={location} Property={property} Age={age} Score={score} Date={date}></SectionPropertyScoreDetails>
+                    <SectionPropertyScoreDetails locationcard={location} Property={property} Age={age} Score={score} Date={date} Tenancy={tenancy} ></SectionPropertyScoreDetails>
                     <div className="CardsContainerbottom">
                         <div className="row d-flex flex-row">
                             <Link  to="/dashboard/inspections&inventory" onClick={()=>{

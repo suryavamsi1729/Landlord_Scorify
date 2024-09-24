@@ -16,8 +16,19 @@ export default function HeatingSystem(){
         return `${day}/${month}/${year}`;
     }
     const [data,setData]=useState({})
-
-    const [heatingData, setHeatingData] = useState();
+    const [score,Setscore]=useState();
+  
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get("landlord/heating-safety/");
+                Setscore(response.data[0].score);
+            } catch (err) {
+                console.log("Error while Fetching the Data", err);
+            }
+        }
+        fetchData();
+    }, []);
     
     useEffect(()=>{
        const fetchData=async()=>{
@@ -25,23 +36,20 @@ export default function HeatingSystem(){
             const res = await api.get('landlord/dashboard/');
             const pid = res.data.properties[0].property[0].id;
             const response=await api.get(`landlords/gascur/${pid}/`);
-            const response1=await api.get("landlord/heating-safety/");
-            setHeatingData(response1.data[0]);
-            // console.log(response1.data[0]);
-          setData({
+            setData({
             Img:response.data.view_document,
             due:convertDateFormat(response.data.report_date),
             expire:response.data.expiry_months,
             score:Math.round(response.data.repair_score),
           }) 
-
-        //   sethdata(response1.data);
         }catch(err){
             console.log("Error while Fetching the Data",err);
         }
        } 
        fetchData();
     },[]);
+
+
 
     const btnRef = useRef([]);
     const subBtnRef = useRef([]);
@@ -67,6 +75,8 @@ export default function HeatingSystem(){
             }
         },[getActive]
     )
+
+    
     const OnClickEvent = (event)=>{
         btnRef.current.forEach(element => {
             element.classList.remove('ActiveEleBtn');
@@ -92,15 +102,18 @@ export default function HeatingSystem(){
             case 'Current Report':
                 return(
                     <>
-                        <img src={data.Img} className="HSImageUpload" alt="No Current Report Found"/>
+                        {data.Img?(<img src={data.Img} className="HSImageUpload" alt="No Current Report Found"/>):(
+                                <td colSpan="4" className='noDataCell'>No Data Available</td>   
+                        )}
+
                     </>
                 );
                 case 'Previous Report':
                     return(
                         <>
                             <div className="TableContainer p-3">
-                                <HPEPCRTableComp/>
-                            </div>
+                                <HPEPCRTableComp />
+                            </div> 
                             
                         </>
                     );
@@ -131,7 +144,7 @@ export default function HeatingSystem(){
                                         <p className="text">Expired in : <span>{data.expire}</span></p>
                                     </div>
                                     <div className="Indicator">
-                                        <div className="Indicator-before" style={{width: `${20}%`}}></div>
+                                        <div className="Indicator-before" style={{width: `${data.score/100*10}%`}}></div>
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +184,7 @@ export default function HeatingSystem(){
                             </div>
                             <div className="ScoreCardEle d-flex flex-column align-items-center gap-5 p-3 pb-5" style={{height:'420px'}}>
                                 <h1 className="heading">Heating Score</h1>
-                                <RadialGaugeComp value={data.score} title={"Heating Score"}/>
+                                <RadialGaugeComp value={score} title={"Heating Score"}/>
                                 {/* <SMHBVentilationGraph score={data.score} title={"Repair Score"}/> */}
                             </div>
                         </div>

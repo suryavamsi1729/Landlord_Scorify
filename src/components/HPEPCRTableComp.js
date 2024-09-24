@@ -5,6 +5,7 @@ import api from '../api';
 export default function HPEPCRTableComp(){
   
     const [data,setData]=useState([]);
+    const [isdata,setIsData]=useState();
     useEffect(()=>{
       const fetchdata=async()=>{
         try{
@@ -12,9 +13,12 @@ export default function HPEPCRTableComp(){
           const pid = res.data.properties[0].property[0].id;
 
            const response=await api.get(`landlords/gasprev/${pid}/`);
-        //    console.log(response.data);
            setData(response.data);
+           if(data.length===0){
+              setIsData("No Data Available");
+           }
         }catch(err){
+            setIsData("No Data Available");
             console.log("Error while fetching the data",err);
         }
       } 
@@ -43,10 +47,10 @@ export default function HPEPCRTableComp(){
                                 <div className='EERrow-1 col-head'>EER</div>
                                 <div className='EERrow-2 d-flex flex-row'>
                                     <div className='EERrow-itm1 col-head w-50 h-100'>
-                                        current
+                                        Current
                                     </div>
                                     <div className='EERrow-itm2 col-head w-50 h-100'>
-                                        current
+                                        Potential
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +62,7 @@ export default function HPEPCRTableComp(){
                 <tbody>
                   {data.length==0?(
                      <tr>
-                     <td colSpan="4" className='noDataCell'>No Data Available</td>
+                     <td colSpan="4" className='noDataCell'>{isdata}</td>
                  </tr>
                   ):( data.map((item, index) => (
           <tr key={index} className='w-100 d-flex flex-row'>

@@ -39,6 +39,7 @@ import AIScoreFix from "./components/AIScoreFix";
 import SetPasswordPage from "./AuthNew/Auth/SetPasswordPage";
 import PasswordSetSuccessful from "./AuthNew/Auth/PasswordSetSuccessful";
 import DataSpinner from "./components/Spinner/DataSpinner";
+import RiskDown from "./components/RiskDown";
 export default function LandLordNewRoute() {
     return (
         <BrowserRouter>
@@ -67,7 +68,7 @@ export default function LandLordNewRoute() {
                 <Route path="/dashboard/agentsprofile" element={<PrivateRoute element={<MainDashBordComp><AgentsProfileSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/epc" element={<PrivateRoute element={<MainDashBordComp><EPCSection/></MainDashBordComp>} />} />
                 <Route path="/dashboard/riskassessment" element={<PrivateRoute element={<MainDashBordComp><RiskAssessmentSection /></MainDashBordComp>} />} />
-                <Route path="/dashboard/riskassessment/download" element={<PrivateRoute element={<MainDashBordComp><RiskDowload /></MainDashBordComp>} />} />
+                <Route path="/dashboard/riskassessment/download" element={<PrivateRoute element={<MainDashBordComp><RiskDown/></MainDashBordComp>} />} />
                 <Route path="/dashboard/appliance" element={<PrivateRoute element={<MainDashBordComp><ApplienceSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/applience/:itm" element={<PrivateRoute element={<MainDashBordComp><OvenSection /></MainDashBordComp>} />} />
                 <Route path="/dashboard/heatingsystem" element={<PrivateRoute element={<MainDashBordComp><HeatingSystem /></MainDashBordComp>} />} />
